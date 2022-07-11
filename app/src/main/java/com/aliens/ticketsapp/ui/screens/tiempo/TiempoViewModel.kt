@@ -33,4 +33,13 @@ class TiempoViewModel @Inject constructor(
             )
         }
     }
+
+    fun isNumber(text: String): Boolean{
+        return try {
+            text.toFloat()
+            true
+        }catch (e: NumberFormatException){
+            false
+        }
+    }
 }

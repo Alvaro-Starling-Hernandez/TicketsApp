@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">TicketsApp</string>
     <string name="Tecnico">Tecnico</string>
+    <string name="Trabajo">Trabajo</string>
+    <string name="TituloAdregarTiempo">Agregar Tiempo</string>
+    <string name="ArrowBack">ArrowBAck</string>
+    <string name="Tiempo">Tiempo</string>
+    <string name="Guardar">Guarduar</string>
 </resources>
