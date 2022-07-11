@@ -3,8 +3,8 @@ package com.aliens.ticketsapp.di
 import android.content.Context
 import androidx.room.Room
 import com.aliens.ticketsapp.data.TicketsDb
-import com.aliens.ticketsapp.data.TiempoDao
-import com.aliens.ticketsapp.data.TiempoRepository
+import com.aliens.ticketsapp.data.daos.TiempoDao
+import com.aliens.ticketsapp.data.repositories.TiempoRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,12 +28,12 @@ object AppModule {
     }
 
     @Provides
-    fun ProvidesTiempoDAO(ticketsDb: TicketsDb): TiempoDao{
+    fun ProvidesTiempoDAO(ticketsDb: TicketsDb): TiempoDao {
         return ticketsDb.tiempoDao
     }
 
     @Provides
-    fun ProvidesTiempoRepository(tiempoDao: TiempoDao): TiempoRepository{
+    fun ProvidesTiempoRepository(tiempoDao: TiempoDao): TiempoRepository {
         return TiempoRepository(tiempoDao)
     }
 }

@@ -1,5 +1,6 @@
-package com.aliens.ticketsapp.data
+package com.aliens.ticketsapp.data.repositories
 
+import com.aliens.ticketsapp.data.daos.TiempoDao
 import com.aliens.ticketsapp.model.Tiempo
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

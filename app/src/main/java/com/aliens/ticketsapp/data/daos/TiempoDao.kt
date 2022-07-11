@@ -1,4 +1,4 @@
-package com.aliens.ticketsapp.data
+package com.aliens.ticketsapp.data.daos
 
 import androidx.room.*
 import com.aliens.ticketsapp.model.Tiempo
