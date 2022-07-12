@@ -4,9 +4,12 @@ import android.content.Context
 import androidx.room.Room
 import com.aliens.ticketsapp.data.TicketsDb
 import com.aliens.ticketsapp.data.daos.RespuestaDao
+import com.aliens.ticketsapp.data.daos.TecnicoDao
 import com.aliens.ticketsapp.data.daos.TiempoDao
 import com.aliens.ticketsapp.data.repositories.RespuestaRepository
+import com.aliens.ticketsapp.data.repositories.TecnicoRepository
 import com.aliens.ticketsapp.data.repositories.TiempoRepository
+import com.aliens.ticketsapp.model.Tecnico
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -48,4 +51,6 @@ object AppModule {
     fun ProvidesRespuestaRepository(respuestaDao: RespuestaDao): RespuestaRepository {
         return RespuestaRepository(respuestaDao)
     }
+
+
 }
