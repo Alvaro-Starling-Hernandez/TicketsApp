@@ -7,6 +7,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,7 +32,7 @@ sealed class BottomNavItem(
     object Tecnico : BottomNavItem(
         route = Screen.RegistroTecnico.route,
         titleResId = R.string.Tecnico,
-        icon = Icons.Default.Settings
+        icon = Icons.Default.Person
     )
 }
 
