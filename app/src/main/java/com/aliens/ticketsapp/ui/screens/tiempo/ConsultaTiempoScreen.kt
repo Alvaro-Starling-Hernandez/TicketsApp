@@ -17,12 +17,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TiempoItem
 
 @Composable
 fun ConsultaTiempoScreen(
-    viewModel: TiempoViewModel = hiltViewModel()
+    viewModel: TiempoViewModel = hiltViewModel(),
+    navController: NavController
 ) {
     Scaffold(
 

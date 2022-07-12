@@ -20,12 +20,14 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TextObligatorio
 
 @Composable
 fun TecnicoScreen(
-    viewModel: TecnicoViewModel = hiltViewModel()
+    viewModel: TecnicoViewModel = hiltViewModel(),
+    navController: NavController
 ) {
     var nombreError by rememberSaveable { mutableStateOf(false) }
     var telefonoError by rememberSaveable { mutableStateOf(false) }

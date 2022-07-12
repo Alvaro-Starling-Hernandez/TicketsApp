@@ -23,6 +23,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TecnicoSpinner
 import com.aliens.ticketsapp.ui.components.TextObligatorio
@@ -30,7 +31,8 @@ import com.aliens.ticketsapp.ui.theme.TicketsAppTheme
 
 @Composable
 fun RegistroTiempoScreen(
-    viewModel: TiempoViewModel = hiltViewModel()
+    viewModel: TiempoViewModel = hiltViewModel(),
+    navController: NavController
 ) {
     var trabajoError by rememberSaveable { mutableStateOf(false) }
     var tiempoError by rememberSaveable { mutableStateOf(false) }
