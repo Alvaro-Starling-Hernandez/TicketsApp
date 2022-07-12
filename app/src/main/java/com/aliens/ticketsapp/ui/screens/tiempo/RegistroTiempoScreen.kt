@@ -28,6 +28,7 @@ import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TecnicoSpinner
 import com.aliens.ticketsapp.ui.components.TextObligatorio
 import com.aliens.ticketsapp.ui.theme.TicketsAppTheme
+import com.aliens.ticketsapp.utils.Screen
 
 @Composable
 fun RegistroTiempoScreen(
@@ -48,7 +49,7 @@ fun RegistroTiempoScreen(
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                //navegar
+                                navController.navigate(Screen.ConsultaTiempo.route)
                             }
                     )
                 },
@@ -133,7 +134,7 @@ fun RegistroTiempoScreen(
                                 "Guardado",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            //navegar
+                            navController.navigate(Screen.ConsultaTiempo.route)
                         } else {
                             Toast.makeText(
                                 context,

@@ -12,7 +12,6 @@ import androidx.compose.material.icons.filled.ArrowBackIos
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -20,6 +19,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TiempoItem
+import com.aliens.ticketsapp.utils.Screen
 
 @Composable
 fun ConsultaTiempoScreen(
@@ -46,7 +46,7 @@ fun ConsultaTiempoScreen(
                     Text(stringResource(R.string.TituloConsultaTiempos))
                 },
                 actions = {
-                    IconButton(onClick = { /*nacvegar*/ }) {
+                    IconButton(onClick = { navController.navigate(Screen.RegistroTiempo.route) }) {
                         Icon(
                             modifier = Modifier.size(40.dp),
                             imageVector = Icons.Default.Add,
