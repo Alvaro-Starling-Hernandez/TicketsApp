@@ -27,22 +27,24 @@ fun RespuestaItem(
             .padding(vertical = 10.dp)
             .fillMaxWidth()
     ) {
-        Row(modifier = Modifier
+        Column(modifier = Modifier
             .clickable { /*navegar*/ }
-            .padding(8.dp)
-        ) {
-
-            Spacer(modifier = Modifier.width(20.dp))
-            Column {
+            .padding(8.dp)) {
+            Row(
+            ) {
                 Text("Nombre del Tecnico")
+                Spacer(modifier = Modifier.width(20.dp))
+                Text(
+                    respuesta.fecha,
+                    textAlign = TextAlign.End,
+                    letterSpacing = 3.sp,
+                    modifier = Modifier.padding(start = 60.dp)
+                )
+
+            }
+            Column {
                 Text(respuesta.Mensaje)
             }
-            Text(
-                respuesta.fecha,
-                textAlign = TextAlign.End,
-                letterSpacing = 3.sp,
-                modifier = Modifier.padding(start = 60.dp)
-            )
         }
 
     }
