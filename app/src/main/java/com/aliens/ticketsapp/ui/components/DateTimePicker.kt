@@ -55,7 +55,7 @@ fun DateTimePicker(viewModel: RespuestaViewModel = hiltViewModel()) {
             trailingIcon = {
                 Icon(
                     Icons.Default.Pinch,
-                    stringResource(R.string.Tecnico),
+                    stringResource(R.string.SelectDate),
                     Modifier.clickable { mDatePickerDialog.show() }
                 )
             },
