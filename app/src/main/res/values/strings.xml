@@ -6,4 +6,6 @@
     <string name="ArrowBack">ArrowBAck</string>
     <string name="Tiempo">Tiempo</string>
     <string name="Guardar">Guarduar</string>
+    <string name="TituloConsultaTiempos">Tiempos</string>
+    <string name="Agregar">Agregar</string>
 </resources>

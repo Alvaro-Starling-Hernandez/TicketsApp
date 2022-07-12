@@ -22,9 +22,9 @@ fun TiempoItem(
 ) {
     Card(
         shape = RoundedCornerShape(8.dp),
-        elevation = 5.dp,
+        elevation = 10.dp,
         modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 10.dp)
+            .padding(vertical = 10.dp)
             .fillMaxWidth()
     ) {
         Row(modifier = Modifier
