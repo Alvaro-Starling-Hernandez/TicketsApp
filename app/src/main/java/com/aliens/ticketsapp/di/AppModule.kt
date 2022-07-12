@@ -52,5 +52,14 @@ object AppModule {
         return RespuestaRepository(respuestaDao)
     }
 
+    @Provides
+    fun ProvidesTecnicoRepository(tecnicoDao: TecnicoDao): TecnicoRepository{
+        return TecnicoRepository(tecnicoDao)
+    }
+
+    @Provides
+    fun ProvidesTecnicoDao(ticketsDb: TicketsDb): TecnicoDao{
+        return ticketsDb.tecnicoDao
+    }
 
 }
