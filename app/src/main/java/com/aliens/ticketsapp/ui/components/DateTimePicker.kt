@@ -51,7 +51,7 @@ fun DateTimePicker(viewModel: RespuestaViewModel = hiltViewModel()) {
             modifier = Modifier
                 .clickable { mDatePickerDialog.show() }
                 .fillMaxWidth(),
-            label = { Text("Seleccionar Fecha") },
+            label = { Text(stringResource(R.string.SelectDate)) },
             trailingIcon = {
                 Icon(
                     Icons.Default.Pinch,
