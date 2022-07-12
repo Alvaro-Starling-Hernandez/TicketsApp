@@ -25,6 +25,7 @@ import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TecnicoSpinner
 import com.aliens.ticketsapp.ui.components.TextObligatorio
 import com.aliens.ticketsapp.ui.components.DateTimePicker
+import com.aliens.ticketsapp.utils.Screen
 
 @Composable
 fun RegistroRespuestaScreen(
@@ -44,7 +45,7 @@ fun RegistroRespuestaScreen(
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                //navegar
+                                navController.navigate(Screen.ConsultaRespuesta.route)
                             }
                     )
                 },
@@ -106,7 +107,7 @@ fun RegistroRespuestaScreen(
                             R.string.ToastMessageSave,
                             Toast.LENGTH_SHORT
                         ).show()
-                        //navegar
+                        navController.navigate(Screen.ConsultaRespuesta.route)
                     } else {
                         Toast.makeText(
                             context,

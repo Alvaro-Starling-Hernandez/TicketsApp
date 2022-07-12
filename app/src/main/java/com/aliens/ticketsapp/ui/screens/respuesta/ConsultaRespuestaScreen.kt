@@ -17,6 +17,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.RespuestaItem
+import com.aliens.ticketsapp.utils.Screen
 
 @Composable
 fun ConsultaRespuestaScreen(
@@ -43,7 +44,7 @@ fun ConsultaRespuestaScreen(
                     Text(stringResource(R.string.Respuestas))
                 },
                 actions = {
-                    IconButton(onClick = { /*nacvegar*/ }) {
+                    IconButton(onClick = { navController.navigate(Screen.RegistroRespuesta.route) }) {
                         Icon(
                             modifier = Modifier.size(40.dp),
                             imageVector = Icons.Default.Add,
