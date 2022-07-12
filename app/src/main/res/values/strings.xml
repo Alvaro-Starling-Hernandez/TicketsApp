@@ -8,4 +8,5 @@
     <string name="Guardar">Guarduar</string>
     <string name="TituloConsultaTiempos">Tiempos</string>
     <string name="Agregar">Agregar</string>
+    <string name="SelectDate">Seleccionar Fecha</string>
 </resources>
