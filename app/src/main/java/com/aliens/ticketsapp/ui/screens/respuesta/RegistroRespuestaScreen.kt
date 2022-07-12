@@ -23,11 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TecnicoSpinner
 import com.aliens.ticketsapp.ui.components.TextObligatorio
-//Imports for datepicker
-import android.app.DatePickerDialog
-import android.widget.DatePicker
 import com.aliens.ticketsapp.ui.components.DateTimePicker
-import java.util.*
 
 @Composable
 fun RegistroRespuestaScreen(
@@ -50,7 +46,7 @@ fun RegistroRespuestaScreen(
                             }
                     )
                 },
-                title = { Text("Responder") }
+                title = { Text(stringResource(R.string.TituloResponder)) }
             )
         }
     ) {
@@ -74,7 +70,7 @@ fun RegistroRespuestaScreen(
                     .fillMaxWidth()
                     .height(120.dp),
                 label = {
-                    Text("Mensaje")
+                    Text(stringResource(R.string.Mensaje))
                 },
                 leadingIcon = {
                     Icon(
@@ -105,14 +101,14 @@ fun RegistroRespuestaScreen(
                         viewModel.Guardar()
                         Toast.makeText(
                             context,
-                            "Guardado",
+                            R.string.ToastMessageSave,
                             Toast.LENGTH_SHORT
                         ).show()
                         //navegar
                     } else {
                         Toast.makeText(
                             context,
-                            "El campo mensaje no puede estar vacio",
+                            R.string.ToastMessageErrorAnswer,
                             Toast.LENGTH_SHORT
                         ).show()
                     }
