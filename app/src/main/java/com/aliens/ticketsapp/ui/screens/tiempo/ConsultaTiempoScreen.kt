@@ -11,9 +11,13 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBackIos
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -61,17 +65,24 @@ fun ConsultaTiempoScreen(
     ) {
         Column(
             modifier = Modifier
-                .padding(it)
-                .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
+                .padding(it),
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
 
-            val listaTiempos = viewModel.tiempos.collectAsState(initial = emptyList())
+            Column(modifier = Modifier.absolutePadding(16.dp, 16.dp, 16.dp, 16.dp).height(600.dp)) {
+                val listaTiempos = viewModel.tiempos.collectAsState(initial = emptyList())
 
-            LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                items(listaTiempos.value) {
-                    TiempoItem()
+                LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                    items(listaTiempos.value) { tiempo ->
+                        TiempoItem(tiempo, navController)
+                    }
                 }
             }
+
+            Column(modifier = Modifier.padding(end = 25.dp, bottom = 25.dp).fillMaxWidth(), horizontalAlignment = Alignment.End) {
+                Text(text = "1800 mins", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.h6, textAlign = TextAlign.Center)
+            }
+
 
         }
     }

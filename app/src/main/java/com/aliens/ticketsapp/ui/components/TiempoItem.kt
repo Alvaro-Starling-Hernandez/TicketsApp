@@ -11,14 +11,21 @@ import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.aliens.ticketsapp.model.Tiempo
 import com.aliens.ticketsapp.ui.theme.TicketsAppTheme
+import com.aliens.ticketsapp.utils.Screen
 
 @Composable
 fun TiempoItem(
-    //tiempo: Tiempo
+    tiempo: Tiempo,
+    navController: NavController
 ) {
     Card(
         shape = RoundedCornerShape(8.dp),
@@ -28,8 +35,9 @@ fun TiempoItem(
             .fillMaxWidth()
     ) {
         Row(modifier = Modifier
-            .clickable { /*navegar*/ }
+            .clickable { navController.navigate(Screen.RegistroTiempo.route) }
             .padding(8.dp)
+            .size(100.dp)
         ) {
             Box(
                 modifier = Modifier
@@ -45,19 +53,13 @@ fun TiempoItem(
 
             Spacer(modifier = Modifier.width(20.dp))
             Column {
-                Text("nombre del tecnico")
-                Text("Trabajo ..............")
-                Text("60 minutos")
+                Text(text = "nombre del tecnico", fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(text = tiempo.trabajo, maxLines = 1, overflow = TextOverflow.Ellipsis, fontStyle = FontStyle.Italic)
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(text = tiempo.tiempo.toString()+" minutos")
             }
         }
 
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun Previewe() {
-    TicketsAppTheme {
-        TiempoItem()
     }
 }

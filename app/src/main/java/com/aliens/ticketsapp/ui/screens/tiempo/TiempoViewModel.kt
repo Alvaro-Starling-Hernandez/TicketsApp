@@ -17,6 +17,7 @@ class TiempoViewModel @Inject constructor(
 ): ViewModel() {
     var trabajo by mutableStateOf("")
     var tiempo by mutableStateOf("")
+    var tiempoTotal by mutableStateOf(0f)
 
     var tiempos = tiempoRepository.getList()
         private set
