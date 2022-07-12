@@ -28,8 +28,8 @@ import com.aliens.ticketsapp.ui.components.DateTimePicker
 
 @Composable
 fun RegistroRespuestaScreen(
-    viewModel: RespuestaViewModel = hiltViewModel(),
-    navController: NavController
+    navController: NavController,
+    viewModel: RespuestaViewModel = hiltViewModel()
 ) {
     var MensajeError by rememberSaveable { mutableStateOf(false) }
     val context = LocalContext.current

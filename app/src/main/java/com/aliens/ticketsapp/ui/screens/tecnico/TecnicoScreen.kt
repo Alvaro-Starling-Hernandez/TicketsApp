@@ -26,8 +26,8 @@ import com.aliens.ticketsapp.ui.components.TextObligatorio
 
 @Composable
 fun TecnicoScreen(
-    viewModel: TecnicoViewModel = hiltViewModel(),
-    navController: NavController
+    navController: NavController,
+    viewModel: TecnicoViewModel = hiltViewModel()
 ) {
     var nombreError by rememberSaveable { mutableStateOf(false) }
     var telefonoError by rememberSaveable { mutableStateOf(false) }

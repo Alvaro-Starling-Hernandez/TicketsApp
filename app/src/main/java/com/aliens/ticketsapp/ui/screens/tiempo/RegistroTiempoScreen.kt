@@ -31,8 +31,8 @@ import com.aliens.ticketsapp.ui.theme.TicketsAppTheme
 
 @Composable
 fun RegistroTiempoScreen(
-    viewModel: TiempoViewModel = hiltViewModel(),
-    navController: NavController
+    navController: NavController,
+    viewModel: TiempoViewModel = hiltViewModel()
 ) {
     var trabajoError by rememberSaveable { mutableStateOf(false) }
     var tiempoError by rememberSaveable { mutableStateOf(false) }

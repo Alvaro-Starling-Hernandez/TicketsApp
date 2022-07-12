@@ -23,8 +23,8 @@ import com.aliens.ticketsapp.ui.components.TiempoItem
 
 @Composable
 fun ConsultaTiempoScreen(
+    navController: NavController,
     viewModel: TiempoViewModel = hiltViewModel(),
-    navController: NavController
 ) {
     Scaffold(
 

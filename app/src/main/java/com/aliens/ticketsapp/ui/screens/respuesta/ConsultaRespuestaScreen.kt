@@ -20,8 +20,8 @@ import com.aliens.ticketsapp.ui.components.RespuestaItem
 
 @Composable
 fun ConsultaRespuestaScreen(
-    viewModel: RespuestaViewModel = hiltViewModel(),
-    navController: NavController
+    navController: NavController,
+    viewModel: RespuestaViewModel = hiltViewModel()
 ) {
     Scaffold(
 
