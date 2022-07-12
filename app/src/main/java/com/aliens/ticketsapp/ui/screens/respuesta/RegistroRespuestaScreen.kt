@@ -23,6 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TecnicoSpinner
 import com.aliens.ticketsapp.ui.components.TextObligatorio
+import com.aliens.ticketsapp.ui.components.DateTimePicker
 
 @Composable
 fun RegistroRespuestaScreen(
@@ -45,7 +46,7 @@ fun RegistroRespuestaScreen(
                             }
                     )
                 },
-                title = { Text("Responder") }
+                title = { Text(stringResource(R.string.TituloResponder)) }
             )
         }
     ) {
@@ -65,9 +66,11 @@ fun RegistroRespuestaScreen(
                     viewModel.mensaje = it
                     MensajeError = false
                 },
-                modifier = Modifier.fillMaxWidth().height(120.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(120.dp),
                 label = {
-                    Text("Mensaje")
+                    Text(stringResource(R.string.Mensaje))
                 },
                 leadingIcon = {
                     Icon(
@@ -87,25 +90,29 @@ fun RegistroRespuestaScreen(
 
             Spacer(modifier = Modifier.height(25.dp))
 
+            DateTimePicker()
+
+            Spacer(modifier = Modifier.height(50.dp))
+
             Button(
                 onClick = {
                     MensajeError = viewModel.mensaje.isBlank()
                     if (!MensajeError) {
-                            viewModel.Guardar()
-                            Toast.makeText(
-                                context,
-                                "Guardado",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            //navegar
-                        } else {
-                            Toast.makeText(
-                                context,
-                                "El campo mensaje no puede estar vacio",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    },
+                        viewModel.Guardar()
+                        Toast.makeText(
+                            context,
+                            R.string.ToastMessageSave,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        //navegar
+                    } else {
+                        Toast.makeText(
+                            context,
+                            R.string.ToastMessageErrorAnswer,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                },
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .fillMaxWidth()
@@ -117,9 +124,6 @@ fun RegistroRespuestaScreen(
                 Spacer(modifier = Modifier.width(5.dp))
                 Text(text = stringResource(R.string.Guardar))
             }
-
         }
     }
 }
-
-

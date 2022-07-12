@@ -5,7 +5,13 @@
     <string name="TituloAdregarTiempo">Agregar Tiempo</string>
     <string name="ArrowBack">ArrowBAck</string>
     <string name="Tiempo">Tiempo</string>
-    <string name="Guardar">Guarduar</string>
+    <string name="Guardar">Guardar</string>
     <string name="TituloConsultaTiempos">Tiempos</string>
     <string name="Agregar">Agregar</string>
+    <string name="SelectDate">Seleccionar Fecha</string>
+    <string name="TituloResponder">Responder</string>
+    <string name="Mensaje">Mensaje</string>
+    <string name="ToastMessageSave">Guardado</string>
+    <string name="ToastMessageErrorAnswer">El campo mensaje no puede estar vacio</string>
+    <string name="Respuestas">Respuestas</string>
 </resources>
