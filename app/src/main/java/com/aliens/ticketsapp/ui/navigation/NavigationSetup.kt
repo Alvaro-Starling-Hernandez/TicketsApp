@@ -19,6 +19,9 @@ fun NavigationSetup(navController: NavHostController) {
         composable(BottomNavItem.Home.route) {
             ConsultaRespuestaScreen(navController)
         }
+        composable(BottomNavItem.Soluciones.route) {
+            ConsultaTiempoScreen(navController)
+        }
         composable(BottomNavItem.Tecnico.route) {
             TecnicoScreen(navController)
         }
