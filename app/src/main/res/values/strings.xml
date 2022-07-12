@@ -14,4 +14,5 @@
     <string name="ToastMessageSave">Guardado</string>
     <string name="ToastMessageErrorAnswer">El campo mensaje no puede estar vacio</string>
     <string name="Respuestas">Respuestas</string>
+    <string name="Soluciones">Soluciones</string>
 </resources>
