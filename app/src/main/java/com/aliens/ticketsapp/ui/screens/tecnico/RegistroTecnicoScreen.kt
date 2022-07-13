@@ -25,7 +25,7 @@ import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TextObligatorio
 
 @Composable
-fun TecnicoScreen(
+fun RegistroTecnicoScreen(
     navController: NavController,
     viewModel: TecnicoViewModel = hiltViewModel()
 ) {
