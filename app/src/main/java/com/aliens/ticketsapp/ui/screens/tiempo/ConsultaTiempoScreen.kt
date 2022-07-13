@@ -74,9 +74,11 @@ fun ConsultaTiempoScreen(
             verticalArrangement = Arrangement.SpaceBetween
         ) {
 
-            Column(modifier = Modifier
-                .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
-                .height(600.dp)) {
+            Column(
+                modifier = Modifier
+                    .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
+                    .height(600.dp)
+            ) {
                 val listaTiempos = viewModel.tiempos.collectAsState(initial = emptyList())
 
                 LazyColumn(modifier = Modifier.fillMaxWidth()) {
@@ -92,9 +94,10 @@ fun ConsultaTiempoScreen(
                     .fillMaxWidth(),
                 horizontalAlignment = Alignment.End,
 
-            ) {
-                Text(sum.toString()
-                    , fontWeight = FontWeight.Bold,
+                ) {
+                Text(
+                    text = "$sum mins",
+                    fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.h6,
                     textAlign = TextAlign.Center
                 )
