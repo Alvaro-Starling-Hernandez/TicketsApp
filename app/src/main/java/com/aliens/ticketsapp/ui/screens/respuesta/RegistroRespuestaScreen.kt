@@ -30,6 +30,7 @@ import com.aliens.ticketsapp.utils.Screen
 @Composable
 fun RegistroRespuestaScreen(
     navController: NavController,
+    id: String,
     viewModel: RespuestaViewModel = hiltViewModel()
 ) {
     var MensajeError by rememberSaveable { mutableStateOf(false) }
@@ -58,7 +59,7 @@ fun RegistroRespuestaScreen(
                 .padding(it)
                 .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
         ) {
-
+            Text(id)
             TecnicoSpinner()
 
             Spacer(modifier = Modifier.height(25.dp))
