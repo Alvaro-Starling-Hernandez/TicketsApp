@@ -67,7 +67,7 @@ fun ConsultaRespuestaScreen(
 
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
                 items(listaRespuestas.value) { respuesta ->
-                    RespuestaItem(respuesta)
+                    RespuestaItem(respuesta, navController)
                 }
             }
 
