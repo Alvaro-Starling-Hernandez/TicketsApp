@@ -24,8 +24,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.model.Respuesta
+import com.aliens.ticketsapp.ui.screens.respuesta.RespuestaViewModel
 import com.aliens.ticketsapp.utils.Screen
 
 @Composable
@@ -37,7 +39,7 @@ fun RespuestaItem(
     //AlertDialog(show, {show = false}, {})
     var showDialog by rememberSaveable { mutableStateOf(false) }
 
-    Modal(showDialog, { showDialog = false }, navController, respuesta.respuestaId)
+    Modal(showDialog, { showDialog = false }, navController, respuesta.respuestaId, respuesta)
 
     Card(
         shape = RoundedCornerShape(8.dp),
@@ -101,7 +103,9 @@ fun Modal(
     show: Boolean,
     onDismiss: () -> Unit,
     navController: NavController,
-    id: Int
+    id: Int,
+    respuesta: Respuesta,
+    viewModel: RespuestaViewModel = hiltViewModel()
 ) {
     if (show) {
         Dialog(onDismissRequest = { onDismiss() }) {
@@ -157,7 +161,7 @@ fun Modal(
 
                             Button(
                                 onClick = {
-                                    navController.navigate(Screen.RegistroRespuesta.withArgs(id.toString()))
+                                    viewModel.eliminar(respuesta)
                                     onDismiss()
                                 },
                                 shape = RoundedCornerShape(50.dp),
