@@ -27,8 +27,7 @@ fun TecnicoSpinner(
     idTec: Int,
     viewModel: TecnicoViewModel = hiltViewModel(),
     respuestaViewModel: RespuestaViewModel = hiltViewModel(),
-    //Nota para alvaro: Solo tienes que poner tu viewModel aqui con la notacion de HiltViewModel,
-    //the same as me up there
+    tiempoViewModel: TiempoViewModel = hiltViewModel()
 ) {
 
     var writeNameTecnico: String
@@ -86,7 +85,7 @@ fun TecnicoSpinner(
             tecnicos.value.forEach {
                 DropdownMenuItem(onClick = {
                     respuestaViewModel.idTecnico = it.tecnicoId
-                    //respuestaViewModel.idTecnico = it.tecnicoId con tu ViewModel
+                    tiempoViewModel.tecnicoId = it.tecnicoId
                     mSelectedText = it.nombreTecnico
                     mExpanded = false
                 }) {
