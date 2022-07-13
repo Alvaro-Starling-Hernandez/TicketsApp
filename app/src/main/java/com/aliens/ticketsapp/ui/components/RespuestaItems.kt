@@ -47,28 +47,28 @@ fun RespuestaItem(
         elevation = 10.dp,
         modifier = Modifier
             .padding(vertical = 10.dp)
-            .fillMaxWidth()
+            .fillMaxWidth().clickable { showDialog = true }
     ) {
         Column(modifier = Modifier
-            .clickable { showDialog = true }
-            .padding(8.dp)) {
+            .padding(8.dp),
+            horizontalAlignment = Alignment.End,) {
             Row(
             ) {
-                Text(getNombreTecnico(respuesta.tecnicoId))
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     respuesta.fecha,
                     textAlign = TextAlign.End,
-                    letterSpacing = 3.sp,
-                    modifier = Modifier.padding(start = 60.dp)
                 )
 
             }
-            Column {
-                Text(respuesta.Mensaje)
-            }
         }
 
+        Column(modifier = Modifier
+            .padding(8.dp)) {
+            Text(getNombreTecnico(respuesta.tecnicoId), style = MaterialTheme.typography.h6,
+            modifier = Modifier.padding(top = 15.dp))
+            Text(respuesta.Mensaje)
+        }
     }
 }
 
