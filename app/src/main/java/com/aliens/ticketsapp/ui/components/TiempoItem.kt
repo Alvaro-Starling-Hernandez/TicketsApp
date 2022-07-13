@@ -45,7 +45,6 @@ fun TiempoItem(
             .clickable{ showDialog = true }
     ) {
         Row(modifier = Modifier
-            .clickable { navController.navigate(Screen.RegistroTiempo.route) }
             .padding(8.dp)
             .size(100.dp)
         ) {
