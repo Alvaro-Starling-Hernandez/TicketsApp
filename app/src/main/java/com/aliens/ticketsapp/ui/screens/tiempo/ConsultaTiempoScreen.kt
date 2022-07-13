@@ -30,7 +30,7 @@ fun ConsultaTiempoScreen(
     navController: NavController,
     viewModel: TiempoViewModel = hiltViewModel(),
 ) {
-    var sum: Float = 0.0F
+    var sum: Float = 0f
     val lista = viewModel.tiempos.collectAsState(initial = emptyList())
     lista.value.forEach {
         sum += it.tiempo
