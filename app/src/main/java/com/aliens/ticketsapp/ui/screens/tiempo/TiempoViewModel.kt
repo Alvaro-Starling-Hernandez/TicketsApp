@@ -20,6 +20,7 @@ class TiempoViewModel @Inject constructor(
     var trabajo by mutableStateOf("")
     var tiempo by mutableStateOf("")
     var tecnicoId by mutableStateOf(0)
+    var id by mutableStateOf(0)
 
     var tiempos = tiempoRepository.getList()
         private set
@@ -28,6 +29,7 @@ class TiempoViewModel @Inject constructor(
         viewModelScope.launch {
             tiempoRepository.insertar(
                 Tiempo(
+                    tiempoId = id,
                     trabajo = trabajo,
                     tiempo = tiempo.toFloat(),
                     tecnicoId = tecnicoId,
