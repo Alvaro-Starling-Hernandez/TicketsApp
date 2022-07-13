@@ -8,15 +8,20 @@ import androidx.lifecycle.viewModelScope
 import com.aliens.ticketsapp.data.repositories.RespuestaRepository
 import com.aliens.ticketsapp.model.Respuesta
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import androidx.lifecycle.SavedStateHandle
 
 @HiltViewModel
 class RespuestaViewModel @Inject constructor(
-    val respuestaRepository: RespuestaRepository
+    val respuestaRepository: RespuestaRepository,
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     var mensaje by mutableStateOf("")
     var fecha by mutableStateOf("")
+    var id by mutableStateOf(0)
+
 
     var respuestas = respuestaRepository.getList()
         private set
@@ -28,10 +33,14 @@ class RespuestaViewModel @Inject constructor(
                     Mensaje = mensaje,
                     fecha = fecha,
                     tecnicoId = 0,
-                    ticketId = 0
+                    ticketId = 0,
+                    respuestaId = id
                 )
             )
         }
     }
 
+    fun buscar(id: Int): Flow<List<Respuesta>> {
+        return respuestaRepository.buscar(id)
+    }
 }
