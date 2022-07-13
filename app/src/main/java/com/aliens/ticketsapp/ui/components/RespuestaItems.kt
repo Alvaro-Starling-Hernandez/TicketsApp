@@ -8,11 +8,15 @@ import androidx.compose.material.*
 import androidx.navigation.NavController
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cancel
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.EditNote
+import androidx.compose.material.icons.filled.Save
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -20,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.model.Respuesta
 import com.aliens.ticketsapp.utils.Screen
 
@@ -134,20 +139,38 @@ fun Modal(
 
                         Spacer(modifier = Modifier.height(20.dp))
 
-                        Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
+                        Row() {
                             Button(
                                 onClick = {
                                     navController.navigate(Screen.RegistroRespuesta.withArgs(id.toString()))
                                     onDismiss()
                                 },
                                 shape = RoundedCornerShape(50.dp),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(50.dp)
+                                modifier = Modifier.padding(start = 140.dp)
                             ) {
-                                Text(id.toString())
+                                Icon(
+                                    imageVector = Icons.Default.EditNote,
+                                    contentDescription = stringResource(R.string.Guardar)
+                                )
+                                //Text("Editar")
+                            }
+
+                            Button(
+                                onClick = {
+                                    navController.navigate(Screen.RegistroRespuesta.withArgs(id.toString()))
+                                    onDismiss()
+                                },
+                                shape = RoundedCornerShape(50.dp),
+                                modifier = Modifier.padding(start = 10.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Delete,
+                                    contentDescription = stringResource(R.string.Guardar)
+                                )
+                                //Text("Eliminar")
                             }
                         }
+
                     }
                 }
             }
