@@ -29,7 +29,7 @@ fun ConsultaRespuestaScreen(
         topBar = {
 
             TopAppBar(
-                navigationIcon = {
+                /*navigationIcon = {
                     Icon(
                         imageVector = Icons.Default.ArrowBackIos,
                         contentDescription = stringResource(R.string.ArrowBack),
@@ -39,7 +39,7 @@ fun ConsultaRespuestaScreen(
                                 //navegar
                             }
                     )
-                },
+                },*/
                 title = {
                     Text(stringResource(R.string.Respuestas))
                 },
