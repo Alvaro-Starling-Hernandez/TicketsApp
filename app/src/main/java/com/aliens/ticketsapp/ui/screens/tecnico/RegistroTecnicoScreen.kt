@@ -35,6 +35,14 @@ fun RegistroTecnicoScreen(
 
     val context = LocalContext.current
 
+    fun avisos(aviso: String) {
+        Toast.makeText(
+            context,
+            aviso,
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -141,22 +149,17 @@ fun RegistroTecnicoScreen(
                     nombreError = viewModel.nombreTecnico.isBlank()
                     telefonoError = viewModel.telefonoTecnico.isBlank()
                     emailError = viewModel.email.isBlank()
+
                     if (!nombreError && !telefonoError && !emailError) {
                         viewModel.Guardar()
-                        Toast.makeText(
-                            context,
-                            "Guardado",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        //navegar
+                        avisos("Guardado")
+                        navController.navigateUp()
                     } else {
-                        Toast.makeText(
-                            context,
-                            "Faltan Campos obligatorios",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        avisos("Faltan Campos obligatorios")
                     }
-                    navController.navigateUp()
+
+
+
                 },
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
@@ -172,6 +175,16 @@ fun RegistroTecnicoScreen(
 
         }
 
+    }
+}
+
+
+fun isNumeric(texto: String): Boolean {
+    return try {
+        texto.toLong()
+        true
+    } catch (e: NumberFormatException) {
+        false
     }
 }
 
