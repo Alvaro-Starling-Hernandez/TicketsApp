@@ -136,7 +136,7 @@ fun RegistroTiempoScreen(
                             viewModel.Guardar()
                             Toast.makeText(
                                 context,
-                                "Guardado",
+                                R.string.ToastMessageSave,
                                 Toast.LENGTH_SHORT
                             ).show()
                             navController.navigate(Screen.ConsultaTiempo.route)
