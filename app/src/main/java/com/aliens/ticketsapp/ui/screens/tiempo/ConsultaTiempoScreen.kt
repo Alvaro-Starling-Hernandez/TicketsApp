@@ -30,6 +30,11 @@ fun ConsultaTiempoScreen(
     navController: NavController,
     viewModel: TiempoViewModel = hiltViewModel(),
 ) {
+    var sum: Float = 0.0F
+    val lista = viewModel.tiempos.collectAsState(initial = emptyList())
+    lista.value.forEach {
+        sum += it.tiempo
+    }
     Scaffold(
 
         topBar = {
@@ -69,7 +74,9 @@ fun ConsultaTiempoScreen(
             verticalArrangement = Arrangement.SpaceBetween
         ) {
 
-            Column(modifier = Modifier.absolutePadding(16.dp, 16.dp, 16.dp, 16.dp).height(600.dp)) {
+            Column(modifier = Modifier
+                .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
+                .height(600.dp)) {
                 val listaTiempos = viewModel.tiempos.collectAsState(initial = emptyList())
 
                 LazyColumn(modifier = Modifier.fillMaxWidth()) {
@@ -79,8 +86,18 @@ fun ConsultaTiempoScreen(
                 }
             }
 
-            Column(modifier = Modifier.padding(end = 25.dp, bottom = 25.dp).fillMaxWidth(), horizontalAlignment = Alignment.End) {
-                Text(text = "1800 mins", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.h6, textAlign = TextAlign.Center)
+            Column(
+                modifier = Modifier
+                    .padding(end = 25.dp, bottom = 25.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.End,
+
+            ) {
+                Text(sum.toString()
+                    , fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.h6,
+                    textAlign = TextAlign.Center
+                )
             }
 
 
