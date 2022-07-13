@@ -28,6 +28,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.model.Respuesta
 import com.aliens.ticketsapp.ui.screens.respuesta.RespuestaViewModel
+import com.aliens.ticketsapp.ui.screens.tecnico.TecnicoViewModel
 import com.aliens.ticketsapp.utils.Screen
 
 @Composable
@@ -53,7 +54,7 @@ fun RespuestaItem(
             .padding(8.dp)) {
             Row(
             ) {
-                Text("Nombre del Tecnico")
+                Text(getNombreTecnico(respuesta.tecnicoId))
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     respuesta.fecha,
@@ -183,4 +184,18 @@ fun Modal(
             }
         }
     }
+}
+
+@Composable
+fun getNombreTecnico(tecn: Int, viewModel: TecnicoViewModel = hiltViewModel(),): String {
+    var name: String = "";
+    val tecnicos = viewModel.tecnicos.collectAsState(initial = emptyList())
+
+    tecnicos.value.forEach{ element ->
+        if (tecn == element.tecnicoId){
+            name = element.nombreTecnico
+        }
+    }
+
+    return name
 }
