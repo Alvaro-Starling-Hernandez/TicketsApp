@@ -1,13 +1,17 @@
 package com.aliens.ticketsapp.ui.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Message
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
@@ -33,13 +37,17 @@ fun TecnicoItems(
 
             Column(
                 modifier = Modifier.padding(8.dp),
-                horizontalAlignment = Alignment.End
             ) {
-                Text(text = tecnico.nombreTecnico)
+                Text(
+                    text = tecnico.nombreTecnico,
+                    style = MaterialTheme.typography.h6
+                )
                 Spacer(modifier = Modifier.height(10.dp))
-                Text(text = tecnico.email)
+                Row(){
+                    Text(text = tecnico.email)
+                }
                 Spacer(modifier = Modifier.height(10.dp))
-                Text(text = tecnico.telefonoTecnico)
+                Text(text = "tel: " + tecnico.telefonoTecnico)
             }
 
 
