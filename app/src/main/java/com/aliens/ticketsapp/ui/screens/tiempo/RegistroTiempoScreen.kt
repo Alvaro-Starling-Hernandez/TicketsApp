@@ -63,7 +63,7 @@ fun RegistroTiempoScreen(
                 .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
         ) {
 
-            TecnicoSpinner()
+            TecnicoSpinner(1) //le puse 1 mientras tantos, debes hacer que se llenen los campos como hice yo
 
             Spacer(modifier = Modifier.height(25.dp))
 
