@@ -33,7 +33,7 @@ fun RegistroRespuestaScreen(
     var MensajeError by rememberSaveable { mutableStateOf(false) }
     val context = LocalContext.current
 
-    //val listaRespuestas = viewModel.buscar(id).collectAsState(initial = emptyList())
+    val listaRespuestas = viewModel.buscar(id).collectAsState(initial = emptyList())
     Scaffold(
         topBar = {
             TopAppBar(
@@ -57,7 +57,7 @@ fun RegistroRespuestaScreen(
                 .padding(it)
                 .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
         ) {
-            //Text(listaRespuestas.value.toString())
+
             TecnicoSpinner()
 
             Spacer(modifier = Modifier.height(25.dp))
