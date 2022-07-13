@@ -123,7 +123,7 @@ fun Modal(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = "Opciones",
+                                text = "Tenico Tal",
                                 style = TextStyle(
                                     fontSize = 24.sp,
                                     fontFamily = FontFamily.Default,
@@ -142,7 +142,10 @@ fun Modal(
                         }
 
                         Spacer(modifier = Modifier.height(20.dp))
-
+                        Column {
+                            Text(respuesta.Mensaje)
+                        }
+                        Spacer(modifier = Modifier.height(20.dp))
                         Row() {
                             Button(
                                 onClick = {
