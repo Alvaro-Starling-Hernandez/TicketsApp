@@ -25,7 +25,7 @@ import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TextObligatorio
 
 @Composable
-fun TecnicoScreen(
+fun RegistroTecnicoScreen(
     navController: NavController,
     viewModel: TecnicoViewModel = hiltViewModel()
 ) {
@@ -45,7 +45,7 @@ fun TecnicoScreen(
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                //navegar
+                                navController.navigateUp()
                             }
                     )
                 },
@@ -156,6 +156,7 @@ fun TecnicoScreen(
                             Toast.LENGTH_SHORT
                         ).show()
                     }
+                    navController.navigateUp()
                 },
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)

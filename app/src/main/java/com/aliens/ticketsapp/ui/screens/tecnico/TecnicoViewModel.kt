@@ -28,9 +28,9 @@ class TecnicoViewModel @Inject constructor(
            tecnicoRepository.insertar(
                 Tecnico(
                     tecnicoId = 0,
-                    nombreTecnico = "",
-                    telefonoTecnico = "",
-                    email = ""
+                    nombreTecnico = nombreTecnico,
+                    telefonoTecnico = telefonoTecnico,
+                    email = email
                 )
             )
         }

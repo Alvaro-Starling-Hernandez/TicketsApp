@@ -37,7 +37,7 @@ sealed class BottomNavItem(
     )
 
     object Tecnico : BottomNavItem(
-        route = Screen.RegistroTecnico.route,
+        route = Screen.ConsultaTecnico.route,
         titleResId = R.string.Tecnico,
         icon = Icons.Default.Person
     )
