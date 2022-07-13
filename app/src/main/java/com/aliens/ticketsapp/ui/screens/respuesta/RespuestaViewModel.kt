@@ -40,6 +40,12 @@ class RespuestaViewModel @Inject constructor(
         }
     }
 
+    fun eliminar(respuesta: Respuesta) {
+        viewModelScope.launch {
+            respuestaRepository.eliminar(respuesta)
+        }
+    }
+
     fun buscar(id: Int): Flow<List<Respuesta>> {
         return respuestaRepository.buscar(id)
     }

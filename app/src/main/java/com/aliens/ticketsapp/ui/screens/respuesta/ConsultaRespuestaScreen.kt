@@ -60,7 +60,7 @@ fun ConsultaRespuestaScreen(
         Column(
             modifier = Modifier
                 .padding(it)
-                .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
+                .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp).height(650.dp)
         ) {
 
             val listaRespuestas = viewModel.respuestas.collectAsState(initial = emptyList())
