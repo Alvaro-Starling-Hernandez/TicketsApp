@@ -22,6 +22,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.aliens.ticketsapp.model.Respuesta
 import com.aliens.ticketsapp.model.Tiempo
 import com.aliens.ticketsapp.ui.theme.TicketsAppTheme
 import com.aliens.ticketsapp.utils.Screen
