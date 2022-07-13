@@ -29,8 +29,8 @@ import com.aliens.ticketsapp.utils.Screen
 
 @Composable
 fun RegistroTiempoScreen(
-    id: Int,
     navController: NavController,
+    id: Int,
     viewModel: TiempoViewModel = hiltViewModel()
 ) {
     var trabajoError by rememberSaveable { mutableStateOf(false) }
