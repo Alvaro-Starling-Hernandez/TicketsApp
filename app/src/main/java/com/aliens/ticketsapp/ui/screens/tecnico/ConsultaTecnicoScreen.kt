@@ -40,7 +40,7 @@ fun ConsultaTecnicoScreen(
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                //navegar
+                                navController.navigateUp()
                             }
                     )
                 },
