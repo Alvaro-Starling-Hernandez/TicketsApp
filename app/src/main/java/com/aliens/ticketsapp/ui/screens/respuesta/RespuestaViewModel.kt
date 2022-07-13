@@ -21,6 +21,7 @@ class RespuestaViewModel @Inject constructor(
     var mensaje by mutableStateOf("")
     var fecha by mutableStateOf("")
     var id by mutableStateOf(0)
+    var idTecnico by mutableStateOf(0)
 
 
     var respuestas = respuestaRepository.getList()
@@ -32,7 +33,7 @@ class RespuestaViewModel @Inject constructor(
                 Respuesta(
                     Mensaje = mensaje,
                     fecha = fecha,
-                    tecnicoId = 0,
+                    tecnicoId = idTecnico,
                     ticketId = 0,
                     respuestaId = id
                 )
