@@ -47,7 +47,8 @@ fun RespuestaItem(
         elevation = 10.dp,
         modifier = Modifier
             .padding(vertical = 10.dp)
-            .fillMaxWidth().clickable { showDialog = true }
+            .fillMaxWidth()
+            .clickable { showDialog = true }
     ) {
         Column(modifier = Modifier
             .padding(8.dp),
@@ -124,9 +125,9 @@ fun Modal(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = "Tenico Tal",
+                                text = "Opciones",
                                 style = TextStyle(
-                                    fontSize = 24.sp,
+                                    fontSize = 20.sp,
                                     fontFamily = FontFamily.Default,
                                     fontWeight = FontWeight.Bold
                                 )
@@ -144,7 +145,8 @@ fun Modal(
 
                         Spacer(modifier = Modifier.height(20.dp))
                         Column {
-                            Text(respuesta.Mensaje)
+                            Text("Tecnico: "+ getNombreTecnico(respuesta.tecnicoId))
+                            Text("Mensaje: "+respuesta.Mensaje)
                         }
                         Spacer(modifier = Modifier.height(20.dp))
                         Row() {
