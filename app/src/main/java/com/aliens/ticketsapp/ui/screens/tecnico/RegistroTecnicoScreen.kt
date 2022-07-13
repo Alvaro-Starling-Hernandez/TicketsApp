@@ -45,7 +45,7 @@ fun RegistroTecnicoScreen(
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                //navegar
+                                navController.navigateUp()
                             }
                     )
                 },
@@ -156,6 +156,7 @@ fun RegistroTecnicoScreen(
                             Toast.LENGTH_SHORT
                         ).show()
                     }
+                    navController.navigateUp()
                 },
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
