@@ -34,6 +34,10 @@ fun RegistroRespuestaScreen(
     val context = LocalContext.current
 
     val listaRespuestas = viewModel.buscar(id).collectAsState(initial = emptyList())
+    listaRespuestas.value.forEach {
+        viewModel.mensaje = it.Mensaje
+        viewModel.fecha = it.fecha
+    }
     Scaffold(
         topBar = {
             TopAppBar(
