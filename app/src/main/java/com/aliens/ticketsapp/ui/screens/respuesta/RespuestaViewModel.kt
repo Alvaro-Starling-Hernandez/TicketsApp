@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import androidx.lifecycle.SavedStateHandle
+import kotlinx.coroutines.Dispatchers
 
 @HiltViewModel
 class RespuestaViewModel @Inject constructor(
@@ -23,9 +24,40 @@ class RespuestaViewModel @Inject constructor(
     var id by mutableStateOf(0)
     var idTecnico by mutableStateOf(0)
 
-
     var respuestas = respuestaRepository.getList()
         private set
+
+    //variables for search
+    var List = mutableStateOf<List<Respuesta>>(listOf())
+    private var cachedRespuestaList = listOf<Respuesta>()
+    private var isSearchStarting = true
+    var isSearching = mutableStateOf(false)
+
+    fun searchRespuestaList(query: String) {
+        val listToSearch = if(isSearchStarting) {
+           List.value
+        } else {
+            cachedRespuestaList
+        }
+        viewModelScope.launch(Dispatchers.Default) {
+            if(query.isEmpty()) {
+                List.value = cachedRespuestaList
+                isSearching.value = false
+                isSearchStarting = true
+                return@launch
+            }
+            val results = listToSearch.filter {
+                 it.Mensaje.contains(query.trim(), ignoreCase = true) ||
+                        it.Mensaje == query.trim()
+            }
+            if(isSearchStarting) {
+                cachedRespuestaList = List.value
+                isSearchStarting = false
+            }
+            List.value = results
+            isSearching.value = true
+        }
+    }
 
     fun Guardar() {
         viewModelScope.launch {
