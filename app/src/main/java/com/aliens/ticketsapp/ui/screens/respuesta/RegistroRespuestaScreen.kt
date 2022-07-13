@@ -37,6 +37,7 @@ fun RegistroRespuestaScreen(
     listaRespuestas.value.forEach {
         viewModel.mensaje = it.Mensaje
         viewModel.fecha = it.fecha
+        viewModel.idTecnico = it.tecnicoId
     }
     Scaffold(
         topBar = {
@@ -62,8 +63,7 @@ fun RegistroRespuestaScreen(
                 .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
         ) {
 
-            TecnicoSpinner()
-
+            TecnicoSpinner(viewModel.idTecnico)
             Spacer(modifier = Modifier.height(25.dp))
 
             viewModel.id = id
