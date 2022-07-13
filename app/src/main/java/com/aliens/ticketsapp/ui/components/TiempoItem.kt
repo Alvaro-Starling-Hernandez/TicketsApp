@@ -9,6 +9,10 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
@@ -27,12 +31,17 @@ fun TiempoItem(
     tiempo: Tiempo,
     navController: NavController
 ) {
+    var showDialog by rememberSaveable { mutableStateOf(false) }
+
+    ModalTiempo(showDialog, { showDialog = false }, navController, tiempo.tiempoId, tiempo)
+
     Card(
         shape = RoundedCornerShape(8.dp),
         elevation = 10.dp,
         modifier = Modifier
             .padding(vertical = 10.dp)
             .fillMaxWidth()
+            .clickable{ showDialog = true }
     ) {
         Row(modifier = Modifier
             .clickable { navController.navigate(Screen.RegistroTiempo.route) }
