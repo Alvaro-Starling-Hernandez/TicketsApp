@@ -7,10 +7,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,12 +29,20 @@ import com.aliens.ticketsapp.utils.Screen
 
 @Composable
 fun RegistroTiempoScreen(
+    id: Int,
     navController: NavController,
     viewModel: TiempoViewModel = hiltViewModel()
 ) {
     var trabajoError by rememberSaveable { mutableStateOf(false) }
     var tiempoError by rememberSaveable { mutableStateOf(false) }
     val context = LocalContext.current
+
+    val listaTiempos = viewModel.buscar(id).collectAsState(initial = emptyList())
+    listaTiempos.value.forEach {
+        viewModel.tecnicoId = it.tecnicoId
+        viewModel.trabajo = it.trabajo
+        viewModel.tiempo = it.tiempo.toString()
+    }
 
     Scaffold(
         topBar = {
@@ -63,7 +68,7 @@ fun RegistroTiempoScreen(
                 .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
         ) {
 
-            TecnicoSpinner(1) //le puse 1 mientras tantos, debes hacer que se llenen los campos como hice yo
+            TecnicoSpinner(idTec = viewModel.tecnicoId) //le puse 1 mientras tantos, debes hacer que se llenen los campos como hice yo
 
             Spacer(modifier = Modifier.height(25.dp))
 
