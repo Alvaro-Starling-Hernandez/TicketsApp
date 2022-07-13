@@ -6,8 +6,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aliens.ticketsapp.data.repositories.TiempoRepository
+import com.aliens.ticketsapp.model.Respuesta
 import com.aliens.ticketsapp.model.Tiempo
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -33,6 +35,16 @@ class TiempoViewModel @Inject constructor(
                 )
             )
         }
+    }
+
+    fun eliminar(tiempo: Tiempo) {
+        viewModelScope.launch {
+            tiempoRepository.eliminar(tiempo)
+        }
+    }
+
+    fun buscar(id: Int): Flow<List<Tiempo>> {
+        return tiempoRepository.buscar(id)
     }
 
     fun isNumber(text: String): Boolean{
