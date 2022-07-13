@@ -24,18 +24,23 @@ import com.aliens.ticketsapp.ui.screens.tiempo.TiempoViewModel
 
 @Composable
 fun TecnicoSpinner(
+    idTec: Int,
     viewModel: TecnicoViewModel = hiltViewModel(),
     respuestaViewModel: RespuestaViewModel = hiltViewModel(),
     //Nota para alvaro: Solo tienes que poner tu viewModel aqui con la notacion de HiltViewModel,
     //the same as me up there
 ) {
 
+    var writeNameTecnico: String
+
+    writeNameTecnico = getNombreTecnico(idTec)
+
     var mExpanded by remember { mutableStateOf(false) }
 
     val tecnicos = viewModel.tecnicos.collectAsState(initial = emptyList())
 
     var mSelectedText by remember {
-        mutableStateOf("")
+        mutableStateOf(writeNameTecnico)
     }
 
     var mTextFieldSize by remember { mutableStateOf(Size.Zero) }
@@ -52,7 +57,7 @@ fun TecnicoSpinner(
     ) {
 
         OutlinedTextField(
-            value = mSelectedText,
+            value = writeNameTecnico,
             onValueChange = { mSelectedText = it },
             modifier = Modifier
                 .clickable { }
