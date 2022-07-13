@@ -187,12 +187,12 @@ fun Modal(
 }
 
 @Composable
-fun getNombreTecnico(tecn: Int, viewModel: TecnicoViewModel = hiltViewModel(),): String {
+fun getNombreTecnico(tecn: Int, viewModel: TecnicoViewModel = hiltViewModel()): String {
     var name: String = "";
     val tecnicos = viewModel.tecnicos.collectAsState(initial = emptyList())
 
-    tecnicos.value.forEach{ element ->
-        if (tecn == element.tecnicoId){
+    tecnicos.value.forEach { element ->
+        if (tecn == element.tecnicoId) {
             name = element.nombreTecnico
         }
     }
