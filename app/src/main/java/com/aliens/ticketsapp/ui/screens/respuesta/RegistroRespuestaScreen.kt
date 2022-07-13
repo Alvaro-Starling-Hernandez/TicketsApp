@@ -7,10 +7,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,12 +27,13 @@ import com.aliens.ticketsapp.utils.Screen
 @Composable
 fun RegistroRespuestaScreen(
     navController: NavController,
-    id: String,
+    id: Int,
     viewModel: RespuestaViewModel = hiltViewModel()
 ) {
     var MensajeError by rememberSaveable { mutableStateOf(false) }
     val context = LocalContext.current
 
+    //val listaRespuestas = viewModel.buscar(id).collectAsState(initial = emptyList())
     Scaffold(
         topBar = {
             TopAppBar(
@@ -59,11 +57,12 @@ fun RegistroRespuestaScreen(
                 .padding(it)
                 .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
         ) {
-            Text(id)
+            //Text(listaRespuestas.value.toString())
             TecnicoSpinner()
 
             Spacer(modifier = Modifier.height(25.dp))
 
+            viewModel.id = id
             OutlinedTextField(
                 value = viewModel.mensaje,
                 onValueChange = {
