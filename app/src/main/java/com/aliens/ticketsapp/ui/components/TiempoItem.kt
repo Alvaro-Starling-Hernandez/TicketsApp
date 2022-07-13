@@ -53,11 +53,11 @@ fun TiempoItem(
 
             Spacer(modifier = Modifier.width(20.dp))
             Column {
-                Text(text = "nombre del tecnico", fontWeight = FontWeight.Bold)
+                Text(text = getNombreTecnico(tecn = tiempo.tecnicoId), fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(text = tiempo.trabajo, maxLines = 1, overflow = TextOverflow.Ellipsis, fontStyle = FontStyle.Italic)
                 Spacer(modifier = Modifier.height(10.dp))
-                Text(text = tiempo.tiempo.toString()+" minutos")
+                Text(text = tiempo.tiempo.toString()+" mins")
             }
         }
 
