@@ -45,7 +45,7 @@ fun ConsultaTecnicoScreen(
                     )
                 },
                 title = {
-                    Text(stringResource(R.string.Tecnico))
+                    Text(stringResource(R.string.Tecnicos))
                 },
                 actions = {
                     IconButton(onClick = { navController.navigate(Screen.RegistroTecnico.route) }) {
