@@ -30,7 +30,7 @@ fun NavigationSetup(navController: NavHostController) {
             RegistroRespuestaScreen(navController,0)
         }
         composable(Screen.RegistroTiempo.route) {
-            RegistroTiempoScreen(navController)
+            RegistroTiempoScreen(navController,0)
         }
         composable(Screen.RegistroTecnico.route){
             RegistroTecnicoScreen(navController)
@@ -42,6 +42,12 @@ fun NavigationSetup(navController: NavHostController) {
             arguments = listOf(navArgument(Screen.RegistroRespuesta.id){type = NavType.IntType})) { backStackEntry ->
             backStackEntry.arguments?.getInt(Screen.RegistroRespuesta.id)?.let {
                 RegistroRespuestaScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroRespuesta.id)!!)
+            }
+        }
+        composable(Screen.RegistroTiempo.withArgsFormat(Screen.RegistroTiempo.id),
+            arguments = listOf(navArgument(Screen.RegistroTiempo.id){type = NavType.IntType})) { backStackEntry ->
+            backStackEntry.arguments?.getInt(Screen.RegistroTiempo.id)?.let {
+                RegistroTiempoScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroTiempo.id)!!)
             }
         }
     }
