@@ -18,12 +18,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.toSize
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.aliens.ticketsapp.R
+import com.aliens.ticketsapp.ui.screens.respuesta.RespuestaViewModel
 import com.aliens.ticketsapp.ui.screens.tecnico.TecnicoViewModel
 import com.aliens.ticketsapp.ui.screens.tiempo.TiempoViewModel
 
 @Composable
 fun TecnicoSpinner(
-    viewModel: TecnicoViewModel = hiltViewModel()
+    viewModel: TecnicoViewModel = hiltViewModel(),
+    respuestaViewModel: RespuestaViewModel = hiltViewModel(),
+    //Nota para alvaro: Solo tienes que poner tu viewModel aqui con la notacion de HiltViewModel,
+    //the same as me up there
 ) {
 
     var mExpanded by remember { mutableStateOf(false) }
@@ -76,11 +80,12 @@ fun TecnicoSpinner(
         ) {
             tecnicos.value.forEach {
                 DropdownMenuItem(onClick = {
-                    //personaViewModel.ocupacion = it.ocupacionId
-                    mSelectedText = it.tecnicoId.toString()
+                    respuestaViewModel.idTecnico = it.tecnicoId
+                    //respuestaViewModel.idTecnico = it.tecnicoId con tu ViewModel
+                    mSelectedText = it.nombreTecnico
                     mExpanded = false
                 }) {
-                    Text(text = it.tecnicoId.toString())
+                    Text(text = it.nombreTecnico)
                 }
             }
         }
