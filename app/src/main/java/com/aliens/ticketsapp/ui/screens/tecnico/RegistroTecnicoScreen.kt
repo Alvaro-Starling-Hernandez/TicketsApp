@@ -1,28 +1,32 @@
 package com.aliens.ticketsapp.ui.screens.tecnico
 
+import android.util.Patterns
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TextObligatorio
+import java.util.regex.Pattern
+
 
 @Composable
 fun RegistroTecnicoScreen(
@@ -65,6 +69,8 @@ fun RegistroTecnicoScreen(
             modifier = Modifier
                 .padding(it)
                 .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
         ) {
 
             Spacer(modifier = Modifier.height(25.dp))
@@ -149,14 +155,18 @@ fun RegistroTecnicoScreen(
                     nombreError = viewModel.nombreTecnico.isBlank()
                     telefonoError = viewModel.telefonoTecnico.isBlank()
                     emailError = viewModel.email.isBlank()
-
-                    if (!nombreError && !telefonoError && !emailError) {
-                        viewModel.Guardar()
-                        avisos("Guardado")
-                        navController.navigateUp()
-                    } else {
-                        avisos("Faltan Campos obligatorios")
+                    if (validarEmail(viewModel.email) && validarPhone(viewModel.telefonoTecnico)){
+                        if (!nombreError && !telefonoError && !emailError) {
+                            viewModel.Guardar()
+                            avisos("Guardado")
+                            navController.navigateUp()
+                        } else {
+                            avisos("Faltan Campos obligatorios")
+                        }
+                    }else{
+                        avisos("Email o Telefono valido")
                     }
+
 
 
 
@@ -178,6 +188,16 @@ fun RegistroTecnicoScreen(
     }
 }
 
+
+fun validarEmail(email: String): Boolean {
+    val pattern: Pattern = Patterns.EMAIL_ADDRESS
+    return pattern.matcher(email).matches()
+}
+
+fun validarPhone(telefono: String): Boolean {
+    val pattern: Pattern = Patterns.PHONE
+    return pattern.matcher(telefono).matches()
+}
 
 fun isNumeric(texto: String): Boolean {
     return try {
