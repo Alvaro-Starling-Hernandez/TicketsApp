@@ -155,17 +155,24 @@ fun RegistroTecnicoScreen(
                     nombreError = viewModel.nombreTecnico.isBlank()
                     telefonoError = viewModel.telefonoTecnico.isBlank()
                     emailError = viewModel.email.isBlank()
-                    if (validarEmail(viewModel.email) && validarPhone(viewModel.telefonoTecnico)){
-                        if (!nombreError && !telefonoError && !emailError) {
-                            viewModel.Guardar()
-                            avisos("Guardado")
-                            navController.navigateUp()
-                        } else {
-                            avisos("Faltan Campos obligatorios")
+
+                    if(validarPhone(viewModel.telefonoTecnico)){
+                        if (validarEmail(viewModel.email)){
+                            if (!nombreError && !telefonoError && !emailError) {
+                                viewModel.Guardar()
+                                avisos("Guardado")
+                                navController.navigateUp()
+                            } else {
+                                avisos("Faltan Campos obligatorios")
+                            }
+                        }else{
+                            avisos("Email o Telefono invalido")
                         }
                     }else{
-                        avisos("Email o Telefono valido")
+                        avisos("Telefono no Valido")
                     }
+
+
 
 
 

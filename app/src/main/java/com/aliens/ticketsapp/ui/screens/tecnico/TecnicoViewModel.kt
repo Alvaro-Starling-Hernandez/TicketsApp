@@ -7,7 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aliens.ticketsapp.data.repositories.TecnicoRepository
 import com.aliens.ticketsapp.model.Tecnico
+import com.aliens.ticketsapp.model.Tiempo
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -36,4 +38,13 @@ class TecnicoViewModel @Inject constructor(
         }
     }
 
+    fun buscar(id: Int): Flow<List<Tecnico>> {
+        return tecnicoRepository.buscar(id)
+    }
+
+    fun eliminar(tecnico: Tecnico){
+        viewModelScope.launch {
+            tecnicoRepository.eliminar(tecnico)
+        }
+    }
 }
