@@ -31,6 +31,7 @@ import java.util.regex.Pattern
 @Composable
 fun RegistroTecnicoScreen(
     navController: NavController,
+    id: Int,
     viewModel: TecnicoViewModel = hiltViewModel()
 ) {
     var nombreError by rememberSaveable { mutableStateOf(false) }
@@ -74,6 +75,7 @@ fun RegistroTecnicoScreen(
         ) {
 
             Spacer(modifier = Modifier.height(25.dp))
+
 
             OutlinedTextField(
                 value = viewModel.nombreTecnico,
