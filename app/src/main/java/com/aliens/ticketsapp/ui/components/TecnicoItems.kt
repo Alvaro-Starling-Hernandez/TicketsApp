@@ -10,6 +10,10 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Message
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,10 +32,14 @@ fun TecnicoItems(
     tecnico: Tecnico,
     navController: NavController
 ) {
+    var showDialog by rememberSaveable { mutableStateOf(false) }
+
+    ModalTecnico(showDialog, { showDialog = false }, navController, tecnico.tecnicoId, tecnico)
 
     Card(
         modifier = Modifier
-            .padding(8.dp),
+            .padding(8.dp)
+            .clickable { showDialog = true },
         elevation = 8.dp,
         shape = RoundedCornerShape(8.dp)
     ) {
