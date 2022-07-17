@@ -10,11 +10,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -39,6 +36,13 @@ fun RegistroTecnicoScreen(
     var emailError by rememberSaveable { mutableStateOf(false) }
 
     val context = LocalContext.current
+
+    val listaTecnicos = viewModel.buscar(id).collectAsState(initial = emptyList())
+    listaTecnicos.value.forEach {
+        viewModel.nombreTecnico = it.nombreTecnico
+        viewModel.telefonoTecnico = it.telefonoTecnico
+        viewModel.email = it.email
+    }
 
     fun avisos(aviso: String) {
         Toast.makeText(
@@ -76,7 +80,7 @@ fun RegistroTecnicoScreen(
 
             Spacer(modifier = Modifier.height(25.dp))
 
-
+            viewModel.id = id
             OutlinedTextField(
                 value = viewModel.nombreTecnico,
                 onValueChange = {
