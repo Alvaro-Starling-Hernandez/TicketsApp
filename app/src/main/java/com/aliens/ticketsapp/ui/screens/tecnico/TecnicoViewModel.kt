@@ -21,6 +21,7 @@ class TecnicoViewModel @Inject constructor(
     var nombreTecnico by mutableStateOf("")
     var telefonoTecnico by mutableStateOf("")
     var email by mutableStateOf("")
+    var id by mutableStateOf(0)
 
     var tecnicos = tecnicoRepository.getList()
         private set
@@ -29,7 +30,7 @@ class TecnicoViewModel @Inject constructor(
         viewModelScope.launch {
            tecnicoRepository.insertar(
                 Tecnico(
-                    tecnicoId = 0,
+                    tecnicoId = id,
                     nombreTecnico = nombreTecnico,
                     telefonoTecnico = telefonoTecnico,
                     email = email
