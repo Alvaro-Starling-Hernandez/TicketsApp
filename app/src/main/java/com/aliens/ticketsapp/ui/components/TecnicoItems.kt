@@ -8,7 +8,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Message
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -75,15 +77,23 @@ fun TecnicoItems(
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 Row() {
-
-                    Text(text = tecnico.email)
+                    Icon(Icons.Default.Email, contentDescription = null )
+                    Spacer(modifier = Modifier.padding(4.dp))
+                    Text(
+                        text = tecnico.email,
+                        style = MaterialTheme.typography.caption
+                    )
                 }
                 Spacer(modifier = Modifier.height(10.dp))
-                Text(
-                    text = "tel: " + tecnico.telefonoTecnico,
-                    style = MaterialTheme.typography.caption
+                Row() {
+                    Icon(Icons.Default.Phone, contentDescription = null)
+                    Spacer(modifier = Modifier.padding(4.dp))
+                    Text(
+                        text = tecnico.telefonoTecnico,
+                        style = MaterialTheme.typography.caption
 
-                )
+                    )
+                }
             }
 
 
