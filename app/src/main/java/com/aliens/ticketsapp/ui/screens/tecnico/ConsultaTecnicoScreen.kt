@@ -63,7 +63,8 @@ fun ConsultaTecnicoScreen(
         Column(
             modifier = Modifier
                 .padding(it)
-                .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
+                .absolutePadding(16.dp, 16.dp, 16.dp, 64.dp)
+
         ) {
 
             val listaTecnicos = viewModel.tecnicos.collectAsState(initial = emptyList())
