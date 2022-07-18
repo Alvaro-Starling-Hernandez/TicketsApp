@@ -58,7 +58,7 @@ fun TecnicoItems(
                 backgroundColor = Color.Blue
             ) {
                 Text(
-                    text = tecnico.nombreTecnico,
+                    text = InicalNombre(tecnico.nombreTecnico),
                     style = MaterialTheme.typography.h4,
                     color = Color.White,
                     textAlign = TextAlign.Center,
