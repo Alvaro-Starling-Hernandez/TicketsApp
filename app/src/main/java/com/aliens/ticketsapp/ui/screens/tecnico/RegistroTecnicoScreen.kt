@@ -161,26 +161,22 @@ fun RegistroTecnicoScreen(
                     nombreError = viewModel.nombreTecnico.isBlank()
                     telefonoError = viewModel.telefonoTecnico.isBlank()
                     emailError = viewModel.email.isBlank()
-
-                    if(validarPhone(viewModel.telefonoTecnico)){
-                        if (validarEmail(viewModel.email)){
-                            if (!nombreError && !telefonoError && !emailError) {
+                    if (!nombreError && !telefonoError && !emailError) {
+                        if (validarPhone(viewModel.telefonoTecnico)) {
+                            if (validarEmail(viewModel.email)) {
                                 viewModel.Guardar()
                                 avisos("Guardado")
                                 navController.navigateUp()
+
                             } else {
-                                avisos("Faltan Campos obligatorios")
+                                avisos("Email no valido")
                             }
-                        }else{
-                            avisos("Email o Telefono invalido")
+                        } else {
+                            avisos("Telefono no Valido")
                         }
-                    }else{
-                        avisos("Telefono no Valido")
+                    } else {
+                        avisos("Faltan Campos obligatorios")
                     }
-
-
-
-
 
 
                 },
@@ -208,8 +204,9 @@ fun validarEmail(email: String): Boolean {
 }
 
 fun validarPhone(telefono: String): Boolean {
-    val pattern: Pattern = Patterns.PHONE
-    return pattern.matcher(telefono).matches()
+    if(telefono.length != 10)
+        return false
+    return isNumeric(telefono)
 }
 
 fun isNumeric(texto: String): Boolean {
