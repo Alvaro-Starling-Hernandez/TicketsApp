@@ -21,15 +21,22 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
+import com.aliens.ticketsapp.model.Respuesta
 import com.aliens.ticketsapp.ui.components.RespuestaItem
+import com.aliens.ticketsapp.ui.components.SearchView
 import com.aliens.ticketsapp.utils.Screen
+import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun ConsultaRespuestaScreen(
     navController: NavController,
     viewModel: RespuestaViewModel = hiltViewModel()
 ) {
+
     val textState = remember { mutableStateOf(TextFieldValue("")) }
+
+    val searchedText = textState.value.text
+
     Scaffold(
 
         topBar = {
@@ -70,66 +77,20 @@ fun ConsultaRespuestaScreen(
                 .height(650.dp)
         ) {
 
+
             val listaRespuestas = viewModel.respuestas.collectAsState(initial = emptyList())
-            SearchView(textState)
-            LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                items(listaRespuestas.value) { respuesta ->
-                    RespuestaItem(respuesta, navController)
+
+            SearchView(state = textState, placeHolder = "Buscar")
+            LazyColumn() {
+                items(items = listaRespuestas.value.filter {
+                    it.Mensaje.contains(searchedText, ignoreCase = true) ||
+                            it.fecha.contains(searchedText, ignoreCase = true)
+                }, key = { it.respuestaId }) { item ->
+                    RespuestaItem(item, navController)
                 }
             }
-
         }
+
     }
 }
 
-//Mover a component luego
-@Composable
-fun SearchView(state: MutableState<TextFieldValue>) {
-    TextField(
-        value = state.value,
-        onValueChange = { value ->
-            state.value = value
-        },
-        modifier = Modifier
-            .fillMaxWidth(),
-        textStyle = TextStyle(color = Color.White, fontSize = 18.sp),
-        leadingIcon = {
-            Icon(
-                Icons.Default.Search,
-                contentDescription = "",
-                modifier = Modifier
-                    .padding(15.dp)
-                    .size(24.dp)
-            )
-        },
-        trailingIcon = {
-            if (state.value != TextFieldValue("")) {
-                IconButton(
-                    onClick = {
-                        state.value =
-                            TextFieldValue("") // Remove text from TextField when you press the 'X' icon
-                    }
-                ) {
-                    Icon(
-                        Icons.Default.Close,
-                        contentDescription = "",
-                        modifier = Modifier
-                            .padding(15.dp)
-                            .size(24.dp)
-                    )
-                }
-            }
-        },
-        singleLine = true,
-        shape = RectangleShape, // The TextFiled has rounded corners top left and right by default
-        colors = TextFieldDefaults.textFieldColors(
-            textColor = Color.White,
-            cursorColor = Color.White,
-            leadingIconColor = Color.White,
-            trailingIconColor = Color.White,
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent,
-            disabledIndicatorColor = Color.Transparent
-        )
-    )
-}
