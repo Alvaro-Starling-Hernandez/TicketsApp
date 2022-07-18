@@ -77,7 +77,7 @@ fun TecnicoItems(
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 Row() {
-                    Icon(Icons.Default.Email, contentDescription = null )
+                    Icon(Icons.Default.Email, contentDescription = null, tint = Color.Blue )
                     Spacer(modifier = Modifier.padding(4.dp))
                     Text(
                         text = tecnico.email,
@@ -86,7 +86,7 @@ fun TecnicoItems(
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 Row() {
-                    Icon(Icons.Default.Phone, contentDescription = null)
+                    Icon(Icons.Default.Phone, contentDescription = null, tint = Color.Blue)
                     Spacer(modifier = Modifier.padding(4.dp))
                     Text(
                         text = tecnico.telefonoTecnico,
