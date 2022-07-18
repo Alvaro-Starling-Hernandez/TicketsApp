@@ -82,9 +82,9 @@ fun ConsultaRespuestaScreen(
 
             SearchView(state = textState, placeHolder = "Buscar")
             LazyColumn() {
-                items(items = listaRespuestas.value.filter {
-                    it.Mensaje.contains(searchedText, ignoreCase = true) ||
-                            it.fecha.contains(searchedText, ignoreCase = true)
+                items(items = listaRespuestas.value.filter {res ->
+                    res.Mensaje.contains(searchedText, ignoreCase = true) ||
+                            res.fecha.contains(searchedText, ignoreCase = true)
                 }, key = { it.respuestaId }) { item ->
                     RespuestaItem(item, navController)
                 }
