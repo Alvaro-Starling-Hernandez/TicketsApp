@@ -9,12 +9,11 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Cancel
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.EditNote
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -74,8 +73,11 @@ fun ModalTecnico(
 
                         Spacer(modifier = Modifier.height(20.dp))
                         Column {
-                            Text("Tecnico: "+ tecnico.nombreTecnico)
-                            //Text(": "+ tecnico.)
+                            Row() {
+                                Icon(Icons.Default.Person, contentDescription = null, tint = Color.Blue)
+                                Text("Tecnico: "+ tecnico.nombreTecnico)
+                            }
+
                         }
                         Spacer(modifier = Modifier.height(20.dp))
                         Row {
