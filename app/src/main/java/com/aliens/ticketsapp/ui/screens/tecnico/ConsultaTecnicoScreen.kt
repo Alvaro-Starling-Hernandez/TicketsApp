@@ -33,17 +33,6 @@ fun ConsultaTecnicoScreen(
         topBar = {
 
             TopAppBar(
-                navigationIcon = {
-                    Icon(
-                        imageVector = Icons.Default.ArrowBackIos,
-                        contentDescription = stringResource(R.string.ArrowBack),
-                        modifier = Modifier
-                            .padding(16.dp)
-                            .clickable {
-                                navController.navigateUp()
-                            }
-                    )
-                },
                 title = {
                     Text(stringResource(R.string.Tecnicos))
                 },
