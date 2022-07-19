@@ -19,6 +19,10 @@ sealed class Screen(val route: String){
     }
     object ConsultaCliente: Screen("ConsultaCliente")
 
+    object RegistroTicket: Screen("RegistroTicket"){
+        val id = "id"
+    }
+
     fun withArgs(vararg args: String): String {
         return buildString {
             append(route)

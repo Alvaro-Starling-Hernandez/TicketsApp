@@ -19,4 +19,8 @@
     <string name="Cliente">Cliente</string>
     <string name="Clientes">Clientes</string>
     <string name="Tickets">Tickets</string>
+    <string name="Asunto">Asunto</string>
+    <string name="Requerimiento">Requerimiento</string>
+    <string name="Responder">Responder</string>
+    <string name="AgregarTiempo">Agregar Tiempo</string>
 </resources>
