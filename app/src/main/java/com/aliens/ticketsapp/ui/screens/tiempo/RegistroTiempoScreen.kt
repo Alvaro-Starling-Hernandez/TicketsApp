@@ -58,7 +58,7 @@ fun RegistroTiempoScreen(
                             }
                     )
                 },
-                title = { Text(stringResource(R.string.TituloAdregarTiempo)) }
+                title = { Text(stringResource(R.string.Tiempo)) }
             )
         }
     ) {
