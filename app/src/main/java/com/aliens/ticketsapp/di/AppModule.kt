@@ -3,14 +3,8 @@ package com.aliens.ticketsapp.di
 import android.content.Context
 import androidx.room.Room
 import com.aliens.ticketsapp.data.TicketsDb
-import com.aliens.ticketsapp.data.daos.ClienteDao
-import com.aliens.ticketsapp.data.daos.RespuestaDao
-import com.aliens.ticketsapp.data.daos.TecnicoDao
-import com.aliens.ticketsapp.data.daos.TiempoDao
-import com.aliens.ticketsapp.data.repositories.ClienteRepository
-import com.aliens.ticketsapp.data.repositories.RespuestaRepository
-import com.aliens.ticketsapp.data.repositories.TecnicoRepository
-import com.aliens.ticketsapp.data.repositories.TiempoRepository
+import com.aliens.ticketsapp.data.daos.*
+import com.aliens.ticketsapp.data.repositories.*
 import com.aliens.ticketsapp.model.Tecnico
 import dagger.Module
 import dagger.Provides
@@ -72,6 +66,16 @@ object AppModule {
     @Provides
     fun ProvidesClienteDao(ticketsDb: TicketsDb): ClienteDao{
         return ticketsDb.clienteDao
+    }
+
+    @Provides
+    fun ProvidesTicketRepository(ticketDao: TicketDao): TicketRepository{
+        return TicketRepository(ticketDao)
+    }
+
+    @Provides
+    fun ProvidesTicketDao(ticketsDb: TicketsDb): TicketDao{
+        return ticketsDb.ticketDao
     }
 
 }
