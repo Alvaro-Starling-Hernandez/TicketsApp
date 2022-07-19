@@ -6,6 +6,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.aliens.ticketsapp.ui.screens.cliente.ConsultaClienteScreen
+import com.aliens.ticketsapp.ui.screens.cliente.RegistroClienteScreen
 import com.aliens.ticketsapp.ui.screens.respuesta.ConsultaRespuestaScreen
 import com.aliens.ticketsapp.ui.screens.respuesta.RegistroRespuestaScreen
 import com.aliens.ticketsapp.ui.screens.tecnico.ConsultaTecnicoScreen
@@ -26,17 +28,20 @@ fun NavigationSetup(navController: NavHostController) {
         composable(BottomNavItem.Tecnico.route) {
             ConsultaTecnicoScreen(navController)
         }
+        composable(BottomNavItem.Cliente.route) {
+            ConsultaClienteScreen(navController)
+        }
         composable(Screen.RegistroRespuesta.route) {
             RegistroRespuestaScreen(navController,0)
         }
         composable(Screen.RegistroTiempo.route) {
             RegistroTiempoScreen(navController,0)
         }
+        composable(Screen.RegistroCliente.route) {
+            RegistroClienteScreen(navController,0)
+        }
         composable(Screen.RegistroTecnico.route){
             RegistroTecnicoScreen(navController, 0)
-        }
-        composable(Screen.ConsultaTiempo.route) {
-            ConsultaTiempoScreen(navController)
         }
         composable(Screen.RegistroRespuesta.withArgsFormat(Screen.RegistroRespuesta.id),
             arguments = listOf(navArgument(Screen.RegistroRespuesta.id){type = NavType.IntType})) { backStackEntry ->
@@ -54,6 +59,12 @@ fun NavigationSetup(navController: NavHostController) {
             arguments = listOf(navArgument(Screen.RegistroTecnico.id){type = NavType.IntType})) { backStackEntry ->
             backStackEntry.arguments?.getInt(Screen.RegistroTecnico.id)?.let {
                 RegistroTecnicoScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroTecnico.id)!!)
+            }
+        }
+        composable(Screen.RegistroCliente.withArgsFormat(Screen.RegistroCliente.id),
+            arguments = listOf(navArgument(Screen.RegistroCliente.id){type = NavType.IntType})) { backStackEntry ->
+            backStackEntry.arguments?.getInt(Screen.RegistroCliente.id)?.let {
+                RegistroClienteScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroCliente.id)!!)
             }
         }
     }
