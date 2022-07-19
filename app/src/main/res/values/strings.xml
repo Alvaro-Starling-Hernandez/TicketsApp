@@ -16,4 +16,5 @@
     <string name="ToastMessageErrorAnswer">El campo mensaje no puede estar vacio</string>
     <string name="Respuestas">Respuestas</string>
     <string name="Soluciones">Soluciones</string>
+    <string name="Cliente">Cliente</string>
 </resources>

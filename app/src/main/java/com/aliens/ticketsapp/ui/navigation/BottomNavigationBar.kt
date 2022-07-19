@@ -6,10 +6,7 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Watch
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -39,6 +36,12 @@ sealed class BottomNavItem(
     object Tecnico : BottomNavItem(
         route = Screen.ConsultaTecnico.route,
         titleResId = R.string.Tecnico,
+        icon = Icons.Default.Engineering
+    )
+
+    object Cliente : BottomNavItem(
+        route = Screen.ConsultaCliente.route,
+        titleResId = R.string.Cliente,
         icon = Icons.Default.Person
     )
 }
@@ -50,7 +53,8 @@ fun BottomNavigationBar(
     val items = listOf(
         BottomNavItem.Home,
         BottomNavItem.Tecnico,
-        BottomNavItem.Soluciones
+        BottomNavItem.Soluciones,
+        BottomNavItem.Cliente
     )
 
     BottomNavigation {
