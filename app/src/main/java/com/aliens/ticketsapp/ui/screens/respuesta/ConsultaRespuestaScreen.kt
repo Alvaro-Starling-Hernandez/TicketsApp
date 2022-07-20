@@ -1,5 +1,6 @@
 package com.aliens.ticketsapp.ui.screens.respuesta
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -42,17 +43,17 @@ fun ConsultaRespuestaScreen(
         topBar = {
 
             TopAppBar(
-                /*navigationIcon = {
+                navigationIcon = {
                     Icon(
                         imageVector = Icons.Default.ArrowBackIos,
                         contentDescription = stringResource(R.string.ArrowBack),
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                //navegar
+                                navController.navigate(Screen.RegistroTicket.route)
                             }
                     )
-                },*/
+                },
                 title = {
                     Text(stringResource(R.string.Respuestas))
                 },
