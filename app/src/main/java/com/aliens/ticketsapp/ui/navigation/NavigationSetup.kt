@@ -23,7 +23,7 @@ fun NavigationSetup(navController: NavHostController) {
         /*composable(BottomNavItem.Home.route) {
             RegistroTicketScreen(navController,0)
         }*/
-        composable(BottomNavItem.Soluciones.route) {
+        composable(Screen.ConsultaTiempo.route) {
             ConsultaTiempoScreen(navController)
         }
         composable(BottomNavItem.Tecnico.route) {

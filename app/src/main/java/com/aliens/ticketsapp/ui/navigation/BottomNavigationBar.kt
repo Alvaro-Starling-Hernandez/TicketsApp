@@ -27,12 +27,6 @@ sealed class BottomNavItem(
         icon = Icons.Default.Home
     )
 
-    object Soluciones : BottomNavItem(
-        route = Screen.ConsultaTiempo.route,
-        titleResId = R.string.Tiempo,
-        icon = Icons.Default.Watch
-    )
-
     object Tecnico : BottomNavItem(
         route = Screen.ConsultaTecnico.route,
         titleResId = R.string.Tecnico,
@@ -53,7 +47,6 @@ fun BottomNavigationBar(
     val items = listOf(
         BottomNavItem.Home,
         BottomNavItem.Tecnico,
-        BottomNavItem.Soluciones,
         BottomNavItem.Cliente
     )
 
