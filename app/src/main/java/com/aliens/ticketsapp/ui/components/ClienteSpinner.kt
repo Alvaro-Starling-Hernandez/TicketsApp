@@ -20,6 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.screens.cliente.ClienteViewModel
 import com.aliens.ticketsapp.ui.screens.ticket.TicketViewModel
+import com.aliens.ticketsapp.utils.getNombreCliente
 
 @Composable
 fun ClienteSpinner(
@@ -91,18 +92,4 @@ fun ClienteSpinner(
             }
         }
     }
-}
-
-@Composable
-fun getNombreCliente(cliente: Int, viewModel: ClienteViewModel = hiltViewModel()): String {
-    var name: String = ""
-    val clientes = viewModel.clientes.collectAsState(initial = emptyList())
-
-    clientes.value.forEach { element ->
-        if (cliente == element.clienteId) {
-            name = element.nombreCliente
-        }
-    }
-
-    return name
 }
