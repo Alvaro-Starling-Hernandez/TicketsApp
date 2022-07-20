@@ -1,5 +1,6 @@
 package com.aliens.ticketsapp.ui.screens.ticket
 
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -62,3 +63,4 @@ fun ConsultaTicketScreen(
     }
 
 }
+
