@@ -23,4 +23,5 @@
     <string name="Requerimiento">Requerimiento</string>
     <string name="Responder">Responder</string>
     <string name="AgregarTiempo">Agregar Tiempo</string>
+    <string name="Prioridad">Prioridad</string>
 </resources>
