@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.aliens.ticketsapp.model.Tecnico
+import com.aliens.ticketsapp.utils.InicalNombre
 import kotlin.math.round
 
 @Composable
@@ -101,8 +102,5 @@ fun TecnicoItems(
     }
 }
 
-fun InicalNombre(inicial: String): String {
-    var i = inicial[0]
-    return i.toString()
-}
+
 
