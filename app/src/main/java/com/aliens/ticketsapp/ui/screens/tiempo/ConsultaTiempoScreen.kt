@@ -47,7 +47,7 @@ fun ConsultaTiempoScreen(
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                //navegar
+                                navController.navigate(Screen.RegistroTicket.route)
                             }
                     )
                 },
