@@ -11,10 +11,11 @@ import com.aliens.ticketsapp.model.*
         Respuesta::class,
         Tecnico::class,
         Cliente::class,
-        Ticket::class
+        Ticket::class,
+        Prioridad::class
     ],
     exportSchema = false,
-    version = 5
+    version = 6
 )
 abstract class TicketsDb : RoomDatabase() {
     abstract val tiempoDao: TiempoDao
@@ -22,4 +23,5 @@ abstract class TicketsDb : RoomDatabase() {
     abstract val tecnicoDao: TecnicoDao
     abstract val clienteDao: ClienteDao
     abstract val ticketDao: TicketDao
+    abstract val prioridadDao: PrioridadDao
 }
