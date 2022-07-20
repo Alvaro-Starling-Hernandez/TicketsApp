@@ -40,6 +40,7 @@ fun RegistroTicketScreen(
         viewModel.requerimiento = it.requerimiento
     }
 
+
     Scaffold(
         topBar = {
             TopAppBar(
