@@ -22,15 +22,9 @@ sealed class BottomNavItem(
     val icon: ImageVector
 ) {
     object Home : BottomNavItem(
-        route = Screen.ConsultaRespuesta.route,
-        titleResId = R.string.Respuestas,
+        route = Screen.ConsultaTicket.route,
+        titleResId = R.string.Tickets,
         icon = Icons.Default.Home
-    )
-
-    object Soluciones : BottomNavItem(
-        route = Screen.ConsultaTiempo.route,
-        titleResId = R.string.Tiempo,
-        icon = Icons.Default.Watch
     )
 
     object Tecnico : BottomNavItem(
@@ -53,7 +47,6 @@ fun BottomNavigationBar(
     val items = listOf(
         BottomNavItem.Home,
         BottomNavItem.Tecnico,
-        BottomNavItem.Soluciones,
         BottomNavItem.Cliente
     )
 
