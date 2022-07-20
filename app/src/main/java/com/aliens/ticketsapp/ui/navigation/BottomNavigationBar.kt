@@ -22,7 +22,7 @@ sealed class BottomNavItem(
     val icon: ImageVector
 ) {
     object Home : BottomNavItem(
-        route = Screen.RegistroTicket.route,
+        route = Screen.ConsultaTicket.route,
         titleResId = R.string.Tickets,
         icon = Icons.Default.Home
     )
