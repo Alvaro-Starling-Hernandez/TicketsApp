@@ -21,6 +21,7 @@ import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.screens.respuesta.RespuestaViewModel
 import com.aliens.ticketsapp.ui.screens.tecnico.TecnicoViewModel
 import com.aliens.ticketsapp.ui.screens.tiempo.TiempoViewModel
+import com.aliens.ticketsapp.utils.getNombreTecnico
 
 @Composable
 fun TecnicoSpinner(
