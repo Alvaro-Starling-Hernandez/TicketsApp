@@ -30,6 +30,7 @@ import com.aliens.ticketsapp.model.Respuesta
 import com.aliens.ticketsapp.ui.screens.respuesta.RespuestaViewModel
 import com.aliens.ticketsapp.ui.screens.tecnico.TecnicoViewModel
 import com.aliens.ticketsapp.utils.Screen
+import com.aliens.ticketsapp.utils.getNombreTecnico
 
 @Composable
 fun RespuestaItem(
@@ -186,18 +187,4 @@ fun Modal(
             }
         }
     }
-}
-
-@Composable
-fun getNombreTecnico(tecn: Int, viewModel: TecnicoViewModel = hiltViewModel()): String {
-    var name: String = "";
-    val tecnicos = viewModel.tecnicos.collectAsState(initial = emptyList())
-
-    tecnicos.value.forEach { element ->
-        if (tecn == element.tecnicoId) {
-            name = element.nombreTecnico
-        }
-    }
-
-    return name
 }
