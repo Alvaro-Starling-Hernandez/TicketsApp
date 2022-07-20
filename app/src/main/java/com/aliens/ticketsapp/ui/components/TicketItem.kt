@@ -4,6 +4,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,64 +31,54 @@ fun TicketItems(
     Card(
         modifier = Modifier
             .padding(8.dp)
+            .padding(vertical = 10.dp)
+            .fillMaxWidth()
             .clickable { showDialog = true },
         elevation = 8.dp,
         shape = RoundedCornerShape(8.dp)
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-        ) {
-            Card(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .height(70.dp)
-                    .width(70.dp),
-                shape = RoundedCornerShape(64.dp),
-                backgroundColor = Color.Blue
+
+        Column(modifier = Modifier
+            .padding(8.dp),
+            horizontalAlignment = Alignment.End,) {
+            Row(
             ) {
+                Spacer(modifier = Modifier.width(20.dp))
+                Icon(Icons.Default.Email, contentDescription = null, tint = Color.Blue )
+            }
+        }
+
+        Column(
+            modifier = Modifier.padding(8.dp).fillMaxWidth(),
+        ) {
+            Text(
+                text = "Prandi Fabiel Cortorreal",
+                style = MaterialTheme.typography.h6
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
+            Row() {
+                Spacer(modifier = Modifier.padding(4.dp))
                 Text(
-                    text = InicalNombre("Prandi"), //getNombreCliente(ticket.clienteId)
-                    style = MaterialTheme.typography.h4,
-                    color = Color.White,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(6.dp)
+                    text = "Asunto, Hay problems en esye proyecto",
+                    style = MaterialTheme.typography.caption
                 )
             }
-
-            Column(
-                modifier = Modifier.padding(8.dp),
-            ) {
+            Spacer(modifier = Modifier.height(10.dp))
+            Row() {
+                Spacer(modifier = Modifier.padding(4.dp))
                 Text(
-                    text = "Prandi Fabiel Cortorreal",
-                    style = MaterialTheme.typography.h6
+                    text = "En Proceso",
+                    style = MaterialTheme.typography.caption
+
                 )
-
-                Spacer(modifier = Modifier.height(10.dp))
-                Row() {
-                    Spacer(modifier = Modifier.padding(4.dp))
-                    Text(
-                        text = "Asunto, Hay problems en esye proyecto",
-                        style = MaterialTheme.typography.caption
-                    )
-                }
-                Spacer(modifier = Modifier.height(10.dp))
-                Row() {
-                    Spacer(modifier = Modifier.padding(4.dp))
-                    Text(
-                        text = "En Proceso",
-                        style = MaterialTheme.typography.caption
-
-                    )
-                    Spacer(modifier = Modifier.padding(4.dp))
-                    Text(
-                        text = "18/7/2022",
-                        style = MaterialTheme.typography.caption,
-                        textAlign = TextAlign.End,
-                        modifier = Modifier.padding(start = 75.dp)
-                    )
-                }
+                Spacer(modifier = Modifier.padding(4.dp))
+                Text(
+                    text = "18/7/2022",
+                    style = MaterialTheme.typography.caption,
+                    textAlign = TextAlign.End,
+                    modifier = Modifier.padding(start = 165.dp)
+                )
             }
         }
     }
