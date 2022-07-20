@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.model.Cliente
+import com.aliens.ticketsapp.utils.InicalNombre
 
 @Composable
 fun ClienteItem(
