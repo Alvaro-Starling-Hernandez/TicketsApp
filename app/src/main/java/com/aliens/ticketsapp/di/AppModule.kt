@@ -25,7 +25,7 @@ object AppModule {
             "TicketsDb"
         )
             .fallbackToDestructiveMigration()
-            //.createFromAsset("TicketsDb.db")
+            .createFromAsset("TicketsDb.db")
             .build()
     }
 
