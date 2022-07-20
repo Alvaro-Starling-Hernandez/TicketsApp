@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
+import com.aliens.ticketsapp.ui.components.TicketItems
 import com.aliens.ticketsapp.utils.Screen
 
 @Composable
@@ -31,7 +32,7 @@ fun ConsultaTicketScreen(
                     Text(stringResource(R.string.Tickets))
                 },
                 actions = {
-                    IconButton(onClick = { navController.navigate(Screen.RegistroTecnico.route) }) {
+                    IconButton(onClick = { navController.navigate(Screen.RegistroTicket.route) }) {
                         Icon(
                             modifier = Modifier.size(40.dp),
                             imageVector = Icons.Default.Add,
@@ -53,8 +54,8 @@ fun ConsultaTicketScreen(
             val listaTecnicos = viewModel.tickets.collectAsState(initial = emptyList())
 
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                items(listaTecnicos.value) { tecnico ->
-                    //TecnicoItems(tecnico, navController)
+                items(listaTecnicos.value) { ticket ->
+                    TicketItems(ticket, navController)
                 }
             }
 
