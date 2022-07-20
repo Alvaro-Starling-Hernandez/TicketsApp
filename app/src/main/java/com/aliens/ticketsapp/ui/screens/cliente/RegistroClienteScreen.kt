@@ -1,6 +1,7 @@
 package com.aliens.ticketsapp.ui.screens.cliente
 
 import android.widget.Toast
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
@@ -21,6 +22,7 @@ import androidx.navigation.NavController
 import com.aliens.ticketsapp.ui.components.TextObligatorio
 import com.aliens.ticketsapp.ui.screens.tecnico.validarEmail
 import com.aliens.ticketsapp.ui.screens.tecnico.validarPhone
+import com.aliens.ticketsapp.utils.Screen
 
 @Composable
 fun RegistroClienteScreen(
@@ -52,6 +54,17 @@ fun RegistroClienteScreen(
     Scaffold(
         topBar = {
             TopAppBar(
+                navigationIcon = {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBackIos,
+                        contentDescription = stringResource(com.aliens.ticketsapp.R.string.ArrowBack),
+                        modifier = Modifier
+                            .padding(16.dp)
+                            .clickable {
+                                navController.navigate(Screen.ConsultaCliente.route)
+                            }
+                    )
+                },
                 title = { Text("Clientes") }
             )
         }
