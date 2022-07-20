@@ -36,7 +36,7 @@ class TicketViewModel @Inject constructor(
                     asunto = asunto,
                     requerimiento = requerimiento,
                     clienteId = clienteId,
-                    prioridadId = 0,
+                    prioridadId = prioridadId,
                     estadoId = 0
                 )
             )
