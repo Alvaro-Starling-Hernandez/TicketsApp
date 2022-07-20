@@ -25,6 +25,7 @@ object AppModule {
             "TicketsDb"
         )
             .fallbackToDestructiveMigration()
+            //.createFromAsset("TicketsDb.db")
             .build()
     }
 
@@ -49,33 +50,43 @@ object AppModule {
     }
 
     @Provides
-    fun ProvidesTecnicoRepository(tecnicoDao: TecnicoDao): TecnicoRepository{
+    fun ProvidesTecnicoRepository(tecnicoDao: TecnicoDao): TecnicoRepository {
         return TecnicoRepository(tecnicoDao)
     }
 
     @Provides
-    fun ProvidesTecnicoDao(ticketsDb: TicketsDb): TecnicoDao{
+    fun ProvidesTecnicoDao(ticketsDb: TicketsDb): TecnicoDao {
         return ticketsDb.tecnicoDao
     }
 
     @Provides
-    fun ProvidesClienteRepository(clienteDao: ClienteDao): ClienteRepository{
+    fun ProvidesClienteRepository(clienteDao: ClienteDao): ClienteRepository {
         return ClienteRepository(clienteDao)
     }
 
     @Provides
-    fun ProvidesClienteDao(ticketsDb: TicketsDb): ClienteDao{
+    fun ProvidesClienteDao(ticketsDb: TicketsDb): ClienteDao {
         return ticketsDb.clienteDao
     }
 
     @Provides
-    fun ProvidesTicketRepository(ticketDao: TicketDao): TicketRepository{
+    fun ProvidesTicketRepository(ticketDao: TicketDao): TicketRepository {
         return TicketRepository(ticketDao)
     }
 
     @Provides
-    fun ProvidesTicketDao(ticketsDb: TicketsDb): TicketDao{
+    fun ProvidesTicketDao(ticketsDb: TicketsDb): TicketDao {
         return ticketsDb.ticketDao
+    }
+
+    @Provides
+    fun ProvidesPrioridadRepository(prioridadDao: PrioridadDao): PrioridadRepository {
+        return PrioridadRepository(prioridadDao)
+    }
+
+    @Provides
+    fun ProvidesPrioridadDao(ticketsDb: TicketsDb): PrioridadDao {
+        return ticketsDb.prioridadDao
     }
 
 }
