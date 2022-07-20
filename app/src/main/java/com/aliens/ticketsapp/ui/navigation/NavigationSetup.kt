@@ -13,6 +13,7 @@ import com.aliens.ticketsapp.ui.screens.respuesta.RegistroRespuestaScreen
 import com.aliens.ticketsapp.ui.screens.tecnico.ConsultaTecnicoScreen
 import com.aliens.ticketsapp.ui.screens.tecnico.RegistroTecnicoScreen
 import com.aliens.ticketsapp.ui.screens.ticket.ConsultaTicketScreen
+import com.aliens.ticketsapp.ui.screens.ticket.RegistroTicketScreen
 //import com.aliens.ticketsapp.ui.screens.ticket.RegistroTicketScreen
 import com.aliens.ticketsapp.ui.screens.tiempo.ConsultaTiempoScreen
 import com.aliens.ticketsapp.ui.screens.tiempo.RegistroTiempoScreen
@@ -49,7 +50,7 @@ fun NavigationSetup(navController: NavHostController) {
             RegistroTecnicoScreen(navController, 0)
         }
         composable(Screen.RegistroTicket.route){
-            RegistroTiempoScreen(navController, 0)
+            RegistroTicketScreen(navController, 0)
         }
         composable(Screen.RegistroRespuesta.withArgsFormat(Screen.RegistroRespuesta.id),
             arguments = listOf(navArgument(Screen.RegistroRespuesta.id){type = NavType.IntType})) { backStackEntry ->
