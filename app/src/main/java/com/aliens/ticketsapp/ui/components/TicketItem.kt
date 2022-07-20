@@ -6,6 +6,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,12 +17,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.model.Ticket
+import com.aliens.ticketsapp.utils.getEstado
+import com.aliens.ticketsapp.utils.getNombreCliente
 
 @Composable
 fun TicketItems(
-    //ticket: Ticket,
+    ticket: Ticket,
     navController: NavController
 ) {
     var showDialog by rememberSaveable { mutableStateOf(false) }
@@ -44,15 +48,17 @@ fun TicketItems(
             Row(
             ) {
                 Spacer(modifier = Modifier.width(20.dp))
-                Icon(Icons.Default.Email, contentDescription = null, tint = Color.Blue )
+                Icon(Icons.Default.Info, contentDescription = null)
             }
         }
 
         Column(
-            modifier = Modifier.padding(8.dp).fillMaxWidth(),
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxWidth(),
         ) {
             Text(
-                text = "Prandi Fabiel Cortorreal",
+                text = getNombreCliente(ticket.clienteId),
                 style = MaterialTheme.typography.h6
             )
 
@@ -60,21 +66,29 @@ fun TicketItems(
             Row() {
                 Spacer(modifier = Modifier.padding(4.dp))
                 Text(
-                    text = "Asunto, Hay problems en esye proyecto",
-                    style = MaterialTheme.typography.caption
+                    text = ticket.asunto,
+                    style = MaterialTheme.typography.caption,
+                    fontSize = 18.sp
+                )
+            }
+            Row() {
+                Spacer(modifier = Modifier.padding(4.dp))
+                Text(
+                    text = ticket.requerimiento,
+                    style = MaterialTheme.typography.caption,
                 )
             }
             Spacer(modifier = Modifier.height(10.dp))
             Row() {
                 Spacer(modifier = Modifier.padding(4.dp))
                 Text(
-                    text = "En Proceso",
+                    text = getEstado(ticket.estadoId),
                     style = MaterialTheme.typography.caption
 
                 )
                 Spacer(modifier = Modifier.padding(4.dp))
                 Text(
-                    text = "18/7/2022",
+                    text = ticket.fecha,
                     style = MaterialTheme.typography.caption,
                     textAlign = TextAlign.End,
                     modifier = Modifier.padding(start = 165.dp)
@@ -83,4 +97,3 @@ fun TicketItems(
         }
     }
 }
-
