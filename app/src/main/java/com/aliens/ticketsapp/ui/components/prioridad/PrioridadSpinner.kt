@@ -21,6 +21,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.screens.cliente.ClienteViewModel
 import com.aliens.ticketsapp.ui.screens.ticket.TicketViewModel
+import com.aliens.ticketsapp.utils.getNombrePrioridad
 
 @Composable
 fun PrioridadSpinner(
@@ -29,9 +30,7 @@ fun PrioridadSpinner(
     ticketViewModel: TicketViewModel = hiltViewModel()
 ) {
 
-    var writeNamePrioridad: String
-
-    writeNamePrioridad= getNombrePrioridad(idPrioridad)
+    var writeNamePrioridad: String = getNombrePrioridad(idPrioridad)
 
     var mExpanded by remember { mutableStateOf(false) }
 
@@ -94,16 +93,3 @@ fun PrioridadSpinner(
     }
 }
 
-@Composable
-fun getNombrePrioridad(prioridad: Int, viewModel: PrioridadViewModel = hiltViewModel()): String {
-    var name: String = ""
-    val prioridades = viewModel.prioridades.collectAsState(initial = emptyList())
-
-    prioridades.value.forEach { element ->
-        if (prioridad == element.prioridadId) {
-            name = element.descripcion
-        }
-    }
-
-    return name
-}
