@@ -12,7 +12,6 @@ import com.aliens.ticketsapp.ui.screens.respuesta.ConsultaRespuestaScreen
 import com.aliens.ticketsapp.ui.screens.respuesta.RegistroRespuestaScreen
 import com.aliens.ticketsapp.ui.screens.tecnico.ConsultaTecnicoScreen
 import com.aliens.ticketsapp.ui.screens.tecnico.RegistroTecnicoScreen
-import com.aliens.ticketsapp.ui.screens.ticket.RegistroTicketScreen
 import com.aliens.ticketsapp.ui.screens.tiempo.ConsultaTiempoScreen
 import com.aliens.ticketsapp.ui.screens.tiempo.RegistroTiempoScreen
 import com.aliens.ticketsapp.utils.Screen
@@ -21,7 +20,7 @@ import com.aliens.ticketsapp.utils.Screen
 fun NavigationSetup(navController: NavHostController) {
     NavHost(navController, startDestination = BottomNavItem.Home.route) {
         composable(BottomNavItem.Home.route) {
-            RegistroTicketScreen(navController,0)
+            ConsultaRespuestaScreen(navController)
         }
         composable(BottomNavItem.Soluciones.route) {
             ConsultaTiempoScreen(navController)
@@ -43,9 +42,6 @@ fun NavigationSetup(navController: NavHostController) {
         }
         composable(Screen.RegistroTecnico.route){
             RegistroTecnicoScreen(navController, 0)
-        }
-        composable(Screen.RegistroTicket.route){
-            RegistroTiempoScreen(navController, 0)
         }
         composable(Screen.RegistroRespuesta.withArgsFormat(Screen.RegistroRespuesta.id),
             arguments = listOf(navArgument(Screen.RegistroRespuesta.id){type = NavType.IntType})) { backStackEntry ->
@@ -69,12 +65,6 @@ fun NavigationSetup(navController: NavHostController) {
             arguments = listOf(navArgument(Screen.RegistroCliente.id){type = NavType.IntType})) { backStackEntry ->
             backStackEntry.arguments?.getInt(Screen.RegistroCliente.id)?.let {
                 RegistroClienteScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroCliente.id)!!)
-            }
-        }
-        composable(Screen.RegistroTicket.withArgsFormat(Screen.RegistroTicket.id),
-            arguments = listOf(navArgument(Screen.RegistroTicket.id){type = NavType.IntType})) { backStackEntry ->
-            backStackEntry.arguments?.getInt(Screen.RegistroTicket.id)?.let {
-                RegistroTiempoScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroTicket.id)!!)
             }
         }
     }
