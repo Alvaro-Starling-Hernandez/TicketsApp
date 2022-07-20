@@ -30,6 +30,7 @@ import com.aliens.ticketsapp.model.Tiempo
 import com.aliens.ticketsapp.ui.screens.respuesta.RespuestaViewModel
 import com.aliens.ticketsapp.ui.screens.tiempo.TiempoViewModel
 import com.aliens.ticketsapp.utils.Screen
+import com.aliens.ticketsapp.utils.getNombreTecnico
 
 @Composable
 fun ModalTiempo(
