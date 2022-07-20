@@ -51,7 +51,7 @@ fun RegistroTicketScreen(
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                //navController.navigate(Screen.ConsultaTiempo.route)
+                                navController.navigate(Screen.ConsultaTicket.route)
                             }
                     )
                 },
@@ -145,7 +145,7 @@ fun RegistroTicketScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Button(onClick = { /*TODO*/ }) {
+                Button(onClick = { navController.navigate(Screen.ConsultaRespuesta.route)}) {
                     Text(text = stringResource(com.aliens.ticketsapp.R.string.Responder))
                     Spacer(modifier = Modifier.width(5.dp))
                     Icon(
@@ -154,7 +154,7 @@ fun RegistroTicketScreen(
                     )
                 }
 
-                Button(onClick = { /*TODO*/ }) {
+                Button(onClick = { navController.navigate(Screen.ConsultaTiempo.route) }) {
                     Text(text = stringResource(com.aliens.ticketsapp.R.string.AgregarTiempo))
                     Spacer(modifier = Modifier.width(5.dp))
                     Icon(
