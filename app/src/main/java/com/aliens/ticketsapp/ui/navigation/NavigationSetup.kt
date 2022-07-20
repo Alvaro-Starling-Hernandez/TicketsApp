@@ -12,6 +12,7 @@ import com.aliens.ticketsapp.ui.screens.respuesta.ConsultaRespuestaScreen
 import com.aliens.ticketsapp.ui.screens.respuesta.RegistroRespuestaScreen
 import com.aliens.ticketsapp.ui.screens.tecnico.ConsultaTecnicoScreen
 import com.aliens.ticketsapp.ui.screens.tecnico.RegistroTecnicoScreen
+import com.aliens.ticketsapp.ui.screens.ticket.ConsultaTicketScreen
 //import com.aliens.ticketsapp.ui.screens.ticket.RegistroTicketScreen
 import com.aliens.ticketsapp.ui.screens.tiempo.ConsultaTiempoScreen
 import com.aliens.ticketsapp.ui.screens.tiempo.RegistroTiempoScreen
@@ -20,14 +21,14 @@ import com.aliens.ticketsapp.utils.Screen
 @Composable
 fun NavigationSetup(navController: NavHostController) {
     NavHost(navController, startDestination = BottomNavItem.Home.route) {
-        /*composable(BottomNavItem.Home.route) {
-            RegistroTicketScreen(navController,0)
-        }*/
         composable(Screen.ConsultaTiempo.route) {
             ConsultaTiempoScreen(navController)
         }
         composable(BottomNavItem.Tecnico.route) {
             ConsultaTecnicoScreen(navController)
+        }
+        composable(BottomNavItem.Home.route) {
+            ConsultaTicketScreen(navController)
         }
         composable(BottomNavItem.Cliente.route) {
             ConsultaClienteScreen(navController)
