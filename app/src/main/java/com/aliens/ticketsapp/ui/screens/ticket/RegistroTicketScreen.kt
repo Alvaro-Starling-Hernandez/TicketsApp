@@ -61,8 +61,36 @@ fun RegistroTicketScreen(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = { /*TODO*/ }, modifier = Modifier.size(60.dp)) {
-                Icon(imageVector = Icons.Default.Save, contentDescription = null, modifier = Modifier.size(40.dp))
+            FloatingActionButton(
+                onClick = {
+                    asuntoError = viewModel.asunto.isBlank()
+                    requerimientoError = viewModel.requerimiento.isBlank()
+                    if (!asuntoError && !requerimientoError) {
+
+                        viewModel.Guardar()
+                        Toast.makeText(
+                            context,
+                            com.aliens.ticketsapp.R.string.ToastMessageSave,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        navController.navigate(Screen.ConsultaTicket.route)
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "Existen campos Vacios",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                },
+                modifier = Modifier
+                    .padding(bottom = 70.dp, end = 50.dp)
+                    .size(60.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Save,
+                    contentDescription = null,
+                    modifier = Modifier.size(40.dp)
+                )
             }
         }, floatingActionButtonPosition = FabPosition.End
     ) {
@@ -129,8 +157,8 @@ fun RegistroTicketScreen(
                     )
                 },
                 keyboardOptions = KeyboardOptions(
-                    capitalization = KeyboardCapitalization.None,
-                    keyboardType = KeyboardType.Decimal
+                    capitalization = KeyboardCapitalization.Sentences,
+                    keyboardType = KeyboardType.Text
                 ),
                 isError = requerimientoError, maxLines = 4, singleLine = false
             )
@@ -147,7 +175,7 @@ fun RegistroTicketScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Button(onClick = { navController.navigate(Screen.ConsultaRespuesta.route)}) {
+                Button(onClick = { navController.navigate(Screen.ConsultaRespuesta.route) }) {
                     Text(text = stringResource(com.aliens.ticketsapp.R.string.Responder))
                     Spacer(modifier = Modifier.width(5.dp))
                     Icon(
