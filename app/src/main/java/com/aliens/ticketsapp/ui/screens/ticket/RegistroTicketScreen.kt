@@ -19,7 +19,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.aliens.ticketsapp.model.Prioridad
 import com.aliens.ticketsapp.ui.components.*
+import com.aliens.ticketsapp.ui.components.prioridad.PrioridadSpinner
 import com.aliens.ticketsapp.utils.Screen
 
 @Composable
@@ -137,7 +139,7 @@ fun RegistroTicketScreen(
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            ClienteSpinner(idCliente = viewModel.clienteId)
+            PrioridadSpinner(idPrioridad = viewModel.prioridadId)
 
             Spacer(modifier = Modifier.height(25.dp))
 
