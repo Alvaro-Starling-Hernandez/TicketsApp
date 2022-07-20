@@ -54,8 +54,8 @@ fun ConsultaTicketScreen(
             val listaTecnicos = viewModel.tickets.collectAsState(initial = emptyList())
 
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                items(3) {
-                    TicketItems(navController)
+                items(listaTecnicos.value) { ticket ->
+                    TicketItems(ticket, navController)
                 }
             }
 
