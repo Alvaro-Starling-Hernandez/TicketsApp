@@ -26,6 +26,7 @@ import com.aliens.ticketsapp.model.Respuesta
 import com.aliens.ticketsapp.model.Tiempo
 import com.aliens.ticketsapp.ui.theme.TicketsAppTheme
 import com.aliens.ticketsapp.utils.Screen
+import com.aliens.ticketsapp.utils.getNombreTecnico
 
 @Composable
 fun TiempoItem(
