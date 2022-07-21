@@ -40,6 +40,7 @@ fun RegistroTicketScreen(
         viewModel.fecha = it.fecha
         viewModel.asunto = it.asunto
         viewModel.requerimiento = it.requerimiento
+        viewModel.prioridadId = it.prioridadId
     }
 
 
