@@ -206,43 +206,6 @@ fun RegistroTicketScreen(
                     )
                 }
             }
-
-
-
-//            Button(
-//                onClick = {
-////                    trabajoError = viewModel.trabajo.isBlank()
-////                    tiempoError = viewModel.tiempo.isBlank()
-////                    if (!trabajoError && !tiempoError) {
-////                        if (viewModel.isNumber(viewModel.tiempo) && viewModel.tiempo.toFloat() > 0) {
-////                            viewModel.Guardar()
-////                            Toast.makeText(
-////                                context,
-////                                com.aliens.ticketsapp.R.string.ToastMessageSave,
-////                                Toast.LENGTH_SHORT
-////                            ).show()
-////                            navController.navigate(Screen.ConsultaTiempo.route)
-////                        } else {
-////                            Toast.makeText(
-////                                context,
-////                                "Entrada de tiempo invalida",
-////                                Toast.LENGTH_SHORT
-////                            ).show()
-////                        }
-////                    }
-//                },
-//                modifier = Modifier
-//                    .align(Alignment.CenterHorizontally)
-//                    .fillMaxWidth()
-//            ) {
-//                Icon(
-//                    imageVector = Icons.Default.Save,
-//                    contentDescription = stringResource(com.aliens.ticketsapp.R.string.Guardar)
-//                )
-//                Spacer(modifier = Modifier.width(5.dp))
-//                Text(text = stringResource(com.aliens.ticketsapp.R.string.Guardar))
-//            }
-
         }
     }
 }
