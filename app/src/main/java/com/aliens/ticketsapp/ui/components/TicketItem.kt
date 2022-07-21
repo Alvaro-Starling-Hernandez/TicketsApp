@@ -59,11 +59,7 @@ fun TicketItems(
                 Icon(
                     Icons.Default.Info,
                     contentDescription = null,
-                    tint = getColorPrioridad(ticket.prioridadId),
-                    modifier = Modifier.background(
-                        color = Color.Black,
-                        shape = RoundedCornerShape(20.dp)
-                    )
+                    tint = getColorPrioridad(ticket.prioridadId)
                 )
             }
         }
