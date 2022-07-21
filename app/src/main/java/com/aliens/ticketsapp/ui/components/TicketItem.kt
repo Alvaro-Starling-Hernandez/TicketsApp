@@ -30,7 +30,7 @@ fun TicketItems(
 ) {
     var showDialog by rememberSaveable { mutableStateOf(false) }
 
-    //ModalTecnico(showDialog, { showDialog = false }, navController, tecnico.tecnicoId, tecnico)
+    ModalTicket(showDialog, { showDialog = false }, navController, ticket.ticketId, ticket)
 
     Card(
         modifier = Modifier
