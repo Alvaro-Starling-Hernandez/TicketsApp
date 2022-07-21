@@ -17,11 +17,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.model.Ticket
+import com.aliens.ticketsapp.utils.getColorEstado
 import com.aliens.ticketsapp.utils.getColorPrioridad
 import com.aliens.ticketsapp.utils.getEstado
 import com.aliens.ticketsapp.utils.getNombreCliente
@@ -96,7 +99,10 @@ fun TicketItems(
                 Spacer(modifier = Modifier.padding(4.dp))
                 Text(
                     text = getEstado(ticket.estadoId),
-                    style = MaterialTheme.typography.caption
+                    style = MaterialTheme.typography.caption,
+                    color = getColorEstado(ticket.estadoId),
+                    fontWeight = FontWeight.SemiBold,
+                    fontStyle = FontStyle.Italic
 
                 )
                 Spacer(modifier = Modifier.padding(4.dp))
