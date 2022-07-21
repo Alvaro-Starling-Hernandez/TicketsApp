@@ -83,7 +83,7 @@ fun RegistroTicketScreen(
                     }
                 },
                 modifier = Modifier
-                    .padding(bottom = 70.dp, end = 50.dp)
+                    .padding(bottom = 70.dp)
                     .size(60.dp)
             ) {
                 Icon(
@@ -170,40 +170,45 @@ fun RegistroTicketScreen(
             PrioridadSpinner(idPrioridad = viewModel.prioridadId)
 
             Spacer(modifier = Modifier.height(25.dp))
+            
+            if(id!=0){
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Button(onClick = { navController.navigate(Screen.ConsultaRespuesta.route) }) {
+                        Text(text = stringResource(com.aliens.ticketsapp.R.string.Responder))
+                        Spacer(modifier = Modifier.width(5.dp))
+                        Icon(
+                            imageVector = Icons.Default.Reply,
+                            contentDescription = stringResource(com.aliens.ticketsapp.R.string.Guardar)
+                        )
+                    }
 
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Button(onClick = { navController.navigate(Screen.ConsultaRespuesta.route) }) {
-                    Text(text = stringResource(com.aliens.ticketsapp.R.string.Responder))
-                    Spacer(modifier = Modifier.width(5.dp))
-                    Icon(
-                        imageVector = Icons.Default.Reply,
-                        contentDescription = stringResource(com.aliens.ticketsapp.R.string.Guardar)
-                    )
+                    Button(onClick = { navController.navigate(Screen.ConsultaTiempo.route) }) {
+                        Text(text = stringResource(com.aliens.ticketsapp.R.string.AgregarTiempo))
+                        Spacer(modifier = Modifier.width(5.dp))
+                        Icon(
+                            imageVector = Icons.Default.MoreTime,
+                            contentDescription = stringResource(com.aliens.ticketsapp.R.string.Guardar)
+                        )
+                    }
                 }
 
-                Button(onClick = { navController.navigate(Screen.ConsultaTiempo.route) }) {
-                    Text(text = stringResource(com.aliens.ticketsapp.R.string.AgregarTiempo))
+                Spacer(modifier = Modifier.height(25.dp))
+
+                Button(onClick = { /*TODO*/ }) {
+                    Text(text = "Finalizar")
                     Spacer(modifier = Modifier.width(5.dp))
                     Icon(
-                        imageVector = Icons.Default.MoreTime,
+                        imageVector = Icons.Default.Done,
                         contentDescription = stringResource(com.aliens.ticketsapp.R.string.Guardar)
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(25.dp))
 
-            Button(onClick = { /*TODO*/ }) {
-                Text(text = "Finalizar")
-                Spacer(modifier = Modifier.width(5.dp))
-                Icon(
-                    imageVector = Icons.Default.Done,
-                    contentDescription = stringResource(com.aliens.ticketsapp.R.string.Guardar)
-                )
-            }
+
 //            Button(
 //                onClick = {
 ////                    trabajoError = viewModel.trabajo.isBlank()
