@@ -41,6 +41,7 @@ fun RegistroTicketScreen(
         viewModel.asunto = it.asunto
         viewModel.requerimiento = it.requerimiento
         viewModel.prioridadId = it.prioridadId
+        viewModel.estadoId = it.estadoId
     }
 
 
@@ -67,7 +68,9 @@ fun RegistroTicketScreen(
                     asuntoError = viewModel.asunto.isBlank()
                     requerimientoError = viewModel.requerimiento.isBlank()
                     if (!asuntoError && !requerimientoError) {
-
+                        if(id==0){
+                            viewModel.estadoId = 0
+                        }
                         viewModel.Guardar()
                         Toast.makeText(
                             context,
@@ -198,7 +201,11 @@ fun RegistroTicketScreen(
 
                 Spacer(modifier = Modifier.height(25.dp))
 
-                Button(onClick = { /*TODO*/ }) {
+                Button(onClick = {
+                    viewModel.estadoId = 2
+                    viewModel.Guardar()
+                    navController.navigate(Screen.ConsultaTicket.route)
+                }) {
                     Text(text = "Finalizar")
                     Spacer(modifier = Modifier.width(5.dp))
                     Icon(
