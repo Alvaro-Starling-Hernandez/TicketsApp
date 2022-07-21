@@ -2,6 +2,7 @@ package com.aliens.ticketsapp.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.aliens.ticketsapp.ui.components.prioridad.PrioridadViewModel
 import com.aliens.ticketsapp.ui.screens.cliente.ClienteViewModel
@@ -67,4 +68,15 @@ fun getNombrePrioridad(prioridad: Int, viewModel: PrioridadViewModel = hiltViewM
     }
 
     return name
+}
+
+fun getColorPrioridad(prioridad: Int): Color {
+    var color = Color.Black
+    when (prioridad) {
+        1 -> color = Color.Red
+        2 -> color = Color(color = 0xFFFF9800)
+        3 -> color = Color.Yellow
+        4 -> color = Color.Green
+    }
+    return color
 }

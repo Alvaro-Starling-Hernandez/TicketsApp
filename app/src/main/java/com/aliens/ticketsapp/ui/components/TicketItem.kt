@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.model.Ticket
+import com.aliens.ticketsapp.utils.getColorPrioridad
 import com.aliens.ticketsapp.utils.getEstado
 import com.aliens.ticketsapp.utils.getNombreCliente
 
@@ -55,7 +56,7 @@ fun TicketItems(
                 Icon(
                     Icons.Default.Info,
                     contentDescription = null,
-                    tint = getColor(ticket.prioridadId),
+                    tint = getColorPrioridad(ticket.prioridadId),
                     modifier = Modifier.background(
                         color = Color.Black,
                         shape = RoundedCornerShape(20.dp)
@@ -108,15 +109,4 @@ fun TicketItems(
             }
         }
     }
-}
-
-fun getColor(prioridad: Int): Color {
-    var color = Color.Black
-    when (prioridad) {
-        1 -> color = Color.Red
-        2 -> color = Color(color = 0xFFFF9800)
-        3 -> color = Color.Yellow
-        4 -> color = Color.Green
-    }
-    return color
 }
