@@ -79,7 +79,7 @@ fun NavigationSetup(navController: NavHostController) {
         composable(Screen.RegistroTicket.withArgsFormat(Screen.RegistroTicket.id),
             arguments = listOf(navArgument(Screen.RegistroTicket.id){type = NavType.IntType})) { backStackEntry ->
             backStackEntry.arguments?.getInt(Screen.RegistroTicket.id)?.let {
-                RegistroTiempoScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroTicket.id)!!)
+                RegistroTicketScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroTicket.id)!!)
             }
         }
     }
