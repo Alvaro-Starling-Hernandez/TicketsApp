@@ -80,3 +80,14 @@ fun getColorPrioridad(prioridad: Int): Color {
     }
     return color
 }
+
+fun getColorEstado(estado: Int): Color {
+    var color = Color.Black
+    when (estado) {
+        0 -> color = Color(color = 0xFFFF9800)
+        1 -> color = Color.Blue
+        2 -> color = Color.Green
+    }
+    return color
+}
+
