@@ -9,14 +9,18 @@ import com.aliens.ticketsapp.ui.screens.cliente.ClienteViewModel
 import com.aliens.ticketsapp.ui.screens.tecnico.TecnicoViewModel
 
 fun getEstado(id: Int): String {
-    var str: String = ""
+    var str = ""
 
-    if (id == 0){
-        str = "Pendiente"
-    }else if(id == 1){
-        str = "En Proceso"
-    }else if(id == 2) {
-        str = "Finalizado"
+    when (id) {
+        0 -> {
+            str = "Pendiente"
+        }
+        1 -> {
+            str = "En Proceso"
+        }
+        2 -> {
+            str = "Finalizado"
+        }
     }
 
     return str
