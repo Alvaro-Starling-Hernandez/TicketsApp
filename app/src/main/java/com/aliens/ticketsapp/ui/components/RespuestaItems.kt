@@ -21,6 +21,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
@@ -51,9 +52,11 @@ fun RespuestaItem(
             .fillMaxWidth()
             .clickable { showDialog = true }
     ) {
-        Column(modifier = Modifier
-            .padding(8.dp),
-            horizontalAlignment = Alignment.End,) {
+        Column(
+            modifier = Modifier
+                .padding(8.dp),
+            horizontalAlignment = Alignment.End,
+        ) {
             Row(
             ) {
                 Spacer(modifier = Modifier.width(20.dp))
@@ -65,11 +68,22 @@ fun RespuestaItem(
             }
         }
 
-        Column(modifier = Modifier
-            .padding(8.dp)) {
-            Text(getNombreTecnico(respuesta.tecnicoId), style = MaterialTheme.typography.h6,
-            modifier = Modifier.padding(top = 15.dp))
-            Text(respuesta.Mensaje)
+        Column(
+            modifier = Modifier
+                .padding(8.dp)
+        ) {
+            Text(
+                getNombreTecnico(respuesta.tecnicoId),
+                style = MaterialTheme.typography.h6,
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 1,
+                modifier = Modifier.padding(top = 15.dp)
+            )
+            Text(
+                respuesta.Mensaje,
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 1
+            )
         }
     }
 }
@@ -146,8 +160,8 @@ fun Modal(
 
                         Spacer(modifier = Modifier.height(20.dp))
                         Column {
-                            Text("Tecnico: "+ getNombreTecnico(respuesta.tecnicoId))
-                            Text("Mensaje: "+respuesta.Mensaje)
+                            Text("Tecnico: " + getNombreTecnico(respuesta.tecnicoId))
+                            Text("Mensaje: " + respuesta.Mensaje)
                         }
                         Spacer(modifier = Modifier.height(20.dp))
                         Row() {
