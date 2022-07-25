@@ -79,7 +79,9 @@ fun RegistroTiempoScreen(
                     viewModel.trabajo = it
                     trabajoError = false
                 },
-                modifier = Modifier.fillMaxWidth().height(120.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(120.dp),
                 label = {
                     Text(stringResource(R.string.Trabajo))
                 },
@@ -121,7 +123,8 @@ fun RegistroTiempoScreen(
                     capitalization = KeyboardCapitalization.None,
                     keyboardType = KeyboardType.Decimal
                 ),
-                isError = tiempoError
+                isError = tiempoError,
+                singleLine = true
             )
 
             TextObligatorio(error = tiempoError)
