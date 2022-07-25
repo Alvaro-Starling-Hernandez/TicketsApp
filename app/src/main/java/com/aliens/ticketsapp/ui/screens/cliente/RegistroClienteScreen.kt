@@ -97,7 +97,7 @@ fun RegistroClienteScreen(
                     )
                 },
                 isError = nombreError,
-                maxLines = 1
+                singleLine = true
             )
 
             TextObligatorio(error = nombreError)
@@ -124,7 +124,7 @@ fun RegistroClienteScreen(
                     keyboardType = KeyboardType.Phone
                 ),
                 isError = telefonoError,
-                maxLines = 1
+                singleLine = true
             )
 
             TextObligatorio(error = telefonoError)
@@ -151,7 +151,7 @@ fun RegistroClienteScreen(
                     keyboardType = KeyboardType.Email
                 ),
                 isError = emailError,
-                maxLines = 1
+                singleLine = true
             )
 
             TextObligatorio(error = emailError)
