@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
@@ -74,7 +75,9 @@ fun TecnicoItems(
             ) {
                 Text(
                     text = tecnico.nombreTecnico,
-                    style = MaterialTheme.typography.h6
+                    style = MaterialTheme.typography.h6,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 Row() {
@@ -82,7 +85,9 @@ fun TecnicoItems(
                     Spacer(modifier = Modifier.padding(4.dp))
                     Text(
                         text = tecnico.email,
-                        style = MaterialTheme.typography.caption
+                        style = MaterialTheme.typography.caption,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 1
                     )
                 }
                 Spacer(modifier = Modifier.height(10.dp))
@@ -91,8 +96,9 @@ fun TecnicoItems(
                     Spacer(modifier = Modifier.padding(4.dp))
                     Text(
                         text = tecnico.telefonoTecnico,
-                        style = MaterialTheme.typography.caption
-
+                        style = MaterialTheme.typography.caption,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 1
                     )
                 }
             }
