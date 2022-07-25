@@ -43,11 +43,12 @@ fun TiempoItem(
         modifier = Modifier
             .padding(vertical = 10.dp)
             .fillMaxWidth()
-            .clickable{ showDialog = true }
+            .clickable { showDialog = true }
     ) {
-        Row(modifier = Modifier
-            .padding(8.dp)
-            .size(100.dp)
+        Row(
+            modifier = Modifier
+                .padding(8.dp)
+                .size(100.dp)
         ) {
             Box(
                 modifier = Modifier
@@ -63,11 +64,21 @@ fun TiempoItem(
 
             Spacer(modifier = Modifier.width(20.dp))
             Column {
-                Text(text = getNombreTecnico(tecn = tiempo.tecnicoId), fontWeight = FontWeight.Bold)
+                Text(
+                    text = getNombreTecnico(tecn = tiempo.tecnicoId),
+                    fontWeight = FontWeight.Bold,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1
+                )
                 Spacer(modifier = Modifier.height(10.dp))
-                Text(text = tiempo.trabajo, maxLines = 1, overflow = TextOverflow.Ellipsis, fontStyle = FontStyle.Italic)
+                Text(
+                    text = tiempo.trabajo,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    fontStyle = FontStyle.Italic
+                )
                 Spacer(modifier = Modifier.height(10.dp))
-                Text(text = tiempo.tiempo.toString()+" mins")
+                Text(text = tiempo.tiempo.toString() + " mins")
             }
         }
 
