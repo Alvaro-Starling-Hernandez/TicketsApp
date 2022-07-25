@@ -134,7 +134,8 @@ fun RegistroTicketScreen(
                     capitalization = KeyboardCapitalization.Sentences,
                     keyboardType = KeyboardType.Text
                 ),
-                isError = asuntoError
+                isError = asuntoError,
+                singleLine = true
             )
 
             TextObligatorio(error = asuntoError)

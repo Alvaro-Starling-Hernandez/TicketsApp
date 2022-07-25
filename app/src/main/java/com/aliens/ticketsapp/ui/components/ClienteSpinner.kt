@@ -74,7 +74,8 @@ fun ClienteSpinner(
             leadingIcon = {
                 Icon(imageVector = Icons.Default.Person, contentDescription = null)
             },
-            readOnly = true
+            readOnly = true,
+            singleLine = true
         )
         DropdownMenu(
             expanded = mExpanded,
