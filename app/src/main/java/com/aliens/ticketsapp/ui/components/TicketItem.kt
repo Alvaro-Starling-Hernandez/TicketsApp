@@ -78,7 +78,7 @@ fun TicketItems(
             )
 
             Spacer(modifier = Modifier.height(10.dp))
-            Row() {
+            Row {
                 Spacer(modifier = Modifier.padding(4.dp))
                 Text(
                     text = ticket.asunto,
