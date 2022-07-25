@@ -23,6 +23,7 @@ import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TextObligatorio
 import java.util.regex.Pattern
+import kotlin.math.sin
 
 
 @Composable
@@ -97,7 +98,8 @@ fun RegistroTecnicoScreen(
                         contentDescription = null
                     )
                 },
-                isError = nombreError
+                isError = nombreError,
+                singleLine = true
             )
 
             TextObligatorio(error = nombreError)
@@ -123,7 +125,8 @@ fun RegistroTecnicoScreen(
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Phone
                 ),
-                isError = telefonoError
+                isError = telefonoError,
+                singleLine = true
             )
 
             TextObligatorio(error = telefonoError)
@@ -149,7 +152,8 @@ fun RegistroTecnicoScreen(
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Email
                 ),
-                isError = emailError
+                isError = emailError,
+                singleLine = true
             )
 
             TextObligatorio(error = emailError)
