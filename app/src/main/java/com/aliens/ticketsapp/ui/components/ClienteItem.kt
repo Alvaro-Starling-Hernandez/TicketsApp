@@ -18,6 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.model.Cliente
@@ -58,7 +59,7 @@ fun ClienteItem(
                     style = MaterialTheme.typography.h4,
                     color = Color.White,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(6.dp)
+                    modifier = Modifier.padding(6.dp),
                 )
             }
 
@@ -67,7 +68,9 @@ fun ClienteItem(
             ) {
                 Text(
                     text = cliente.nombreCliente,
-                    style = MaterialTheme.typography.h6
+                    style = MaterialTheme.typography.h6,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 Row() {
@@ -75,7 +78,9 @@ fun ClienteItem(
                     Spacer(modifier = Modifier.padding(4.dp))
                     Text(
                         text = cliente.email,
-                        style = MaterialTheme.typography.caption
+                        style = MaterialTheme.typography.caption,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 1
                     )
                 }
                 Spacer(modifier = Modifier.height(10.dp))
@@ -84,7 +89,9 @@ fun ClienteItem(
                     Spacer(modifier = Modifier.padding(4.dp))
                     Text(
                         text = cliente.telefonoCliente,
-                        style = MaterialTheme.typography.caption
+                        style = MaterialTheme.typography.caption,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 1
 
                     )
                 }
