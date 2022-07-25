@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -53,8 +54,7 @@ fun TicketItems(
                 .padding(8.dp),
             horizontalAlignment = Alignment.End,
         ) {
-            Row(
-            ) {
+            Row {
                 Spacer(modifier = Modifier.width(20.dp))
                 Icon(
                     Icons.Default.Info,
@@ -71,7 +71,10 @@ fun TicketItems(
         ) {
             Text(
                 text = getNombreCliente(ticket.clienteId),
-                style = MaterialTheme.typography.h6
+                style = MaterialTheme.typography.h6,
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 1,
+                modifier = Modifier.padding(end = 40.dp)
             )
 
             Spacer(modifier = Modifier.height(10.dp))
@@ -80,7 +83,9 @@ fun TicketItems(
                 Text(
                     text = ticket.asunto,
                     style = MaterialTheme.typography.caption,
-                    fontSize = 18.sp
+                    fontSize = 18.sp,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1
                 )
             }
             Row() {
@@ -88,6 +93,8 @@ fun TicketItems(
                 Text(
                     text = ticket.requerimiento,
                     style = MaterialTheme.typography.caption,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1
                 )
             }
             Spacer(modifier = Modifier.height(10.dp))
