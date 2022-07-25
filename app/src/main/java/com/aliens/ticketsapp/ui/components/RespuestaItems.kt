@@ -160,8 +160,16 @@ fun Modal(
 
                         Spacer(modifier = Modifier.height(20.dp))
                         Column {
-                            Text("Tecnico: " + getNombreTecnico(respuesta.tecnicoId))
-                            Text("Mensaje: " + respuesta.Mensaje)
+                            Text(
+                                "Tecnico: " + getNombreTecnico(respuesta.tecnicoId),
+                                overflow = TextOverflow.Ellipsis,
+                                maxLines = 1
+                            )
+                            Text(
+                                "Mensaje: " + respuesta.Mensaje,
+                                overflow = TextOverflow.Ellipsis,
+                                maxLines = 1
+                            )
                         }
                         Spacer(modifier = Modifier.height(20.dp))
                         Row() {
