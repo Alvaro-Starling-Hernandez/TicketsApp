@@ -15,6 +15,9 @@ interface RespuestaDao {
     @Query("SELECT * FROM repuestas WHERE respuestaId=:respuestaId")
     fun buscar(respuestaId: Int): Flow<List<Respuesta>>
 
+    @Query("SELECT * FROM repuestas WHERE ticketId=:ticketId")
+    fun getRespuestaByTicket(ticketId: Int): Flow<List<Respuesta>>
+
     @Query("SELECT * FROM repuestas ORDER BY respuestaId")
     fun getList(): Flow<List<Respuesta>>
 }
