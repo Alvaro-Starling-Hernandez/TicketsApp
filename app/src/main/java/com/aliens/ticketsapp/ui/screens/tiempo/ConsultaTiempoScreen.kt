@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBackIos
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,13 +24,20 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TiempoItem
+import com.aliens.ticketsapp.ui.components.appBar.AppBarConBackIcon
+import com.aliens.ticketsapp.ui.components.appBar.SearchWidgetState
 import com.aliens.ticketsapp.utils.Screen
+import com.aliens.ticketsapp.utils.getNombreTecnico
 
 @Composable
 fun ConsultaTiempoScreen(
     navController: NavController,
     viewModel: TiempoViewModel = hiltViewModel(),
 ) {
+
+    val searchWidgetState by viewModel.searchWidgetState
+    val searchTextState by viewModel.searchTextState
+
     var sum: Float = 0f
     val lista = viewModel.tiempos.collectAsState(initial = emptyList())
     lista.value.forEach {
@@ -39,33 +47,51 @@ fun ConsultaTiempoScreen(
 
         topBar = {
 
-            TopAppBar(
-                navigationIcon = {
+            AppBarConBackIcon(
+                searchWidgetState = searchWidgetState,
+                navController = navController,
+                searchTextState = searchTextState,
+                onTextChange = {
+                    viewModel.updateSearchTextState(newValue = it)
+                },
+                onCloseClicked = {
+                    viewModel.updateSearchWidgetState(newValue = SearchWidgetState.CLOSED)
+                },
+                onSearchClicked = {
+
+                },
+                onSearchTriggered = {
+                    viewModel.updateSearchWidgetState(newValue = SearchWidgetState.OPENED)
+                },
+                navigateIcon = {
                     Icon(
                         imageVector = Icons.Default.ArrowBackIos,
                         contentDescription = stringResource(R.string.ArrowBack),
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                navController.navigate(Screen.RegistroTicket.route)
+                                navController.navigateUp()
                             }
                     )
                 },
-                title = {
-                    Text(stringResource(R.string.TituloConsultaTiempos))
-                },
-                actions = {
-                    IconButton(onClick = { navController.navigate(Screen.RegistroTiempo.route) }) {
-                        Icon(
-                            modifier = Modifier.size(40.dp),
-                            imageVector = Icons.Default.Add,
-                            contentDescription = stringResource(R.string.Agregar)
-                        )
-                    }
-                }
+                title = stringResource(R.string.Tiempo)
             )
 
-        }
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    navController.navigate(Screen.RegistroTiempo.route)
+                }
+                ,
+                modifier = Modifier.padding(bottom = 50.dp, end = 20.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = null
+                )
+            }
+        }, floatingActionButtonPosition = FabPosition.End
 
     ) {
         Column(
@@ -82,17 +108,24 @@ fun ConsultaTiempoScreen(
                 val listaTiempos = viewModel.tiempos.collectAsState(initial = emptyList())
 
                 LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                    items(listaTiempos.value) { tiempo ->
-                        TiempoItem(tiempo, navController)
+                    items(items = listaTiempos.value.filter { res ->
+                        res.tiempo.toString().contains(searchTextState, ignoreCase = true) ||
+                                res.trabajo.contains(searchTextState, ignoreCase = true)
+//                                getNombreTecnico(tecn = res.tecnicoId).contains(
+//                                    searchTextState,
+//                                    ignoreCase = true
+//                                )
+                    }, key = { it.tiempoId }) { item ->
+                        TiempoItem(item, navController)
                     }
                 }
             }
 
             Column(
                 modifier = Modifier
-                    .padding(end = 25.dp, bottom = 25.dp)
+                    .padding(start = 25.dp, bottom = 25.dp, end = 100.dp)
                     .fillMaxWidth(),
-                horizontalAlignment = Alignment.End,
+                horizontalAlignment = Alignment.Start,
 
                 ) {
                 Text(
