@@ -54,7 +54,7 @@ fun RegistroTiempoScreen(
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                navController.navigate(Screen.ConsultaTiempo.route)
+                                navController.navigateUp()
                             }
                     )
                 },
@@ -143,7 +143,7 @@ fun RegistroTiempoScreen(
                                 R.string.ToastMessageSave,
                                 Toast.LENGTH_SHORT
                             ).show()
-                            navController.navigate(Screen.ConsultaTiempo.route)
+                            navController.navigateUp()
                         } else {
                             Toast.makeText(
                                 context,
