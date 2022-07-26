@@ -24,7 +24,7 @@ import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.model.Respuesta
 import com.aliens.ticketsapp.ui.components.RespuestaItem
-import com.aliens.ticketsapp.ui.components.SearchView
+import com.aliens.ticketsapp.ui.components.searchRespuesta.SearchView
 import com.aliens.ticketsapp.utils.Screen
 import kotlinx.coroutines.flow.Flow
 
