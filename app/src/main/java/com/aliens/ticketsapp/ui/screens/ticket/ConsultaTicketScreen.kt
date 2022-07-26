@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -16,7 +17,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TicketItems
+import com.aliens.ticketsapp.ui.components.appBar.SearchWidgetState
+import com.aliens.ticketsapp.ui.components.appBar.AppBar
 import com.aliens.ticketsapp.utils.Screen
+import com.aliens.ticketsapp.utils.getNombreCliente
 
 @Composable
 fun ConsultaTicketScreen(
@@ -24,26 +28,46 @@ fun ConsultaTicketScreen(
     viewModel: TicketViewModel = hiltViewModel()
 ) {
 
-    Scaffold (
+    val searchWidgetState by viewModel.searchWidgetState
+    val searchTextState by viewModel.searchTextState
+
+    Scaffold(
         topBar = {
 
-            TopAppBar(
-                title = {
-                    Text(stringResource(R.string.Tickets))
+            AppBar(
+                searchWidgetState = searchWidgetState,
+                navController = navController,
+                searchTextState = searchTextState,
+                onTextChange = {
+                    viewModel.updateSearchTextState(newValue = it)
                 },
-                actions = {
-                    IconButton(onClick = { navController.navigate(Screen.RegistroTicket.route) }) {
-                        Icon(
-                            modifier = Modifier.size(40.dp),
-                            imageVector = Icons.Default.Add,
-                            contentDescription = stringResource(R.string.Agregar)
-                        )
-                    }
-                }
+                onCloseClicked = {
+                    viewModel.updateSearchWidgetState(newValue = SearchWidgetState.CLOSED)
+                },
+                onSearchClicked = {
+
+                },
+                onSearchTriggered = {
+                    viewModel.updateSearchWidgetState(newValue = SearchWidgetState.OPENED)
+                },
+                title = stringResource(R.string.Tickets)
             )
 
-        }
-    ){
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    navController.navigate(Screen.RegistroTicket.route)
+                },
+                modifier = Modifier.padding(bottom = 50.dp, end = 20.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = null
+                )
+            }
+        }, floatingActionButtonPosition = FabPosition.End
+    ) {
         Column(
             modifier = Modifier
                 .padding(it)
@@ -51,11 +75,19 @@ fun ConsultaTicketScreen(
 
         ) {
 
-            val listaTecnicos = viewModel.tickets.collectAsState(initial = emptyList())
+            val listaTickets = viewModel.tickets.collectAsState(initial = emptyList())
 
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                items(listaTecnicos.value) { ticket ->
-                    TicketItems(ticket, navController)
+                items(items = listaTickets.value.filter { res ->
+//                    getNombreCliente(cliente = res.clienteId).contains(
+//                        searchTextState,
+//                        ignoreCase = true
+//                    ) ||
+                            res.asunto.contains(searchTextState, ignoreCase = true) ||
+                            res.fecha.contains(searchTextState, ignoreCase = true) ||
+                            res.requerimiento.contains(searchTextState, ignoreCase = true)
+                }, key = { it.ticketId }) { item ->
+                    TicketItems(item, navController)
                 }
             }
 
