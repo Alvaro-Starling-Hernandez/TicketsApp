@@ -20,6 +20,10 @@ class RespuestaRepository @Inject constructor(
         return respuestaDao.buscar(respuestaId)
     }
 
+    fun getRespuestaByTicket(ticketId: Int): Flow<List<Respuesta>> {
+        return respuestaDao.getRespuestaByTicket(ticketId)
+    }
+
     fun getList(): Flow<List<Respuesta>>{
         return respuestaDao.getList()
     }
