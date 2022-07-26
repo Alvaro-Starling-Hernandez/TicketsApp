@@ -36,7 +36,7 @@ fun ConsultaRespuestaScreen(
 ) {
 
     val textState = remember { mutableStateOf(TextFieldValue("")) }
-    var en = 0
+    var auxId = 0
     val searchedText = textState.value.text
 
     Scaffold(
@@ -62,7 +62,7 @@ fun ConsultaRespuestaScreen(
                     IconButton(onClick = {
                         navController.navigate(
                             Screen.RegistroRespuesta.withArgs(
-                                en.toString(),
+                                auxId.toString(),
                                 idTicket.toString()
                             )
                         )
