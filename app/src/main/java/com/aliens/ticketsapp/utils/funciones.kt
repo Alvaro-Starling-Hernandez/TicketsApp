@@ -57,7 +57,7 @@ fun getNombreTecnico(tecn: Int, viewModel: TecnicoViewModel = hiltViewModel()): 
 
 fun InicalNombre(inicial: String): String {
     var i = inicial[0]
-    return i.toString()
+    return i.toString().uppercase()
 }
 
 @Composable
