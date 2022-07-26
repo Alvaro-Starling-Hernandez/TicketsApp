@@ -25,6 +25,8 @@ import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.model.Respuesta
 import com.aliens.ticketsapp.ui.components.RespuestaItem
 import com.aliens.ticketsapp.ui.components.SearchView
+import com.aliens.ticketsapp.ui.components.appBar.AppBarConBackIcon
+import com.aliens.ticketsapp.ui.components.appBar.SearchWidgetState
 import com.aliens.ticketsapp.utils.Screen
 import kotlinx.coroutines.flow.Flow
 
@@ -34,17 +36,32 @@ fun ConsultaRespuestaScreen(
     idTicket: Int,
     viewModel: RespuestaViewModel = hiltViewModel()
 ) {
-
-    val textState = remember { mutableStateOf(TextFieldValue("")) }
     var auxId = 0
-    val searchedText = textState.value.text
+
+    val searchWidgetState by viewModel.searchWidgetState
+    val searchTextState by viewModel.searchTextState
 
     Scaffold(
 
         topBar = {
 
-            TopAppBar(
-                navigationIcon = {
+            AppBarConBackIcon(
+                searchWidgetState = searchWidgetState,
+                navController = navController,
+                searchTextState = searchTextState,
+                onTextChange = {
+                    viewModel.updateSearchTextState(newValue = it)
+                },
+                onCloseClicked = {
+                    viewModel.updateSearchWidgetState(newValue = SearchWidgetState.CLOSED)
+                },
+                onSearchClicked = {
+
+                },
+                onSearchTriggered = {
+                    viewModel.updateSearchWidgetState(newValue = SearchWidgetState.OPENED)
+                },
+                navigateIcon = {
                     Icon(
                         imageVector = Icons.Default.ArrowBackIos,
                         contentDescription = stringResource(R.string.ArrowBack),
@@ -55,28 +72,23 @@ fun ConsultaRespuestaScreen(
                             }
                     )
                 },
-                title = {
-                    Text(stringResource(R.string.Respuestas))
-                },
-                actions = {
-                    IconButton(onClick = {
-                        navController.navigate(
-                            Screen.RegistroRespuesta.withArgs(
-                                auxId.toString(),
-                                idTicket.toString()
-                            )
-                        )
-                    }) {
-                        Icon(
-                            modifier = Modifier.size(40.dp),
-                            imageVector = Icons.Default.Add,
-                            contentDescription = stringResource(R.string.Agregar)
-                        )
-                    }
-                }
+                title = stringResource(R.string.Respuestas)
             )
 
-        }
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    navController.navigate(Screen.RegistroRespuesta.route)
+                },
+                modifier = Modifier.padding(bottom = 50.dp, end = 20.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = null
+                )
+            }
+        }, floatingActionButtonPosition = FabPosition.End
 
     ) {
         Column(
@@ -90,11 +102,10 @@ fun ConsultaRespuestaScreen(
             val listaRespuestas =
                 viewModel.getRespuestaByTicket(idTicket).collectAsState(initial = emptyList())
 
-            SearchView(state = textState, placeHolder = "Buscar")
             LazyColumn() {
                 items(items = listaRespuestas.value.filter { res ->
-                    res.Mensaje.contains(searchedText, ignoreCase = true) ||
-                            res.fecha.contains(searchedText, ignoreCase = true)
+                    res.Mensaje.contains(searchTextState, ignoreCase = true) ||
+                            res.fecha.contains(searchTextState, ignoreCase = true)
                 }, key = { it.respuestaId }) { item ->
                     RespuestaItem(item, navController)
                 }
