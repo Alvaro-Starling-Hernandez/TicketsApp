@@ -4,7 +4,9 @@ sealed class Screen(val route: String){
     object RegistroRespuesta: Screen("RegistroRespuesta"){
         val id = "id"
     }
-    object ConsultaRespuesta: Screen("ConsultaRespuesta")
+    object ConsultaRespuesta: Screen("ConsultaRespuesta"){
+        val id = "id"
+    }
     object RegistroTiempo: Screen("RegistroTiempo"){
         val id = "id"
     }
