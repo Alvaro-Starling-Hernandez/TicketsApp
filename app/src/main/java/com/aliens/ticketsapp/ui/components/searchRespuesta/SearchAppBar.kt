@@ -27,8 +27,7 @@ fun SearchAppBar(
         modifier = Modifier
             .fillMaxWidth()
             .height(56.dp),
-        elevation = AppBarDefaults.TopAppBarElevation,
-        color = MaterialTheme.colors.primary
+        elevation = AppBarDefaults.TopAppBarElevation
     ) {
         TextField(modifier = Modifier
             .fillMaxWidth(),
@@ -40,8 +39,7 @@ fun SearchAppBar(
                 Text(
                     modifier = Modifier
                         .alpha(ContentAlpha.medium),
-                    text = "Buscar aqui...",
-                    color = Color.White
+                    text = "Buscar aqui..."
                 )
             },
             textStyle = TextStyle(
@@ -56,8 +54,7 @@ fun SearchAppBar(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Search,
-                        contentDescription = "Search Icon",
-                        tint = Color.White
+                        contentDescription = "Search Icon"
                     )
                 }
             },
@@ -73,8 +70,7 @@ fun SearchAppBar(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Close,
-                        contentDescription = "Close Icon",
-                        tint = Color.White
+                        contentDescription = "Close Icon"
                     )
                 }
             },
@@ -87,8 +83,8 @@ fun SearchAppBar(
                 }
             ),
             colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = Color.Transparent,
-                cursorColor = Color.White.copy(alpha = ContentAlpha.medium)
-            ))
+                backgroundColor = Color.Transparent
+            )
+        )
     }
 }
