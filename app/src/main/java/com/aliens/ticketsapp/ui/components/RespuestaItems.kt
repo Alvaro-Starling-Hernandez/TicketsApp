@@ -175,7 +175,12 @@ fun Modal(
                         Row() {
                             Button(
                                 onClick = {
-                                    navController.navigate(Screen.RegistroRespuesta.withArgs(id.toString()))
+                                    navController.navigate(
+                                        Screen.RegistroRespuesta.withArgs(
+                                            id.toString(),
+                                            respuesta.ticketId.toString()
+                                        )
+                                    )
                                     onDismiss()
                                 },
                                 shape = RoundedCornerShape(50.dp),

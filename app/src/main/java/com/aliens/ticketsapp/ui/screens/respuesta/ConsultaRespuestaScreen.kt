@@ -36,7 +36,7 @@ fun ConsultaRespuestaScreen(
 ) {
 
     val textState = remember { mutableStateOf(TextFieldValue("")) }
-
+    var en = 0
     val searchedText = textState.value.text
 
     Scaffold(
@@ -51,7 +51,7 @@ fun ConsultaRespuestaScreen(
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                navController.navigate(Screen.RegistroTicket.route)
+                                navController.navigate(Screen.ConsultaTicket.route)
                             }
                     )
                 },
@@ -59,7 +59,14 @@ fun ConsultaRespuestaScreen(
                     Text(stringResource(R.string.Respuestas))
                 },
                 actions = {
-                    IconButton(onClick = { navController.navigate(Screen.RegistroRespuesta.route) }) {
+                    IconButton(onClick = {
+                        navController.navigate(
+                            Screen.RegistroRespuesta.withArgs(
+                                en.toString(),
+                                idTicket.toString()
+                            )
+                        )
+                    }) {
                         Icon(
                             modifier = Modifier.size(40.dp),
                             imageVector = Icons.Default.Add,
@@ -80,11 +87,12 @@ fun ConsultaRespuestaScreen(
         ) {
 
 
-            val listaRespuestas = viewModel.getRespuestaByTicket(idTicket).collectAsState(initial = emptyList())
+            val listaRespuestas =
+                viewModel.getRespuestaByTicket(idTicket).collectAsState(initial = emptyList())
 
             SearchView(state = textState, placeHolder = "Buscar")
             LazyColumn() {
-                items(items = listaRespuestas.value.filter {res ->
+                items(items = listaRespuestas.value.filter { res ->
                     res.Mensaje.contains(searchedText, ignoreCase = true) ||
                             res.fecha.contains(searchedText, ignoreCase = true)
                 }, key = { it.respuestaId }) { item ->
