@@ -31,6 +31,7 @@ import kotlinx.coroutines.flow.Flow
 @Composable
 fun ConsultaRespuestaScreen(
     navController: NavController,
+    id: Int,
     viewModel: RespuestaViewModel = hiltViewModel()
 ) {
 
@@ -79,7 +80,7 @@ fun ConsultaRespuestaScreen(
         ) {
 
 
-            val listaRespuestas = viewModel.respuestas.collectAsState(initial = emptyList())
+            val listaRespuestas = viewModel.getRespuestaByTicket(id).collectAsState(initial = emptyList())
 
             SearchView(state = textState, placeHolder = "Buscar")
             LazyColumn() {
