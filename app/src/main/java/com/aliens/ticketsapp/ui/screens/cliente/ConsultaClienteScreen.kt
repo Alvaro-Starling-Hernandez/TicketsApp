@@ -1,30 +1,23 @@
 package com.aliens.ticketsapp.ui.screens.cliente
 
-import android.util.Log
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBackIos
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.ClienteItem
-import com.aliens.ticketsapp.ui.components.RespuestaItem
-import com.aliens.ticketsapp.ui.components.TecnicoItems
-import com.aliens.ticketsapp.ui.components.searchRespuesta.SearchAppBar
-import com.aliens.ticketsapp.ui.components.searchRespuesta.SearchWidgetState
+import com.aliens.ticketsapp.ui.components.appBar.SearchWidgetState
+import com.aliens.ticketsapp.ui.components.appBar.AppBar
 import com.aliens.ticketsapp.utils.Screen
 
 @Composable
@@ -94,60 +87,6 @@ fun ConsultaClienteScreen(
             }
 
 
-        }
-    }
-}
-
-@Composable
-fun DefaultAppBar(
-    navController: NavController,
-    title: String,
-    onSearchClicked: () -> Unit
-) {
-    TopAppBar(
-        title = {
-            Text(title)
-        },
-        actions = {
-            IconButton(
-                onClick = { onSearchClicked() }
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.Search,
-                    contentDescription = "Search Icon",
-                    tint = Color.White
-                )
-            }
-        }
-    )
-}
-
-@Composable
-fun AppBar(
-    searchWidgetState: SearchWidgetState,
-    searchTextState: String,
-    onTextChange: (String) -> Unit,
-    onCloseClicked: () -> Unit,
-    onSearchClicked: (String) -> Unit,
-    onSearchTriggered: () -> Unit,
-    navController: NavController,
-    title: String
-) {
-    when (searchWidgetState) {
-        SearchWidgetState.CLOSED -> {
-            DefaultAppBar(
-                onSearchClicked = onSearchTriggered,
-                navController = navController,
-                title = title
-            )
-        }
-        SearchWidgetState.OPENED -> {
-            SearchAppBar(
-                text = searchTextState,
-                onTextChange = onTextChange,
-                onCloseClicked = onCloseClicked,
-                onSearchClicked = onSearchClicked
-            )
         }
     }
 }

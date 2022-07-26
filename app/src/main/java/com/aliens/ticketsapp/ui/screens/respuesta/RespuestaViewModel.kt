@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aliens.ticketsapp.data.repositories.RespuestaRepository
 import com.aliens.ticketsapp.model.Respuesta
-import com.aliens.ticketsapp.ui.components.searchRespuesta.SearchWidgetState
+import com.aliens.ticketsapp.ui.components.appBar.SearchWidgetState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
