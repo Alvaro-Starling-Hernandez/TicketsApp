@@ -54,7 +54,8 @@ fun ConsultaClienteScreen(
                 },
                 onSearchTriggered = {
                     viewModel.updateSearchWidgetState(newValue = SearchWidgetState.OPENED)
-                }
+                },
+                title = stringResource(R.string.Clientes)
             )
 
         },
@@ -63,10 +64,12 @@ fun ConsultaClienteScreen(
                 onClick = {
                     navController.navigate(Screen.RegistroCliente.route)
                 }
+                ,
+                modifier = Modifier.padding(bottom = 50.dp, end = 20.dp)
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
-                    contentDescription = null,
+                    contentDescription = null
                 )
             }
         }, floatingActionButtonPosition = FabPosition.End
@@ -98,11 +101,12 @@ fun ConsultaClienteScreen(
 @Composable
 fun DefaultAppBar(
     navController: NavController,
+    title: String,
     onSearchClicked: () -> Unit
 ) {
     TopAppBar(
         title = {
-            Text(stringResource(R.string.Clientes))
+            Text(title)
         },
         actions = {
             IconButton(
@@ -127,12 +131,14 @@ fun AppBar(
     onSearchClicked: (String) -> Unit,
     onSearchTriggered: () -> Unit,
     navController: NavController,
+    title: String
 ) {
     when (searchWidgetState) {
         SearchWidgetState.CLOSED -> {
             DefaultAppBar(
                 onSearchClicked = onSearchTriggered,
-                navController = navController
+                navController = navController,
+                title = title
             )
         }
         SearchWidgetState.OPENED -> {
