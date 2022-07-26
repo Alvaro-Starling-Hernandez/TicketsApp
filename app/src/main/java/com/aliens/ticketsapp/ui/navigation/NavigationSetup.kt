@@ -34,8 +34,14 @@ fun NavigationSetup(navController: NavHostController) {
         composable(BottomNavItem.Cliente.route) {
             ConsultaClienteScreen(navController)
         }
-        composable(Screen.ConsultaRespuesta.route) {
+        /*composable(Screen.ConsultaRespuesta.route) {
             ConsultaRespuestaScreen(navController)
+        }*/
+        composable(Screen.ConsultaRespuesta.withArgsFormat(Screen.ConsultaRespuesta.id),
+            arguments = listOf(navArgument(Screen.ConsultaRespuesta.id){type = NavType.IntType})) { backStackEntry ->
+            backStackEntry.arguments?.getInt(Screen.ConsultaRespuesta.id)?.let {
+                ConsultaRespuestaScreen(navController, backStackEntry.arguments?.getInt(Screen.ConsultaRespuesta.id)!!)
+            }
         }
         composable(Screen.RegistroRespuesta.route) {
             RegistroRespuestaScreen(navController,0)
