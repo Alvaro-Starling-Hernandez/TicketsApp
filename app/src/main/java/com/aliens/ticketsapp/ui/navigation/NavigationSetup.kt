@@ -34,9 +34,9 @@ fun NavigationSetup(navController: NavHostController) {
         composable(BottomNavItem.Cliente.route) {
             ConsultaClienteScreen(navController)
         }
-        /*composable(Screen.ConsultaRespuesta.route) {
-            ConsultaRespuestaScreen(navController)
-        }*/
+        composable(Screen.ConsultaRespuesta.route) {
+            ConsultaRespuestaScreen(navController,0)
+        }
         composable(Screen.ConsultaRespuesta.withArgsFormat(Screen.ConsultaRespuesta.id),
             arguments = listOf(navArgument(Screen.ConsultaRespuesta.id){type = NavType.IntType})) { backStackEntry ->
             backStackEntry.arguments?.getInt(Screen.ConsultaRespuesta.id)?.let {
@@ -44,7 +44,7 @@ fun NavigationSetup(navController: NavHostController) {
             }
         }
         composable(Screen.RegistroRespuesta.route) {
-            RegistroRespuestaScreen(navController,0)
+            RegistroRespuestaScreen(navController,0, 0)
         }
         composable(Screen.RegistroTiempo.route) {
             RegistroTiempoScreen(navController,0)
@@ -61,7 +61,7 @@ fun NavigationSetup(navController: NavHostController) {
         composable(Screen.RegistroRespuesta.withArgsFormat(Screen.RegistroRespuesta.id),
             arguments = listOf(navArgument(Screen.RegistroRespuesta.id){type = NavType.IntType})) { backStackEntry ->
             backStackEntry.arguments?.getInt(Screen.RegistroRespuesta.id)?.let {
-                RegistroRespuestaScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroRespuesta.id)!!)
+                RegistroRespuestaScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroRespuesta.id)!!, backStackEntry.arguments?.getInt(Screen.RegistroRespuesta.id)!!)
             }
         }
         composable(Screen.RegistroTiempo.withArgsFormat(Screen.RegistroTiempo.id),
