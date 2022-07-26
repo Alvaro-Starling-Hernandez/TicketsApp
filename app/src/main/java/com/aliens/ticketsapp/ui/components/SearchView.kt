@@ -1,4 +1,4 @@
-package com.aliens.ticketsapp.ui.components.searchRespuesta
+package com.aliens.ticketsapp.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
