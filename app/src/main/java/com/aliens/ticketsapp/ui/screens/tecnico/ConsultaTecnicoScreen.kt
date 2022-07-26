@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBackIos
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
@@ -17,11 +18,14 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
+import com.aliens.ticketsapp.ui.components.ClienteItem
 import com.aliens.ticketsapp.ui.components.RespuestaItem
 import com.aliens.ticketsapp.ui.components.TecnicoItems
+import com.aliens.ticketsapp.ui.components.searchRespuesta.SearchWidgetState
 import com.aliens.ticketsapp.ui.navigation.NavigationSetup
 import com.aliens.ticketsapp.ui.screens.respuesta.RespuestaViewModel
 import com.aliens.ticketsapp.utils.Screen
+import com.aliens.ticketsapp.ui.screens.cliente.AppBar
 
 @Composable
 fun ConsultaTecnicoScreen(
@@ -29,26 +33,46 @@ fun ConsultaTecnicoScreen(
     viewModel: TecnicoViewModel = hiltViewModel()
 ) {
 
-    Scaffold (
+    val searchWidgetState by viewModel.searchWidgetState
+    val searchTextState by viewModel.searchTextState
+
+    Scaffold(
         topBar = {
 
-            TopAppBar(
-                title = {
-                    Text(stringResource(R.string.Tecnicos))
+            AppBar(
+                searchWidgetState = searchWidgetState,
+                navController = navController,
+                searchTextState = searchTextState,
+                onTextChange = {
+                    viewModel.updateSearchTextState(newValue = it)
                 },
-                actions = {
-                    IconButton(onClick = { navController.navigate(Screen.RegistroTecnico.route) }) {
-                        Icon(
-                            modifier = Modifier.size(40.dp),
-                            imageVector = Icons.Default.Add,
-                            contentDescription = stringResource(R.string.Agregar)
-                        )
-                    }
-                }
+                onCloseClicked = {
+                    viewModel.updateSearchWidgetState(newValue = SearchWidgetState.CLOSED)
+                },
+                onSearchClicked = {
+
+                },
+                onSearchTriggered = {
+                    viewModel.updateSearchWidgetState(newValue = SearchWidgetState.OPENED)
+                },
+                title = stringResource(R.string.Tecnicos)
             )
 
-        }
-            ){
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    navController.navigate(Screen.RegistroTecnico.route)
+                },
+                modifier = Modifier.padding(bottom = 50.dp, end = 20.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = null
+                )
+            }
+        }, floatingActionButtonPosition = FabPosition.End
+    ) {
         Column(
             modifier = Modifier
                 .padding(it)
@@ -59,8 +83,12 @@ fun ConsultaTecnicoScreen(
             val listaTecnicos = viewModel.tecnicos.collectAsState(initial = emptyList())
 
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                items(listaTecnicos.value) { tecnico ->
-                    TecnicoItems(tecnico, navController)
+                items(items = listaTecnicos.value.filter {res ->
+                    res.nombreTecnico.contains(searchTextState, ignoreCase = true) ||
+                            res.email.contains(searchTextState, ignoreCase = true) ||
+                            res.telefonoTecnico.contains(searchTextState, ignoreCase = true)
+                }, key = { it.tecnicoId }) { item ->
+                    TecnicoItems(item, navController)
                 }
             }
 

@@ -1,13 +1,12 @@
 package com.aliens.ticketsapp.ui.screens.tecnico
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aliens.ticketsapp.data.repositories.TecnicoRepository
 import com.aliens.ticketsapp.model.Tecnico
 import com.aliens.ticketsapp.model.Tiempo
+import com.aliens.ticketsapp.ui.components.searchRespuesta.SearchWidgetState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -47,5 +46,21 @@ class TecnicoViewModel @Inject constructor(
         viewModelScope.launch {
             tecnicoRepository.eliminar(tecnico)
         }
+    }
+
+    private val _searchWidgetState: MutableState<SearchWidgetState> =
+        mutableStateOf(value = SearchWidgetState.CLOSED)
+    val searchWidgetState: State<SearchWidgetState> = _searchWidgetState
+
+    private val _searchTextState: MutableState<String> =
+        mutableStateOf(value = "")
+    val searchTextState: State<String> = _searchTextState
+
+    fun updateSearchWidgetState(newValue: SearchWidgetState) {
+        _searchWidgetState.value = newValue
+    }
+
+    fun updateSearchTextState(newValue: String) {
+        _searchTextState.value = newValue
     }
 }
