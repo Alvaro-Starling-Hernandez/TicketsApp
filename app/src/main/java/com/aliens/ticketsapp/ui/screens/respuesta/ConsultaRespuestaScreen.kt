@@ -51,7 +51,7 @@ fun ConsultaRespuestaScreen(
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                navController.navigate(Screen.ConsultaTicket.route)
+                                navController.navigateUp()
                             }
                     )
                 },
