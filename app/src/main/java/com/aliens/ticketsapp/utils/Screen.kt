@@ -3,6 +3,7 @@ package com.aliens.ticketsapp.utils
 sealed class Screen(val route: String){
     object RegistroRespuesta: Screen("RegistroRespuesta"){
         val id = "id"
+        val idTicket = "idTicket"
     }
     object ConsultaRespuesta: Screen("ConsultaRespuesta"){
         val id = "id"
