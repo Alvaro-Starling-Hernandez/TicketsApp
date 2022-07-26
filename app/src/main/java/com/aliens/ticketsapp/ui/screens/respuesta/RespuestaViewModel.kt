@@ -48,4 +48,8 @@ class RespuestaViewModel @Inject constructor(
     fun buscar(id: Int): Flow<List<Respuesta>> {
         return respuestaRepository.buscar(id)
     }
+
+    fun getRespuestaByTicket(id: Int): Flow<List<Respuesta>> {
+        return respuestaRepository.getRespuestaByTicket(id)
+    }
 }
