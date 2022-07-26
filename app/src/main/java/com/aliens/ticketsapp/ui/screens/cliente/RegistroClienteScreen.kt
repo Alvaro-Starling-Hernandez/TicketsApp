@@ -61,7 +61,7 @@ fun RegistroClienteScreen(
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                navController.navigate(Screen.ConsultaCliente.route)
+                                navController.navigateUp()
                             }
                     )
                 },
