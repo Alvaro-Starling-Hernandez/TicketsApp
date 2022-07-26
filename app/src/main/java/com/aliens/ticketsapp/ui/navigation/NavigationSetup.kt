@@ -35,57 +35,94 @@ fun NavigationSetup(navController: NavHostController) {
             ConsultaClienteScreen(navController)
         }
         composable(Screen.ConsultaRespuesta.route) {
-            ConsultaRespuestaScreen(navController,0)
+            ConsultaRespuestaScreen(navController, 0)
         }
-        composable(Screen.ConsultaRespuesta.withArgsFormat(Screen.ConsultaRespuesta.id),
-            arguments = listOf(navArgument(Screen.ConsultaRespuesta.id){type = NavType.IntType})) { backStackEntry ->
+        composable(
+            Screen.ConsultaRespuesta.withArgsFormat(Screen.ConsultaRespuesta.id),
+            arguments = listOf(navArgument(Screen.ConsultaRespuesta.id) { type = NavType.IntType })
+        ) { backStackEntry ->
             backStackEntry.arguments?.getInt(Screen.ConsultaRespuesta.id)?.let {
-                ConsultaRespuestaScreen(navController, backStackEntry.arguments?.getInt(Screen.ConsultaRespuesta.id)!!)
+                ConsultaRespuestaScreen(
+                    navController,
+                    backStackEntry.arguments?.getInt(Screen.ConsultaRespuesta.id)!!
+                )
             }
         }
         composable(Screen.RegistroRespuesta.route) {
-            RegistroRespuestaScreen(navController,0, 0)
+            RegistroRespuestaScreen(navController, 0, 0)
         }
         composable(Screen.RegistroTiempo.route) {
-            RegistroTiempoScreen(navController,0)
+            RegistroTiempoScreen(navController, 0)
         }
         composable(Screen.RegistroCliente.route) {
-            RegistroClienteScreen(navController,0)
+            RegistroClienteScreen(navController, 0)
         }
-        composable(Screen.RegistroTecnico.route){
+        composable(Screen.RegistroTecnico.route) {
             RegistroTecnicoScreen(navController, 0)
         }
-        composable(Screen.RegistroTicket.route){
+        composable(Screen.RegistroTicket.route) {
             RegistroTicketScreen(navController, 0)
         }
-        composable(Screen.RegistroRespuesta.withArgsFormat(Screen.RegistroRespuesta.id),
-            arguments = listOf(navArgument(Screen.RegistroRespuesta.id){type = NavType.IntType})) { backStackEntry ->
+        composable(
+            Screen.RegistroRespuesta.withArgsFormat(
+                Screen.RegistroRespuesta.id,
+                Screen.RegistroRespuesta.idTicket
+            ),
+            arguments = listOf(
+                navArgument(Screen.RegistroRespuesta.id) { type = NavType.IntType },
+                navArgument(Screen.RegistroRespuesta.idTicket) { type = NavType.IntType })
+        ) { backStackEntry ->
             backStackEntry.arguments?.getInt(Screen.RegistroRespuesta.id)?.let {
-                RegistroRespuestaScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroRespuesta.id)!!, backStackEntry.arguments?.getInt(Screen.RegistroRespuesta.id)!!)
+                RegistroRespuestaScreen(
+                    navController,
+                    backStackEntry.arguments?.getInt(Screen.RegistroRespuesta.id)!!,
+                    backStackEntry.arguments?.getInt(Screen.RegistroRespuesta.idTicket)!!
+                )
             }
+
         }
-        composable(Screen.RegistroTiempo.withArgsFormat(Screen.RegistroTiempo.id),
-            arguments = listOf(navArgument(Screen.RegistroTiempo.id){type = NavType.IntType})) { backStackEntry ->
+        composable(
+            Screen.RegistroTiempo.withArgsFormat(Screen.RegistroTiempo.id),
+            arguments = listOf(navArgument(Screen.RegistroTiempo.id) { type = NavType.IntType })
+        ) { backStackEntry ->
             backStackEntry.arguments?.getInt(Screen.RegistroTiempo.id)?.let {
-                RegistroTiempoScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroTiempo.id)!!)
+                RegistroTiempoScreen(
+                    navController,
+                    backStackEntry.arguments?.getInt(Screen.RegistroTiempo.id)!!
+                )
             }
         }
-        composable(Screen.RegistroTecnico.withArgsFormat(Screen.RegistroTecnico.id),
-            arguments = listOf(navArgument(Screen.RegistroTecnico.id){type = NavType.IntType})) { backStackEntry ->
+        composable(
+            Screen.RegistroTecnico.withArgsFormat(Screen.RegistroTecnico.id),
+            arguments = listOf(navArgument(Screen.RegistroTecnico.id) { type = NavType.IntType })
+        ) { backStackEntry ->
             backStackEntry.arguments?.getInt(Screen.RegistroTecnico.id)?.let {
-                RegistroTecnicoScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroTecnico.id)!!)
+                RegistroTecnicoScreen(
+                    navController,
+                    backStackEntry.arguments?.getInt(Screen.RegistroTecnico.id)!!
+                )
             }
         }
-        composable(Screen.RegistroCliente.withArgsFormat(Screen.RegistroCliente.id),
-            arguments = listOf(navArgument(Screen.RegistroCliente.id){type = NavType.IntType})) { backStackEntry ->
+        composable(
+            Screen.RegistroCliente.withArgsFormat(Screen.RegistroCliente.id),
+            arguments = listOf(navArgument(Screen.RegistroCliente.id) { type = NavType.IntType })
+        ) { backStackEntry ->
             backStackEntry.arguments?.getInt(Screen.RegistroCliente.id)?.let {
-                RegistroClienteScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroCliente.id)!!)
+                RegistroClienteScreen(
+                    navController,
+                    backStackEntry.arguments?.getInt(Screen.RegistroCliente.id)!!
+                )
             }
         }
-        composable(Screen.RegistroTicket.withArgsFormat(Screen.RegistroTicket.id),
-            arguments = listOf(navArgument(Screen.RegistroTicket.id){type = NavType.IntType})) { backStackEntry ->
+        composable(
+            Screen.RegistroTicket.withArgsFormat(Screen.RegistroTicket.id),
+            arguments = listOf(navArgument(Screen.RegistroTicket.id) { type = NavType.IntType })
+        ) { backStackEntry ->
             backStackEntry.arguments?.getInt(Screen.RegistroTicket.id)?.let {
-                RegistroTicketScreen(navController, backStackEntry.arguments?.getInt(Screen.RegistroTicket.id)!!)
+                RegistroTicketScreen(
+                    navController,
+                    backStackEntry.arguments?.getInt(Screen.RegistroTicket.id)!!
+                )
             }
         }
     }
