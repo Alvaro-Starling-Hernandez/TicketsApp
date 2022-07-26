@@ -59,7 +59,7 @@ fun ConsultaRespuestaScreen(
                     Text(stringResource(R.string.Respuestas))
                 },
                 actions = {
-                    IconButton(onClick = { navController.navigate(Screen.RegistroRespuesta.withArgs(idTicket.toString())) }) {
+                    IconButton(onClick = { navController.navigate(Screen.RegistroRespuesta.route) }) {
                         Icon(
                             modifier = Modifier.size(40.dp),
                             imageVector = Icons.Default.Add,
