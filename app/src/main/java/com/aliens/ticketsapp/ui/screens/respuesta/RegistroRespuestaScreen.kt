@@ -50,7 +50,7 @@ fun RegistroRespuestaScreen(
                         modifier = Modifier
                             .padding(16.dp)
                             .clickable {
-                                navController.navigate(Screen.ConsultaRespuesta.route)
+                                navController.navigateUp()
                             }
                     )
                 },
@@ -113,7 +113,7 @@ fun RegistroRespuestaScreen(
                             R.string.ToastMessageSave,
                             Toast.LENGTH_SHORT
                         ).show()
-                        navController.navigate(Screen.ConsultaRespuesta.route)
+                        navController.navigateUp()
                     } else {
                         Toast.makeText(
                             context,
