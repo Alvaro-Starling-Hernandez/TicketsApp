@@ -28,6 +28,7 @@ import com.aliens.ticketsapp.utils.Screen
 fun RegistroRespuestaScreen(
     navController: NavController,
     id: Int,
+    idTicket: Int,
     viewModel: RespuestaViewModel = hiltViewModel()
 ) {
     var MensajeError by rememberSaveable { mutableStateOf(false) }
@@ -67,6 +68,7 @@ fun RegistroRespuestaScreen(
             Spacer(modifier = Modifier.height(25.dp))
 
             viewModel.id = id
+            viewModel.idTicket = idTicket
             OutlinedTextField(
                 value = viewModel.mensaje,
                 onValueChange = {
