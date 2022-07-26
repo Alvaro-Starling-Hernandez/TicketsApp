@@ -178,7 +178,7 @@ fun RegistroTicketScreen(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Button(onClick = { navController.navigate(Screen.ConsultaRespuesta.route) }) {
+                    Button(onClick = { navController.navigate(Screen.ConsultaRespuesta.withArgs(id.toString()))}) {
                         Text(text = stringResource(com.aliens.ticketsapp.R.string.Responder))
                         Spacer(modifier = Modifier.width(5.dp))
                         Icon(
