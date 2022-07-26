@@ -50,7 +50,7 @@ fun ConsultaClienteScreen(
                     viewModel.updateSearchWidgetState(newValue = SearchWidgetState.CLOSED)
                 },
                 onSearchClicked = {
-                    Log.d("Searched Text", it)
+
                 },
                 onSearchTriggered = {
                     viewModel.updateSearchWidgetState(newValue = SearchWidgetState.OPENED)
