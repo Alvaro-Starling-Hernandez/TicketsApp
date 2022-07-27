@@ -59,7 +59,7 @@ fun ConsultaTicketScreen(
                 onClick = {
                     navController.navigate(Screen.RegistroTicket.route)
                 },
-                modifier = Modifier.padding(bottom = 50.dp, end = 20.dp)
+                modifier = Modifier.padding(bottom = 50.dp)
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
