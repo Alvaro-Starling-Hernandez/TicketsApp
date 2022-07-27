@@ -22,7 +22,6 @@ import androidx.navigation.NavController
 import com.aliens.ticketsapp.ui.components.TextObligatorio
 import com.aliens.ticketsapp.ui.screens.tecnico.validarEmail
 import com.aliens.ticketsapp.ui.screens.tecnico.validarPhone
-import com.aliens.ticketsapp.utils.Screen
 
 @Composable
 fun RegistroClienteScreen(
