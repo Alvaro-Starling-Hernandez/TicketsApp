@@ -79,7 +79,12 @@ fun ConsultaRespuestaScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    navController.navigate(Screen.RegistroRespuesta.route)
+                    navController.navigate(
+                        Screen.RegistroRespuesta.withArgs(
+                            auxId.toString(),
+                            idTicket.toString()
+                        )
+                    )
                 },
                 modifier = Modifier.padding(bottom = 50.dp, end = 20.dp)
             ) {
