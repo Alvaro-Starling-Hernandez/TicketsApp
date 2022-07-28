@@ -33,7 +33,7 @@ fun CardTicketsPendientes(Pendientes: Int, Urgentes: Int, Alta: Int) {
                 style = MaterialTheme.typography.h6,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1,
-                modifier = Modifier.padding(top = 15.dp)
+                modifier = Modifier.padding(top = 0.dp)
             )
             Text(
                 color = Color.Gray,

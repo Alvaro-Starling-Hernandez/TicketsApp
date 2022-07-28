@@ -1,12 +1,13 @@
 package com.aliens.ticketsapp.ui.screens.dashboard
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.aliens.ticketsapp.ui.components.dashboardComps.CardTicketsPendientes
+import com.aliens.ticketsapp.ui.components.dashboardComps.InformacionClientes
 import com.aliens.ticketsapp.ui.components.dashboardComps.InformacionTickets
 import com.aliens.ticketsapp.ui.components.dashboardComps.Saludo
 import com.aliens.ticketsapp.ui.screens.ticket.TicketViewModel
@@ -56,6 +57,7 @@ fun DashBoard(
         Column {
             Saludo()
             CardTicketsPendientes(Pendientes, Urgentes, PrioridadAlta)
+            InformacionClientes(total = 4)
             InformacionTickets(
                 infoTicket = listOf(
                     InfoTicket(
