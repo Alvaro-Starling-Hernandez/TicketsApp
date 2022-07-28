@@ -20,6 +20,7 @@ class TiempoViewModel @Inject constructor(
     var tiempo by mutableStateOf("")
     var tecnicoId by mutableStateOf(0)
     var id by mutableStateOf(0)
+    var idTicket by mutableStateOf(0)
 
     var tiempos = tiempoRepository.getList()
         private set
@@ -32,7 +33,7 @@ class TiempoViewModel @Inject constructor(
                     trabajo = trabajo,
                     tiempo = tiempo.toFloat(),
                     tecnicoId = tecnicoId,
-                    ticketId = 0
+                    ticketId = idTicket
                 )
             )
         }
@@ -46,6 +47,10 @@ class TiempoViewModel @Inject constructor(
 
     fun buscar(id: Int): Flow<List<Tiempo>> {
         return tiempoRepository.buscar(id)
+    }
+
+    fun getTiempoByTicket(id: Int): Flow<List<Tiempo>> {
+        return tiempoRepository.getTiempoByTicket(id)
     }
 
     fun isNumber(text: String): Boolean{
