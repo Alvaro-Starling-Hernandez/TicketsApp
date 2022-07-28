@@ -1,6 +1,8 @@
 package com.aliens.ticketsapp.utils
 
 sealed class Screen(val route: String){
+
+    object  DashBoard: Screen("DashBoard")
     object RegistroRespuesta: Screen("RegistroRespuesta"){
         const val id = "id"
         const val idTicket = "idTicket"
