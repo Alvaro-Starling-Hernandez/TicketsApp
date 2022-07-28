@@ -10,13 +10,15 @@ import com.aliens.ticketsapp.ui.components.dashboardComps.CardTicketsPendientes
 import com.aliens.ticketsapp.ui.components.dashboardComps.InformacionClientes
 import com.aliens.ticketsapp.ui.components.dashboardComps.InformacionTickets
 import com.aliens.ticketsapp.ui.components.dashboardComps.Saludo
+import com.aliens.ticketsapp.ui.screens.cliente.ClienteViewModel
 import com.aliens.ticketsapp.ui.screens.ticket.TicketViewModel
 import com.aliens.ticketsapp.ui.screens.tiempo.TiempoViewModel
 
 @Composable
 fun DashBoard(
     viewModel: TicketViewModel = hiltViewModel(),
-    viewModelTiempo: TiempoViewModel = hiltViewModel()
+    viewModelTiempo: TiempoViewModel = hiltViewModel(),
+    viewModelCliente: ClienteViewModel = hiltViewModel()
 ) {
 
     //Variables contables
@@ -27,9 +29,11 @@ fun DashBoard(
     var PrioridadAlta = 0
 
     val lista = viewModel.tickets.collectAsState(initial = emptyList())
+    val listaClientes = viewModelCliente.clientes.collectAsState(initial = emptyList())
 
     //Obtener los valores contables
     var TicketsTotales = lista.value.size
+    var clientesTotales = listaClientes.value.size
     lista.value.forEach {
         when (it.estadoId) {
             0 -> Pendientes++
@@ -57,7 +61,7 @@ fun DashBoard(
         Column {
             Saludo()
             CardTicketsPendientes(Pendientes, Urgentes, PrioridadAlta)
-            InformacionClientes(total = 4)
+            InformacionClientes(clientesTotales)
             InformacionTickets(
                 infoTicket = listOf(
                     InfoTicket(
