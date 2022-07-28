@@ -65,7 +65,7 @@ fun RegistroTicketScreen(
                     asuntoError = viewModel.asunto.isBlank()
                     requerimientoError = viewModel.requerimiento.isBlank()
                     if (!asuntoError && !requerimientoError) {
-                        if(id==0){
+                        if (id == 0) {
                             viewModel.estadoId = 0
                         }
                         viewModel.Guardar()
@@ -172,13 +172,21 @@ fun RegistroTicketScreen(
             PrioridadSpinner(idPrioridad = viewModel.prioridadId)
 
             Spacer(modifier = Modifier.height(25.dp))
-            
-            if(id!=0){
+
+            if (id != 0) {
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Button(onClick = { navController.navigate(Screen.ConsultaRespuesta.withArgs(id.toString()))}) {
+                    Button(onClick = {
+                        viewModel.estadoId = 1
+                        viewModel.Guardar()
+                        navController.navigate(
+                            Screen.ConsultaRespuesta.withArgs(
+                                id.toString()
+                            )
+                        )
+                    }) {
                         Text(text = stringResource(com.aliens.ticketsapp.R.string.Responder))
                         Spacer(modifier = Modifier.width(5.dp))
                         Icon(
@@ -187,7 +195,11 @@ fun RegistroTicketScreen(
                         )
                     }
 
-                    Button(onClick = { navController.navigate(Screen.ConsultaTiempo.withArgs(id.toString()))}) {
+                    Button(onClick = {
+                        viewModel.estadoId = 1
+                        viewModel.Guardar()
+                        navController.navigate(Screen.ConsultaTiempo.withArgs(id.toString()))
+                    }) {
                         Text(text = stringResource(com.aliens.ticketsapp.R.string.AgregarTiempo))
                         Spacer(modifier = Modifier.width(5.dp))
                         Icon(
