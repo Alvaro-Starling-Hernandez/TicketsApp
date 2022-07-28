@@ -38,7 +38,7 @@ fun TicketsDashBoardItem(infoTicket: InfoTicket) {
                 modifier = Modifier.padding(top = 1.dp)
             )
             Text(
-                text = infoTicket.valor.toString(),
+                text = infoTicket.valor,
                 style = MaterialTheme.typography.h6,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1,

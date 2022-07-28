@@ -10,9 +10,13 @@ import com.aliens.ticketsapp.ui.components.dashboardComps.CardTicketsPendientes
 import com.aliens.ticketsapp.ui.components.dashboardComps.InformacionTickets
 import com.aliens.ticketsapp.ui.components.dashboardComps.Saludo
 import com.aliens.ticketsapp.ui.screens.ticket.TicketViewModel
+import com.aliens.ticketsapp.ui.screens.tiempo.TiempoViewModel
 
 @Composable
-fun DashBoard(viewModel: TicketViewModel = hiltViewModel()) {
+fun DashBoard(
+    viewModel: TicketViewModel = hiltViewModel(),
+    viewModelTiempo: TiempoViewModel = hiltViewModel()
+) {
 
     //Variables contables
     var Pendientes = 0
@@ -39,6 +43,12 @@ fun DashBoard(viewModel: TicketViewModel = hiltViewModel()) {
         }
     }
 
+    var sum = 0f
+    val listaTiempo = viewModelTiempo.tiempos.collectAsState(initial = emptyList())
+    listaTiempo.value.forEach {
+        sum += it.tiempo
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -46,20 +56,23 @@ fun DashBoard(viewModel: TicketViewModel = hiltViewModel()) {
         Column {
             Saludo()
             CardTicketsPendientes(Pendientes, Urgentes, PrioridadAlta)
-            Spacer(modifier = Modifier.height(30.dp))
             InformacionTickets(
                 infoTicket = listOf(
                     InfoTicket(
                         title = "Finalizados",
-                        valor = Finalizados
+                        valor = Finalizados.toString()
                     ),
                     InfoTicket(
                         title = "Tickets",
-                        valor = TicketsTotales
+                        valor = TicketsTotales.toString()
                     ),
                     InfoTicket(
                         title = "En Proceso",
-                        valor = EnProceso
+                        valor = EnProceso.toString()
+                    ),
+                    InfoTicket(
+                        title = "Trabajado",
+                        valor = "$sum Mins"
                     )
                 )
             )
