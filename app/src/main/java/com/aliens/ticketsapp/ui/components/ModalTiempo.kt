@@ -93,7 +93,12 @@ fun ModalTiempo(
                         Row {
                             Button(
                                 onClick = {
-                                    navController.navigate(Screen.RegistroTiempo.withArgs(id.toString()))
+                                    navController.navigate(
+                                        Screen.RegistroTiempo.withArgs(
+                                            id.toString(),
+                                            tiempo.ticketId.toString()
+                                        )
+                                    )
                                     onDismiss()
                                 },
                                 shape = RoundedCornerShape(50.dp),
