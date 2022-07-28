@@ -31,6 +31,7 @@ import com.aliens.ticketsapp.utils.Screen
 fun RegistroTiempoScreen(
     navController: NavController,
     id: Int,
+    idTicket: Int,
     viewModel: TiempoViewModel = hiltViewModel()
 ) {
     var trabajoError by rememberSaveable { mutableStateOf(false) }
@@ -73,6 +74,7 @@ fun RegistroTiempoScreen(
             Spacer(modifier = Modifier.height(25.dp))
 
             viewModel.id = id
+            viewModel.idTicket = idTicket
              OutlinedTextField(
                 value = viewModel.trabajo,
                 onValueChange = {
