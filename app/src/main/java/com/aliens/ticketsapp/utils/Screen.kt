@@ -2,33 +2,33 @@ package com.aliens.ticketsapp.utils
 
 sealed class Screen(val route: String){
     object RegistroRespuesta: Screen("RegistroRespuesta"){
-        val id = "id"
-        val idTicket = "idTicket"
+        const val id = "id"
+        const val idTicket = "idTicket"
     }
     object ConsultaRespuesta: Screen("ConsultaRespuesta"){
-        val id = "id"
+        const val id = "id"
     }
     object RegistroTiempo: Screen("RegistroTiempo"){
-        val id = "id"
-        val idTicket = "idTicket"
+        const val id = "id"
+        const val idTicket = "idTicket"
     }
     object ConsultaTiempo: Screen("ConsultaTiempo"){
         const val id = "id"
     }
     object RegistroTecnico: Screen("RegistroTecnico"){
-        val id = "id"
+        const val id = "id"
     }
     object ConsultaTecnico: Screen("ConsultaTecnico")
 
     object RegistroCliente: Screen("RegistroCliente"){
-        val id = "id"
+        const val id = "id"
     }
     object ConsultaCliente: Screen("ConsultaCliente")
 
     object ConsultaTicket: Screen("ConsultaTicket")
 
     object RegistroTicket: Screen("RegistroTicket"){
-        val id = "id"
+        const val id = "id"
     }
 
     fun withArgs(vararg args: String): String {
