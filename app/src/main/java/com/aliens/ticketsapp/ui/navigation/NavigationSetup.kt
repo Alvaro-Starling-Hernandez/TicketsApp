@@ -23,7 +23,7 @@ import com.aliens.ticketsapp.utils.Screen
 fun NavigationSetup(navController: NavHostController) {
     NavHost(navController, startDestination = BottomNavItem.Home.route) {
         composable(Screen.ConsultaTiempo.route) {
-            ConsultaTiempoScreen(navController)
+            ConsultaTiempoScreen(navController, 0)
         }
         composable(BottomNavItem.Tecnico.route) {
             ConsultaTecnicoScreen(navController)
@@ -48,11 +48,22 @@ fun NavigationSetup(navController: NavHostController) {
                 )
             }
         }
+        composable(
+            Screen.ConsultaTiempo.withArgsFormat(Screen.ConsultaTiempo.id),
+            arguments = listOf(navArgument(Screen.ConsultaTiempo.id) { type = NavType.IntType })
+        ) { backStackEntry ->
+            backStackEntry.arguments?.getInt(Screen.ConsultaTiempo.id)?.let {
+                ConsultaTiempoScreen(
+                    navController,
+                    backStackEntry.arguments?.getInt(Screen.ConsultaTiempo.id)!!
+                )
+            }
+        }
         composable(Screen.RegistroRespuesta.route) {
             RegistroRespuestaScreen(navController, 0, 0)
         }
         composable(Screen.RegistroTiempo.route) {
-            RegistroTiempoScreen(navController, 0)
+            RegistroTiempoScreen(navController, 0, 0)
         }
         composable(Screen.RegistroCliente.route) {
             RegistroClienteScreen(navController, 0)
@@ -82,15 +93,22 @@ fun NavigationSetup(navController: NavHostController) {
 
         }
         composable(
-            Screen.RegistroTiempo.withArgsFormat(Screen.RegistroTiempo.id),
-            arguments = listOf(navArgument(Screen.RegistroTiempo.id) { type = NavType.IntType })
+            Screen.RegistroTiempo.withArgsFormat(
+                Screen.RegistroTiempo.id,
+                Screen.RegistroTiempo.idTicket
+            ),
+            arguments = listOf(
+                navArgument(Screen.RegistroTiempo.id) { type = NavType.IntType },
+                navArgument(Screen.RegistroTiempo.idTicket) { type = NavType.IntType })
         ) { backStackEntry ->
             backStackEntry.arguments?.getInt(Screen.RegistroTiempo.id)?.let {
                 RegistroTiempoScreen(
                     navController,
-                    backStackEntry.arguments?.getInt(Screen.RegistroTiempo.id)!!
+                    backStackEntry.arguments?.getInt(Screen.RegistroTiempo.id)!!,
+                    backStackEntry.arguments?.getInt(Screen.RegistroTiempo.idTicket)!!
                 )
             }
+
         }
         composable(
             Screen.RegistroTecnico.withArgsFormat(Screen.RegistroTecnico.id),
