@@ -187,7 +187,7 @@ fun RegistroTicketScreen(
                         )
                     }
 
-                    Button(onClick = { navController.navigate(Screen.ConsultaTiempo.route) }) {
+                    Button(onClick = { navController.navigate(Screen.ConsultaTiempo.withArgs(id.toString()))}) {
                         Text(text = stringResource(com.aliens.ticketsapp.R.string.AgregarTiempo))
                         Spacer(modifier = Modifier.width(5.dp))
                         Icon(
