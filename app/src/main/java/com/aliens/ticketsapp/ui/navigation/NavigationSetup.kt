@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.aliens.ticketsapp.ui.screens.cliente.ConsultaClienteScreen
 import com.aliens.ticketsapp.ui.screens.cliente.RegistroClienteScreen
+import com.aliens.ticketsapp.ui.screens.dashboard.DashBoard
 import com.aliens.ticketsapp.ui.screens.respuesta.ConsultaRespuestaScreen
 import com.aliens.ticketsapp.ui.screens.respuesta.RegistroRespuestaScreen
 import com.aliens.ticketsapp.ui.screens.tecnico.ConsultaTecnicoScreen
@@ -21,7 +22,7 @@ import com.aliens.ticketsapp.utils.Screen
 
 @Composable
 fun NavigationSetup(navController: NavHostController) {
-    NavHost(navController, startDestination = BottomNavItem.Home.route) {
+    NavHost(navController, startDestination = BottomNavItem.DashBoard.route) {
         composable(Screen.ConsultaTiempo.route) {
             ConsultaTiempoScreen(navController, 0)
         }
@@ -33,6 +34,9 @@ fun NavigationSetup(navController: NavHostController) {
         }
         composable(BottomNavItem.Cliente.route) {
             ConsultaClienteScreen(navController)
+        }
+        composable(BottomNavItem.DashBoard.route) {
+            DashBoard()
         }
         composable(Screen.ConsultaRespuesta.route) {
             ConsultaRespuestaScreen(navController, 0)
