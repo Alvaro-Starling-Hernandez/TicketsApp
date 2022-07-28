@@ -1,6 +1,6 @@
 package com.aliens.ticketsapp.ui.screens.tiempo
 
-import androidx.compose.foundation.background
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -14,9 +14,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -27,21 +25,25 @@ import com.aliens.ticketsapp.ui.components.TiempoItem
 import com.aliens.ticketsapp.ui.components.appBar.AppBarConBackIcon
 import com.aliens.ticketsapp.ui.components.appBar.SearchWidgetState
 import com.aliens.ticketsapp.utils.Screen
-import com.aliens.ticketsapp.utils.getNombreTecnico
 
 @Composable
 fun ConsultaTiempoScreen(
     navController: NavController,
+    idTicket: Int,
     viewModel: TiempoViewModel = hiltViewModel(),
 ) {
+
+    val auxId = 0
 
     val searchWidgetState by viewModel.searchWidgetState
     val searchTextState by viewModel.searchTextState
 
-    var sum: Float = 0f
+    var sum = 0f
     val lista = viewModel.tiempos.collectAsState(initial = emptyList())
     lista.value.forEach {
-        sum += it.tiempo
+        when(it.ticketId){
+            idTicket -> sum += it.tiempo
+        }
     }
     Scaffold(
 
@@ -81,9 +83,13 @@ fun ConsultaTiempoScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    navController.navigate(Screen.RegistroTiempo.route)
-                }
-                ,
+                    navController.navigate(
+                        Screen.RegistroTiempo.withArgs(
+                            auxId.toString(),
+                            idTicket.toString()
+                        )
+                    )
+                },
                 modifier = Modifier.padding(bottom = 50.dp)
             ) {
                 Icon(
@@ -105,7 +111,8 @@ fun ConsultaTiempoScreen(
                     .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
                     .height(600.dp)
             ) {
-                val listaTiempos = viewModel.tiempos.collectAsState(initial = emptyList())
+                val listaTiempos =
+                    viewModel.getTiempoByTicket(idTicket).collectAsState(initial = emptyList())
 
                 LazyColumn(modifier = Modifier.fillMaxWidth()) {
                     items(items = listaTiempos.value.filter { res ->
