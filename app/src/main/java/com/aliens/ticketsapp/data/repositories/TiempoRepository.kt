@@ -1,6 +1,7 @@
 package com.aliens.ticketsapp.data.repositories
 
 import com.aliens.ticketsapp.data.daos.TiempoDao
+import com.aliens.ticketsapp.model.Respuesta
 import com.aliens.ticketsapp.model.Tiempo
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -18,6 +19,10 @@ class TiempoRepository @Inject constructor(
 
     fun buscar(tiempId: Int): Flow<List<Tiempo>> {
         return tiempoDao.buscar(tiempId)
+    }
+
+    fun getTiempoByTicket(ticketId: Int): Flow<List<Tiempo>> {
+        return tiempoDao.getTiempoByTicket(ticketId)
     }
 
     fun getList(): Flow<List<Tiempo>>{
