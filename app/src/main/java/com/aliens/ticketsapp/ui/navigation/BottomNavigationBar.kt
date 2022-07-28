@@ -21,10 +21,16 @@ sealed class BottomNavItem(
     @StringRes val titleResId: Int,
     val icon: ImageVector
 ) {
+    object DashBoard : BottomNavItem(
+        route = Screen.DashBoard.route,
+        titleResId = R.string.DashBoard,
+        icon = Icons.Default.Home
+    )
+
     object Home : BottomNavItem(
         route = Screen.ConsultaTicket.route,
         titleResId = R.string.Tickets,
-        icon = Icons.Default.Home
+        icon = Icons.Default.BookOnline
     )
 
     object Tecnico : BottomNavItem(
@@ -45,6 +51,7 @@ fun BottomNavigationBar(
     navController: NavController
 ) {
     val items = listOf(
+        BottomNavItem.DashBoard,
         BottomNavItem.Home,
         BottomNavItem.Tecnico,
         BottomNavItem.Cliente
