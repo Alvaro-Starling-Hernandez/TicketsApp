@@ -15,6 +15,9 @@ interface TiempoDao {
     @Query("SELECT * FROM tiempos WHERE tiempoId =:tiempoId")
     fun buscar(tiempoId: Int): Flow<List<Tiempo>>
 
+    @Query("SELECT * FROM tiempos WHERE ticketId=:ticketId")
+    fun getTiempoByTicket(ticketId: Int): Flow<List<Tiempo>>
+
     @Query("SELECT * FROM tiempos ORDER BY tiempoId")
     fun getList(): Flow<List<Tiempo>>
 }
