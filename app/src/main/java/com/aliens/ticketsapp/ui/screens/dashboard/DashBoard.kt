@@ -1,15 +1,15 @@
 package com.aliens.ticketsapp.ui.screens.dashboard
 
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.ProgressIndicatorDefaults
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.aliens.ticketsapp.ui.components.dashboardComps.CardTicketsPendientes
-import com.aliens.ticketsapp.ui.components.dashboardComps.InformacionClientes
-import com.aliens.ticketsapp.ui.components.dashboardComps.InformacionTickets
-import com.aliens.ticketsapp.ui.components.dashboardComps.Saludo
+import com.aliens.ticketsapp.ui.components.dashboardComps.*
 import com.aliens.ticketsapp.ui.screens.cliente.ClienteViewModel
 import com.aliens.ticketsapp.ui.screens.ticket.TicketViewModel
 import com.aliens.ticketsapp.ui.screens.tiempo.TiempoViewModel
@@ -60,24 +60,31 @@ fun DashBoard(
     ) {
         Column {
             Saludo()
-            CardTicketsPendientes(Pendientes, Urgentes, PrioridadAlta)
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                CardTicketsPendientes(Pendientes, Urgentes, PrioridadAlta)
+                Progreso(size = TicketsTotales, finalizados = Finalizados)
+            }
+
             InformacionClientes(clientesTotales)
             InformacionTickets(
                 infoTicket = listOf(
                     InfoTicket(
-                        title = "Finalizados",
-                        valor = Finalizados.toString()
+                        title = "Totales",
+                        valor = TicketsTotales.toString()
                     ),
                     InfoTicket(
-                        title = "Tickets",
-                        valor = TicketsTotales.toString()
+                        title = "Finalizados",
+                        valor = Finalizados.toString()
                     ),
                     InfoTicket(
                         title = "En Proceso",
                         valor = EnProceso.toString()
                     ),
                     InfoTicket(
-                        title = "Trabajado",
+                        title = "Tiempo Trabajado",
                         valor = "$sum Mins"
                     )
                 )

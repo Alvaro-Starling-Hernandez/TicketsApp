@@ -21,7 +21,6 @@ fun CardTicketsPendientes(Pendientes: Int, Urgentes: Int, Alta: Int) {
         modifier = Modifier
             .padding(vertical = 10.dp)
             .padding(15.dp)
-            .fillMaxWidth()
     ) {
 
         Column(
