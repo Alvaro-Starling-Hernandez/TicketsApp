@@ -20,6 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.ui.components.*
 import com.aliens.ticketsapp.ui.components.prioridad.PrioridadSpinner
+import com.aliens.ticketsapp.ui.screens.respuesta.RespuestaViewModel
 import com.aliens.ticketsapp.utils.Screen
 
 @Composable
@@ -27,12 +28,20 @@ fun RegistroTicketScreen(
     navController: NavController,
     id: Int,
     viewModel: TicketViewModel = hiltViewModel(),
+    respuestasViewModel: RespuestaViewModel = hiltViewModel(),
 ) {
     var asuntoError by rememberSaveable { mutableStateOf(false) }
     var requerimientoError by rememberSaveable { mutableStateOf(false) }
     val context = LocalContext.current
 
     val listaTickets = viewModel.buscar(id).collectAsState(initial = emptyList())
+    val listaRespuestas = respuestasViewModel.respuestas.collectAsState(initial = emptyList())
+    var cantidadDeRespuestas: Int = 0
+    listaRespuestas.value.forEach {
+        if (id == it.ticketId) {
+            cantidadDeRespuestas++
+        }
+    }
     listaTickets.value.forEach {
         viewModel.clienteId = it.clienteId
         viewModel.fecha = it.fecha
@@ -215,9 +224,17 @@ fun RegistroTicketScreen(
                 Spacer(modifier = Modifier.height(25.dp))
 
                 Button(onClick = {
-                    viewModel.estadoId = 2
-                    viewModel.Guardar()
-                    navController.navigate(Screen.ConsultaTicket.route)
+                    if (cantidadDeRespuestas > 0) {
+                        viewModel.estadoId = 2
+                        viewModel.Guardar()
+                        navController.navigate(Screen.ConsultaTicket.route)
+                    }else{
+                        Toast.makeText(
+                            context,
+                            "No se puede finalizar sin dar respuestas",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }) {
                     Text(text = "Finalizar")
                     Spacer(modifier = Modifier.width(5.dp))
