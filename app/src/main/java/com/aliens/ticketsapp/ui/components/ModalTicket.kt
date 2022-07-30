@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.EditNote
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -28,6 +29,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.model.Ticket
 import com.aliens.ticketsapp.model.Tiempo
+import com.aliens.ticketsapp.ui.screens.respuesta.RespuestaViewModel
 import com.aliens.ticketsapp.ui.screens.ticket.TicketViewModel
 import com.aliens.ticketsapp.ui.screens.tiempo.TiempoViewModel
 import com.aliens.ticketsapp.utils.Screen
@@ -41,8 +43,12 @@ fun ModalTicket(
     navController: NavController,
     id: Int,
     ticket: Ticket,
-    viewModel: TicketViewModel = hiltViewModel()
+    viewModel: TicketViewModel = hiltViewModel(),
+    respuestasViewModel: RespuestaViewModel = hiltViewModel(),
+    tiemposViewModel: TiempoViewModel = hiltViewModel()
 ) {
+    val listaRespuestas = respuestasViewModel.respuestas.collectAsState(initial = emptyList())
+    val listaTiempos = tiemposViewModel.tiempos.collectAsState(initial = emptyList())
     if (show) {
         Dialog(onDismissRequest = { onDismiss() }) {
             Surface(
@@ -107,6 +113,16 @@ fun ModalTicket(
 
                             Button(
                                 onClick = {
+                                    listaRespuestas.value.forEach {
+                                        if(ticket.ticketId == it.ticketId){
+                                            respuestasViewModel.eliminar(it)
+                                        }
+                                    }
+                                    listaTiempos.value.forEach {
+                                        if(ticket.ticketId == it.ticketId){
+                                            tiemposViewModel.eliminar(it)
+                                        }
+                                    }
                                     viewModel.eliminar(ticket)
                                     onDismiss()
                                 },
