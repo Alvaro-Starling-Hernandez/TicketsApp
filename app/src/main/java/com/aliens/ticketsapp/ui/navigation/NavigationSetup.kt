@@ -6,6 +6,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.aliens.ticketsapp.ui.screens.SplashScreen.SplashScreenIconApp
 import com.aliens.ticketsapp.ui.screens.cliente.ConsultaClienteScreen
 import com.aliens.ticketsapp.ui.screens.cliente.RegistroClienteScreen
 import com.aliens.ticketsapp.ui.screens.dashboard.DashBoard
@@ -23,6 +24,9 @@ import com.aliens.ticketsapp.utils.Screen
 @Composable
 fun NavigationSetup(navController: NavHostController) {
     NavHost(navController, startDestination = BottomNavItem.DashBoard.route) {
+        composable(Screen.SplashScreenIcon.route){
+            SplashScreenIconApp(navController)
+        }
         composable(Screen.ConsultaTiempo.route) {
             ConsultaTiempoScreen(navController, 0)
         }
