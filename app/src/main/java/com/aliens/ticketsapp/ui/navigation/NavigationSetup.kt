@@ -23,8 +23,8 @@ import com.aliens.ticketsapp.utils.Screen
 
 @Composable
 fun NavigationSetup(navController: NavHostController) {
-    NavHost(navController, startDestination = BottomNavItem.DashBoard.route) {
-        composable(Screen.SplashScreenIcon.route){
+    NavHost(navController, startDestination = Screen.SplashScreenIconApp.route) {
+        composable(Screen.SplashScreenIconApp.route){
             SplashScreenIconApp(navController)
         }
         composable(Screen.ConsultaTiempo.route) {
