@@ -3,6 +3,7 @@ package com.aliens.ticketsapp.ui.screens.SplashScreen
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -13,9 +14,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.navigation.BottomNavItem
+import com.aliens.ticketsapp.ui.theme.cedarvillecursive
+import com.aliens.ticketsapp.ui.theme.jotiOne
 import com.aliens.ticketsapp.utils.Screen
 import kotlinx.coroutines.delay
 
@@ -23,7 +27,7 @@ import kotlinx.coroutines.delay
 fun SplashScreenIconApp(navController: NavController){
 
     LaunchedEffect(key1 = true){
-        delay(5000)
+        delay(3000)
         navController.popBackStack()
         navController.navigate(Screen.DashBoard.route)
     }
@@ -34,26 +38,34 @@ fun SplashScreenIconApp(navController: NavController){
 @Composable
 fun SplashIcon(){
     Column(modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-       /* Image(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .fillMaxSize()
-                .background(color = Color.Cyan),
-            painter = painterResource(id = R.drawable.fondo21),
-            contentDescription = "TicketsApp"
-        )*/
-
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        
+        Spacer(modifier = Modifier.height(40.dp))
+        
         Image(painter = painterResource(id = R.drawable.dispensador),
-                contentDescription = "IconApp")
+            contentDescription = "IconApp")
 
         Text(text = "TicketsApp",
             fontWeight = FontWeight.Bold,
-            //fontFamily = FontFamily.
-            )
+            fontFamily = jotiOne
+        )
+
+        Spacer(modifier = Modifier.height(190.dp))
+
+        Image(painter = painterResource(id = R.drawable.alien),
+            contentDescription = "Alien",
+            modifier = Modifier
+                .height(32.dp)
+                .width(32.dp)
+        )
+
+        Text(text = "From Aliens Solutions SRL",
+            style = MaterialTheme.typography.caption,
+            color = Color.Gray,
+            fontFamily = cedarvillecursive
+        )
 
     }
 }
