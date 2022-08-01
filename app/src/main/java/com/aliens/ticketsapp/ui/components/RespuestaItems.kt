@@ -1,6 +1,7 @@
 package com.aliens.ticketsapp.ui.components
 
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -52,19 +53,24 @@ fun RespuestaItem(
             .fillMaxWidth()
             .clickable { showDialog = true }
     ) {
-        Column(
-            modifier = Modifier
-                .padding(8.dp),
-            horizontalAlignment = Alignment.End,
-        ) {
-            Row(
-            ) {
-                Spacer(modifier = Modifier.width(20.dp))
-                Text(
-                    respuesta.fecha,
-                    textAlign = TextAlign.End,
-                )
+        Row() {
 
+            //Image(painter = , contentDescription = )
+
+            Column(
+                modifier = Modifier
+                    .padding(8.dp),
+                horizontalAlignment = Alignment.End,
+            ) {
+                Row(
+                ) {
+                    Spacer(modifier = Modifier.width(20.dp))
+                    Text(
+                        respuesta.fecha,
+                        textAlign = TextAlign.End,
+                    )
+
+                }
             }
         }
 
