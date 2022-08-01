@@ -17,6 +17,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -53,44 +54,46 @@ fun RespuestaItem(
             .fillMaxWidth()
             .clickable { showDialog = true }
     ) {
-        Row() {
-
-            //Image(painter = , contentDescription = )
-
+        Row(
+            //modifier = Modifier.fillMaxSize(),
+            //horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            //Spacer(modifier = Modifier.height(16.dp))
+            Image(
+                painter = painterResource(id = R.drawable.icons8_reply_all_48),
+                contentDescription = "ResponseIcon",
+                modifier = Modifier.padding(16.dp)
+            )
+            //
             Column(
                 modifier = Modifier
-                    .padding(8.dp),
-                horizontalAlignment = Alignment.End,
+                    .padding(4.dp)
             ) {
-                Row(
-                ) {
-                    Spacer(modifier = Modifier.width(20.dp))
-                    Text(
-                        respuesta.fecha,
-                        textAlign = TextAlign.End,
-                    )
 
-                }
+                Text(
+                    getNombreTecnico(respuesta.tecnicoId),
+                    style = MaterialTheme.typography.h6,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
+                    modifier = Modifier.padding(top = 20.dp)
+                )
+                Text(
+                    respuesta.Mensaje,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1
+                )
             }
+            Spacer(modifier = Modifier.width(64.dp))
+            Text(
+                respuesta.fecha,
+                textAlign = TextAlign.Right,
+                modifier = Modifier.padding(top = 6.dp)
+            )
+
+
         }
 
-        Column(
-            modifier = Modifier
-                .padding(8.dp)
-        ) {
-            Text(
-                getNombreTecnico(respuesta.tecnicoId),
-                style = MaterialTheme.typography.h6,
-                overflow = TextOverflow.Ellipsis,
-                maxLines = 1,
-                modifier = Modifier.padding(top = 15.dp)
-            )
-            Text(
-                respuesta.Mensaje,
-                overflow = TextOverflow.Ellipsis,
-                maxLines = 1
-            )
-        }
+
     }
 }
 
