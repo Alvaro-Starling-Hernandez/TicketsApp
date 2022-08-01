@@ -10,6 +10,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -42,17 +43,21 @@ fun SplashIcon(){
         verticalArrangement = Arrangement.Center
     ) {
         
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(130.dp))
         
-        Image(painter = painterResource(id = R.drawable.dispensador),
-            contentDescription = "IconApp")
+        Image(
+                painter = painterResource(id = R.drawable.dispensador),
+                contentDescription = "IconApp",
+                modifier =  Modifier.height(70.dp)
+                                    .width(70.dp)
+        )
 
         Text(text = "TicketsApp",
             fontWeight = FontWeight.Bold,
             fontFamily = jotiOne
         )
 
-        Spacer(modifier = Modifier.height(190.dp))
+        Spacer(modifier = Modifier.height(250.dp))
 
         Image(painter = painterResource(id = R.drawable.alien),
             contentDescription = "Alien",
