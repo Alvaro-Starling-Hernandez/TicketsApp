@@ -9,6 +9,9 @@ import androidx.compose.ui.unit.sp
 import com.aliens.ticketsapp.R
 
 
+val cedarvillecursive = FontFamily(
+    Font(R.font.cedarville_cursive)
+)
 val jotiOne = FontFamily(
     Font(R.font.joti_one, FontWeight.Bold)
 )
