@@ -3,7 +3,8 @@ package com.aliens.ticketsapp.utils
 sealed class Screen(val route: String){
 
     object  DashBoard: Screen("DashBoard")
-    object SplashScreenIcon: Screen("SplashScreenIcon")
+
+    object SplashScreenIconApp: Screen("SplashScreenIconApp")
 
     object RegistroRespuesta: Screen("RegistroRespuesta"){
         const val id = "id"
