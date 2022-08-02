@@ -6,9 +6,9 @@ import androidx.compose.ui.graphics.painter.Painter
 data class InfoTicket(
     val title: String,
     val valor: String,
-    val painter: Painter, // Imagen de fondo para la card
-    val contentDescription: String, //Descripcion del painter
-    val height: Int, //largo del painter
-    val width: Int   //ancho del painter
+    var painter: Painter, // Imagen de fondo para la card
+    var contentDescription: String, //Descripcion del painter
+    var height: Int, //largo del painter
+    var width: Int   //ancho del painter
 )
 
