@@ -7,7 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.aliens.ticketsapp.ui.theme.jotiOne
 
 @Composable
 fun Saludo(
@@ -25,12 +28,16 @@ fun Saludo(
         ) {
             Text(
                 text = "Buen dia, $name",
-                style = MaterialTheme.typography.h6
+                style = MaterialTheme.typography.h6,
+                fontWeight = FontWeight.Bold,
+                fontFamily = jotiOne,
+                fontStyle = FontStyle.Italic
             )
             Text(
                 color = Color.Gray,
                 text = "Tenemos algunos tickets pendientes!",
-                style = MaterialTheme.typography.body1
+                style = MaterialTheme.typography.body1,
+                fontFamily = jotiOne
             )
         }
     }

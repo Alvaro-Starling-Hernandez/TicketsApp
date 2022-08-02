@@ -23,10 +23,8 @@ fun DashBoard(
     viewModelCliente: ClienteViewModel = hiltViewModel()
 ) {
     //Fondos para las cards
-    val fondoAmarillo = painterResource(id = R.drawable.fondo_amarillo)
     val fondoAzul = painterResource(id = R.drawable.fondo_azul)
     val fondoRojo = painterResource(id = R.drawable.fondo_rojo)
-    val fondoAzulClaro = painterResource(id = R.drawable.fondo_azul_claro)
     val fondoVerdeLimon = painterResource(id = R.drawable.fondo_verde_limon)
     val fondoMorado = painterResource(id = R.drawable.fondo_morado)
 
