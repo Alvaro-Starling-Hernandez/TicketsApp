@@ -34,11 +34,11 @@ fun TicketsDashBoardItem(
             .height(100.dp)
     ) {
 
-        //Image(
-          //  painter = painter,
-            //contentDescription = contentDescription,
-            //contentScale = ContentScale.Crop
-        //)
+        Image(
+            painter = infoTicket.painter,
+            contentDescription = infoTicket.contentDescription,
+            contentScale = ContentScale.Crop
+        )
 
         Column(
             modifier = Modifier
