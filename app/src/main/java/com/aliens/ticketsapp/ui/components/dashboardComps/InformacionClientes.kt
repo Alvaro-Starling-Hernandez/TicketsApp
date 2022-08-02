@@ -12,11 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.aliens.ticketsapp.R
+import com.aliens.ticketsapp.ui.theme.jotiOne
 
 @Composable
 fun InformacionClientes(total: Int) {
@@ -25,7 +27,10 @@ fun InformacionClientes(total: Int) {
         Text(
             text = "Informacion de Clientes",
             style = MaterialTheme.typography.h6,
-            modifier = Modifier.padding(10.dp)
+            modifier = Modifier.padding(10.dp),
+            fontWeight = FontWeight.Bold,
+            fontFamily = jotiOne,
+            fontStyle = FontStyle.Italic
         )
         Card(
             shape = RoundedCornerShape(8.dp),
