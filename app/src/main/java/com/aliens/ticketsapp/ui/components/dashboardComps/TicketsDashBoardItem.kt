@@ -3,10 +3,7 @@ package com.aliens.ticketsapp.ui.components.dashboardComps
 import android.media.Image
 import android.media.MediaDescription
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -37,7 +34,9 @@ fun TicketsDashBoardItem(
         Image(
             painter = infoTicket.painter,
             contentDescription = infoTicket.contentDescription,
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.width(infoTicket.width.dp)
+                                .height(infoTicket.height.dp)
         )
 
         Column(
