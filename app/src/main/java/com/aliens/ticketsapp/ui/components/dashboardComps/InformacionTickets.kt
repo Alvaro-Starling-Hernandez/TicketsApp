@@ -8,9 +8,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.aliens.ticketsapp.ui.screens.dashboard.InfoTicket
 import com.aliens.ticketsapp.R
+import com.aliens.ticketsapp.ui.theme.jotiOne
 
 @Composable
 fun InformacionTickets(infoTicket: List<InfoTicket>) {
@@ -19,7 +22,10 @@ fun InformacionTickets(infoTicket: List<InfoTicket>) {
         Text(
             text = "Informacion de Tickets",
             style = MaterialTheme.typography.h6,
-            modifier = Modifier.padding(10.dp)
+            modifier = Modifier.padding(10.dp),
+            fontWeight = FontWeight.Bold,
+            fontFamily = jotiOne,
+            fontStyle = FontStyle.Italic
         )
 
         LazyVerticalGrid(
