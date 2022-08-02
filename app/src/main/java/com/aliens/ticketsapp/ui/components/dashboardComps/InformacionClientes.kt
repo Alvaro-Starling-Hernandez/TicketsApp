@@ -25,7 +25,7 @@ fun InformacionClientes(total: Int) {
 
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
-            text = "Informacion de Clientes",
+            text = "Información de Clientes",
             style = MaterialTheme.typography.h6,
             modifier = Modifier.padding(10.dp),
             fontWeight = FontWeight.Bold,

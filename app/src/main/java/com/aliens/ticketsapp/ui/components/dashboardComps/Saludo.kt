@@ -14,7 +14,7 @@ import com.aliens.ticketsapp.ui.theme.jotiOne
 
 @Composable
 fun Saludo(
-    name: String = "Tecnico"
+    name: String = "Técnico"
 ) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,

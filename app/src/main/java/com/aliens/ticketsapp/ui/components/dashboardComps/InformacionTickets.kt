@@ -20,7 +20,7 @@ fun InformacionTickets(infoTicket: List<InfoTicket>) {
 
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
-            text = "Informacion de Tickets",
+            text = "Información de Tickets",
             style = MaterialTheme.typography.h6,
             modifier = Modifier.padding(10.dp),
             fontWeight = FontWeight.Bold,
