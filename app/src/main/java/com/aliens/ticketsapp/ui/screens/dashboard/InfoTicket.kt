@@ -7,6 +7,8 @@ data class InfoTicket(
     val title: String,
     val valor: String,
     val painter: Painter,
-    val contentDescription: String
+    val contentDescription: String,
+    val height: Int,
+    val width: Int
 )
 
