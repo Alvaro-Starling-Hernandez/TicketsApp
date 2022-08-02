@@ -8,7 +8,9 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.dashboardComps.*
 import com.aliens.ticketsapp.ui.screens.cliente.ClienteViewModel
 import com.aliens.ticketsapp.ui.screens.ticket.TicketViewModel
@@ -20,6 +22,13 @@ fun DashBoard(
     viewModelTiempo: TiempoViewModel = hiltViewModel(),
     viewModelCliente: ClienteViewModel = hiltViewModel()
 ) {
+    //Fondos para las cards
+    val fondoAmarillo = painterResource(id = R.drawable.fondo_amarillo)
+    val fondoAzul = painterResource(id = R.drawable.fondo_azul)
+    val fondoRojo = painterResource(id = R.drawable.fondo_rojo)
+    val fondoAzulClaro = painterResource(id = R.drawable.fondo_azul_claro)
+    val fondoVerdeLimon = painterResource(id = R.drawable.fondo_verde_limon)
+    val fondoMorado = painterResource(id = R.drawable.fondo_morado)
 
     //Variables contables
     var Pendientes = 0
@@ -73,19 +82,36 @@ fun DashBoard(
                 infoTicket = listOf(
                     InfoTicket(
                         title = "Totales",
-                        valor = TicketsTotales.toString()
+                        valor = TicketsTotales.toString(),
+                        painter = fondoVerdeLimon,
+                        contentDescription = "Fondo verde limon",
+                        height = 200,
+                        width = 200
+
                     ),
                     InfoTicket(
                         title = "Finalizados",
-                        valor = Finalizados.toString()
+                        valor = Finalizados.toString(),
+                        painter = fondoRojo,
+                        contentDescription = "Fondo Rojo",
+                        height = 200,
+                        width = 200
                     ),
                     InfoTicket(
                         title = "En Proceso",
-                        valor = EnProceso.toString()
+                        valor = EnProceso.toString(),
+                        painter = fondoAzul,
+                        contentDescription = "Fondo Azul",
+                        height = 200,
+                        width = 200
                     ),
                     InfoTicket(
                         title = "Tiempo Trabajado",
-                        valor = "$sum Mins"
+                        valor = "$sum Mins",
+                        painter = fondoMorado,
+                        contentDescription = "Fondo Morado",
+                        height = 200,
+                        width = 200
                     )
                 )
             )
