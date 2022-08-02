@@ -24,8 +24,6 @@ import com.aliens.ticketsapp.ui.screens.dashboard.InfoTicket
 @Composable
 fun TicketsDashBoardItem(
     infoTicket: InfoTicket,
-    painter: Painter,
-    contentDescription: String
 ) {
     Card(
         shape = RoundedCornerShape(8.dp),
@@ -36,11 +34,11 @@ fun TicketsDashBoardItem(
             .height(100.dp)
     ) {
 
-        Image(
-            painter = painter,
-            contentDescription = contentDescription,
-            contentScale = ContentScale.Crop
-        )
+        //Image(
+          //  painter = painter,
+            //contentDescription = contentDescription,
+            //contentScale = ContentScale.Crop
+        //)
 
         Column(
             modifier = Modifier
