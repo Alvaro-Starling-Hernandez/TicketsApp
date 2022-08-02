@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
@@ -20,7 +21,8 @@ fun CardTicketsPendientes(Pendientes: Int, Urgentes: Int, Alta: Int) {
         elevation = 10.dp,
         modifier = Modifier
             .padding(vertical = 10.dp)
-            .padding(15.dp)
+            .padding(15.dp),
+        backgroundColor = Color.Cyan
     ) {
 
         Column(
@@ -32,7 +34,9 @@ fun CardTicketsPendientes(Pendientes: Int, Urgentes: Int, Alta: Int) {
                 style = MaterialTheme.typography.h6,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1,
-                modifier = Modifier.padding(top = 0.dp)
+                modifier = Modifier.padding(top = 0.dp),
+                //fontWeight = FontWeight.Bold,
+                //color = Color.White
             )
             Text(
                 color = Color.Gray,

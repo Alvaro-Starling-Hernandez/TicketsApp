@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -50,7 +51,7 @@ fun ConsultaTicketScreen(
                 onSearchTriggered = {
                     viewModel.updateSearchWidgetState(newValue = SearchWidgetState.OPENED)
                 },
-                title = stringResource(R.string.Tickets)
+                title = stringResource(R.string.Tickets),
             )
 
         },

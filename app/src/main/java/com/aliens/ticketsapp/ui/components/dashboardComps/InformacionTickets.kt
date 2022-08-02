@@ -7,8 +7,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.aliens.ticketsapp.ui.screens.dashboard.InfoTicket
+import com.aliens.ticketsapp.R
 
 @Composable
 fun InformacionTickets(infoTicket: List<InfoTicket>) {
@@ -19,6 +21,7 @@ fun InformacionTickets(infoTicket: List<InfoTicket>) {
             style = MaterialTheme.typography.h6,
             modifier = Modifier.padding(10.dp)
         )
+
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             contentPadding = PaddingValues(start = 7.5.dp, end = 7.5.dp, bottom = 100.dp),
