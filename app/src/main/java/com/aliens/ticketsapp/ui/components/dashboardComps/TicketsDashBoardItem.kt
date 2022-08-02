@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.aliens.ticketsapp.ui.screens.dashboard.InfoTicket
@@ -48,7 +49,9 @@ fun TicketsDashBoardItem(
                 style = MaterialTheme.typography.h6,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1,
-                modifier = Modifier.padding(top = 1.dp)
+                modifier = Modifier.padding(top = 1.dp),
+                fontWeight = FontWeight.Bold,
+                color = Color.White
             )
             Text(
                 text = infoTicket.valor,
@@ -57,7 +60,9 @@ fun TicketsDashBoardItem(
                 maxLines = 1,
                 modifier = Modifier
                     .padding(top = 35.dp)
-                    .align(Alignment.End)
+                    .align(Alignment.End),
+                fontWeight = FontWeight.Bold,
+                color = Color.White
             )
         }
     }
