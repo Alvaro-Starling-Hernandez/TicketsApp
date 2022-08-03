@@ -200,7 +200,7 @@ fun Modal(
                             )
                         }
                         Spacer(modifier = Modifier.height(20.dp))
-                        Row(horizontalArrangement = Arrangement.End) {
+                        Row {
                             Button(
                                 onClick = {
                                     navController.navigate(
@@ -211,6 +211,7 @@ fun Modal(
                                     )
                                     onDismiss()
                                 },
+                                modifier = Modifier.padding(start =70.dp),
                                 shape = RoundedCornerShape(50.dp),
                                 // modifier = Modifier.padding(start = 140.dp)
                             ) {
@@ -241,6 +242,7 @@ fun Modal(
                                     share(receptor = correo, nombreCliente = name,cuerpo = respuesta.Mensaje, context)
                                     onDismiss()
                                 },
+                                modifier = Modifier.padding(start = 10.dp),
                                 shape = RoundedCornerShape(50.dp),
                                 //modifier = Modifier.padding(start = 140.dp)
                             ) {
@@ -257,6 +259,7 @@ fun Modal(
                                     onDismiss()
                                 },
                                 shape = RoundedCornerShape(50.dp),
+                                modifier = Modifier.padding(start = 10.dp)
                                 //modifier = Modifier.padding(start = 10.dp)
                             ) {
                                 Icon(
