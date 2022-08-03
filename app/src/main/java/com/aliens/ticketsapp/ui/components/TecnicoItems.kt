@@ -42,7 +42,7 @@ fun TecnicoItems(
 
     Card(
         modifier = Modifier
-            .padding(8.dp,0.dp,0.dp,0.dp)
+            .padding(horizontal = 8.dp)
             .padding(vertical = 5.dp)
             .clickable { showDialog = true },
         elevation = 8.dp,
