@@ -1,12 +1,13 @@
 package com.aliens.ticketsapp.utils
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.aliens.ticketsapp.ui.components.prioridad.PrioridadViewModel
 import com.aliens.ticketsapp.ui.screens.cliente.ClienteViewModel
 import com.aliens.ticketsapp.ui.screens.tecnico.TecnicoViewModel
+import com.aliens.ticketsapp.ui.screens.ticket.TicketViewModel
 
 fun getEstado(id: Int): String {
     var str = ""
@@ -93,5 +94,29 @@ fun getColorEstado(estado: Int): Color {
         2 -> color = Color.Green
     }
     return color
+}
+
+@Composable
+fun getSaludo(viewModel: TicketViewModel = hiltViewModel()): String {
+    val tickets = viewModel.tickets.collectAsState(initial = emptyList())
+    var ticketsResueltos by rememberSaveable { mutableStateOf(0) }
+    tickets.value.forEach {
+        if (it.estadoId != 2) {
+            ticketsResueltos = 2
+        } else {
+            ticketsResueltos = 1
+        }
+    }
+    if (tickets.value.isEmpty()) {
+        ticketsResueltos = 3
+    }
+    var texto: String = when (ticketsResueltos) {
+        1 -> "Todos los tickets estan finalizados, Buen trabajo!"
+        2 -> "Tenemos algunos tickets pendientes!"
+        else -> {
+            "No hay tickets registrados para responder!"
+        }
+    }
+    return texto
 }
 
