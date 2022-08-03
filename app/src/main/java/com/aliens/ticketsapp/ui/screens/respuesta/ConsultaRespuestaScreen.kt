@@ -19,13 +19,16 @@ import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.RespuestaItem
 import com.aliens.ticketsapp.ui.components.appBar.AppBarConBackIcon
 import com.aliens.ticketsapp.ui.components.appBar.SearchWidgetState
+import com.aliens.ticketsapp.ui.screens.cliente.ClienteViewModel
+import com.aliens.ticketsapp.ui.screens.tecnico.TecnicoViewModel
 import com.aliens.ticketsapp.utils.Screen
 
 @Composable
 fun ConsultaRespuestaScreen(
     navController: NavController,
     idTicket: Int,
-    viewModel: RespuestaViewModel = hiltViewModel()
+    viewModel: RespuestaViewModel = hiltViewModel(),
+    viewModel2: TecnicoViewModel = hiltViewModel()
 ) {
     var auxId = 0
 
@@ -97,11 +100,19 @@ fun ConsultaRespuestaScreen(
 
             val listaRespuestas =
                 viewModel.getRespuestaByTicket(idTicket).collectAsState(initial = emptyList())
+            var name = ""
+            val tecnicos = viewModel2.tecnicos.collectAsState(initial = emptyList())
 
             LazyColumn() {
                 items(items = listaRespuestas.value.filter { res ->
+                    tecnicos.value.forEach { element ->
+                        if (res.tecnicoId == element.tecnicoId) {
+                            name = element.nombreTecnico
+                        }
+                    }
                     res.Mensaje.contains(searchTextState, ignoreCase = true) ||
-                            res.fecha.contains(searchTextState, ignoreCase = true)
+                            res.fecha.contains(searchTextState, ignoreCase = true) ||
+                            name.contains(searchTextState, ignoreCase = true)
                 }, key = { it.respuestaId }) { item ->
                     RespuestaItem(item, navController)
                 }
