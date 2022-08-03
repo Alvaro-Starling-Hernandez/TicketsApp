@@ -22,6 +22,9 @@ import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TecnicoSpinner
 import com.aliens.ticketsapp.ui.components.TextObligatorio
 import com.aliens.ticketsapp.ui.components.DateTimePicker
+import com.aliens.ticketsapp.ui.components.share
+import com.aliens.ticketsapp.ui.screens.cliente.ClienteViewModel
+import com.aliens.ticketsapp.ui.screens.ticket.TicketViewModel
 import com.aliens.ticketsapp.utils.Screen
 
 @Composable
@@ -29,7 +32,9 @@ fun RegistroRespuestaScreen(
     navController: NavController,
     id: Int,
     idTicket: Int,
-    viewModel: RespuestaViewModel = hiltViewModel()
+    viewModel: RespuestaViewModel = hiltViewModel(),
+    viewModel2: ClienteViewModel = hiltViewModel(),
+    viewModel3: TicketViewModel = hiltViewModel()
 ) {
     var MensajeError by rememberSaveable { mutableStateOf(false) }
     val context = LocalContext.current
@@ -103,6 +108,14 @@ fun RegistroRespuestaScreen(
 
             Spacer(modifier = Modifier.height(50.dp))
 
+            var name: String = ""
+            var correo: String = ""
+            var idCliente:Int = 0
+            val clientes = viewModel2.clientes.collectAsState(initial = emptyList())
+            val listaTickets = viewModel3.buscar(viewModel.idTicket).collectAsState(initial = emptyList())
+            listaTickets.value.forEach {
+                idCliente = it.clienteId
+            }
             Button(
                 onClick = {
                     MensajeError = viewModel.mensaje.isBlank()
@@ -113,6 +126,13 @@ fun RegistroRespuestaScreen(
                             R.string.ToastMessageSave,
                             Toast.LENGTH_SHORT
                         ).show()
+                        clientes.value.forEach {
+                            if (idCliente == it.clienteId) {
+                                name = it.nombreCliente
+                                correo = it.email
+                            }
+                        }
+                        share(receptor = correo, nombreCliente = name,cuerpo = viewModel.mensaje, context)
                         navController.navigateUp()
                     } else {
                         Toast.makeText(
