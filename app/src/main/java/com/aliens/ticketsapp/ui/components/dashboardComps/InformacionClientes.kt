@@ -40,8 +40,8 @@ fun InformacionClientes(total: Int) {
         ) {
 
             Image(
-                painter = painterResource(id = R.drawable.fondo_verde),
-                contentDescription = "Fondo verde",
+                painter = painterResource(id = R.drawable.colorclientes),
+                contentDescription = "Fondo azul",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .width(200.dp)
