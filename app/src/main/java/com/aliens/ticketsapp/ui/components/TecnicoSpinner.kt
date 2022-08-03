@@ -60,7 +60,7 @@ fun TecnicoSpinner(
             value = writeNameTecnico,
             onValueChange = { mSelectedText = it },
             modifier = Modifier
-                .clickable { }
+                .clickable { mExpanded = !mExpanded }
                 .fillMaxWidth()
                 .onGloballyPositioned { coordinates ->
                     mTextFieldSize = coordinates.size.toSize()

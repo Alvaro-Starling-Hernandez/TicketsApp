@@ -52,11 +52,6 @@ fun SplashIcon(){
                                     .width(300.dp)
         )
 
-        Text(text = "TicketsApp",
-            fontWeight = FontWeight.Bold,
-            fontFamily = jotiOne
-        )
-
         Spacer(modifier = Modifier.height(230.dp))
 
         Image(painter = painterResource(id = R.drawable.alien),

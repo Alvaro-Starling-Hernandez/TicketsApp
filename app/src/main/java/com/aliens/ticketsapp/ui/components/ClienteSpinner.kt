@@ -31,7 +31,7 @@ fun ClienteSpinner(
 
     var writeNameCliente: String
 
-    writeNameCliente= getNombreCliente(idCliente)
+    writeNameCliente = getNombreCliente(idCliente)
 
     var mExpanded by remember { mutableStateOf(false) }
 
@@ -51,14 +51,14 @@ fun ClienteSpinner(
 
     Column(
         Modifier
+            .clickable { mExpanded = !mExpanded }
             .fillMaxWidth()
     ) {
 
         OutlinedTextField(
             value = writeNameCliente,
             onValueChange = { mSelectedText = it },
-            modifier = Modifier
-                .clickable { }
+            modifier = Modifier.clickable { mExpanded = !mExpanded  }
                 .fillMaxWidth()
                 .onGloballyPositioned { coordinates ->
                     mTextFieldSize = coordinates.size.toSize()
