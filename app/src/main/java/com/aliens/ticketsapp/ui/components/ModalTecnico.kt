@@ -78,7 +78,7 @@ fun ModalTecnico(
                                 Icon(
                                     Icons.Default.Person,
                                     contentDescription = null,
-                                    tint = Color.Blue
+                                    tint = Color.Gray
                                 )
                                 Text(
                                     "Tecnico: " + tecnico.nombreTecnico,

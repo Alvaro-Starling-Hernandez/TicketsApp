@@ -80,7 +80,7 @@ fun ModalCliente(
                         Spacer(modifier = Modifier.height(20.dp))
                         Column {
                             Row() {
-                                Icon(Icons.Default.Person, contentDescription = null, tint = Color.Blue)
+                                Icon(Icons.Default.Person, contentDescription = null, tint = Color.Gray)
                                 Text("Cliente: "+ cliente.nombreCliente,
                                     overflow = TextOverflow.Ellipsis,
                                     maxLines = 1)

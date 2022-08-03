@@ -48,8 +48,8 @@ fun SplashIcon(){
         Image(
                 painter = painterResource(id = R.drawable.publicaci_n_de_facebook_940x788_px),
                 contentDescription = "IconApp",
-                modifier =  Modifier.height(150.dp)
-                                    .width(150.dp)
+                modifier =  Modifier.height(300.dp)
+                                    .width(300.dp)
         )
 
         Text(text = "TicketsApp",
@@ -57,7 +57,7 @@ fun SplashIcon(){
             fontFamily = jotiOne
         )
 
-        Spacer(modifier = Modifier.height(250.dp))
+        Spacer(modifier = Modifier.height(230.dp))
 
         Image(painter = painterResource(id = R.drawable.alien),
             contentDescription = "Alien",
@@ -68,8 +68,7 @@ fun SplashIcon(){
 
         Text(text = "From Aliens Solutions SRL",
             style = MaterialTheme.typography.caption,
-            color = Color.Gray,
-            fontFamily = cedarvillecursive
+            color = Color.Gray
         )
 
     }
