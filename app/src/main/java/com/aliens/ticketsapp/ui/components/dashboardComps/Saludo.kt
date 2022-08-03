@@ -30,14 +30,12 @@ fun Saludo(
                 text = "Buen dia, $name",
                 style = MaterialTheme.typography.h6,
                 fontWeight = FontWeight.Bold,
-                fontFamily = jotiOne,
                 fontStyle = FontStyle.Italic
             )
             Text(
                 color = Color.Gray,
                 text = "Tenemos algunos tickets pendientes!",
-                style = MaterialTheme.typography.body1,
-                fontFamily = jotiOne
+                style = MaterialTheme.typography.body1
             )
         }
     }

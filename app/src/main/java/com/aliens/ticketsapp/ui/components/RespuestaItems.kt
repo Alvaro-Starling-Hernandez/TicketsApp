@@ -62,7 +62,7 @@ fun RespuestaItem(
             Image(
                 painter = painterResource(id = R.drawable.icons8_reply_all_48),
                 contentDescription = "ResponseIcon",
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(16.dp).height(50.dp).width(50.dp)
             )
             //
             Column(

@@ -29,7 +29,6 @@ fun InformacionClientes(total: Int) {
             style = MaterialTheme.typography.h6,
             modifier = Modifier.padding(10.dp),
             fontWeight = FontWeight.Bold,
-            fontFamily = jotiOne,
             fontStyle = FontStyle.Italic
         )
         Card(
