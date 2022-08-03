@@ -69,7 +69,7 @@ fun ConsultaTecnicoScreen(
         Column(
             modifier = Modifier
                 .padding(it)
-                .absolutePadding(16.dp, 5.dp, 16.dp, 64.dp)
+                .absolutePadding(5.dp, 5.dp, 5.dp, 64.dp)
 
         ) {
 

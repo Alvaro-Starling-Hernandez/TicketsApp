@@ -35,7 +35,7 @@ fun ClienteItem(
 
     Card(
         modifier = Modifier
-            .padding(horizontal = 8.dp)
+            .padding(horizontal = 5.dp)
             .padding(vertical = 5.dp)
             .clickable { showDialog = true },
         elevation = 8.dp,
