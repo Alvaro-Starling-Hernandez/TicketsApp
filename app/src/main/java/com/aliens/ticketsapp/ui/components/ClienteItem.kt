@@ -54,7 +54,7 @@ fun ClienteItem(
                     .height(70.dp)
                     .width(70.dp),
                 shape = RoundedCornerShape(64.dp),
-                backgroundColor = Color.Blue
+                backgroundColor = Color(0xFFFFA500)
             ) {
                 Text(
                     text = InicalNombre(cliente.nombreCliente),
@@ -76,7 +76,7 @@ fun ClienteItem(
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(Icons.Default.Email, contentDescription = null )
+                    Icon(Icons.Default.Email, contentDescription = null, tint = Color.Gray)
                     Spacer(modifier = Modifier.padding(4.dp))
                     Text(
                         text = cliente.email,
@@ -87,7 +87,7 @@ fun ClienteItem(
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(Icons.Default.Phone, contentDescription = null)
+                    Icon(Icons.Default.Phone, contentDescription = null, tint = Color.Gray)
                     Spacer(modifier = Modifier.padding(4.dp))
                     Text(
                         text = cliente.telefonoCliente,
