@@ -20,6 +20,7 @@ import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TicketItems
 import com.aliens.ticketsapp.ui.components.appBar.SearchWidgetState
 import com.aliens.ticketsapp.ui.components.appBar.AppBar
+import com.aliens.ticketsapp.ui.components.prioridad.PrioridadViewModel
 import com.aliens.ticketsapp.ui.screens.cliente.ClienteViewModel
 import com.aliens.ticketsapp.utils.Screen
 import com.aliens.ticketsapp.utils.getEstado
@@ -29,7 +30,8 @@ import com.aliens.ticketsapp.utils.getNombreCliente
 fun ConsultaTicketScreen(
     navController: NavController,
     viewModel: TicketViewModel = hiltViewModel(),
-    viewModel2: ClienteViewModel = hiltViewModel()
+    viewModel2: ClienteViewModel = hiltViewModel(),
+    viewModel3: PrioridadViewModel = hiltViewModel()
 ) {
 
     val searchWidgetState by viewModel.searchWidgetState
@@ -82,9 +84,16 @@ fun ConsultaTicketScreen(
             val listaTickets = viewModel.tickets.collectAsState(initial = emptyList())
             var name: String = ""
             val clientes = viewModel2.clientes.collectAsState(initial = emptyList())
+            var namePrio: String = ""
+            val prioridades = viewModel3.prioridades.collectAsState(initial = emptyList())
 
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
                 items(items = listaTickets.value.filter { res ->
+                    prioridades.value.forEach { element ->
+                        if (res.prioridadId == element.prioridadId) {
+                            namePrio = element.descripcion
+                        }
+                    }
                     clientes.value.forEach { element ->
                         if (res.clienteId == element.clienteId) {
                             name = element.nombreCliente
@@ -97,7 +106,10 @@ fun ConsultaTicketScreen(
                             res.asunto.contains(searchTextState, ignoreCase = true) ||
                             res.fecha.contains(searchTextState, ignoreCase = true) ||
                             res.requerimiento.contains(searchTextState, ignoreCase = true) ||
-                            getEstado(res.estadoId).contains(searchTextState, ignoreCase = true)
+                            getEstado(res.estadoId).contains(searchTextState, ignoreCase = true) ||
+                            namePrio.contains(searchTextState, ignoreCase = true)
+
+
                 }, key = { it.ticketId }) { item ->
                     TicketItems(item, navController)
                 }
@@ -108,5 +120,6 @@ fun ConsultaTicketScreen(
     }
 
 }
+
 
 
