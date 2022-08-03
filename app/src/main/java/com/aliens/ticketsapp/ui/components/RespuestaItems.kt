@@ -68,7 +68,7 @@ fun RespuestaItem(
                         .height(50.dp)
                         .width(50.dp)
                 )
-                //
+
                 Column(
                     modifier = Modifier
                         .padding(8.dp)
