@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -59,7 +60,9 @@ fun RespuestaItem(
             modifier = Modifier
                 .fillMaxWidth(),
         ) {
-            Row() {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Image(
                     painter = painterResource(id = R.drawable.icons8_reply_all_48),
                     contentDescription = "ResponseIcon",
@@ -83,6 +86,7 @@ fun RespuestaItem(
                     Text(
                         respuesta.Mensaje,
                         overflow = TextOverflow.Ellipsis,
+                        fontStyle = FontStyle.Italic,
                         maxLines = 2
                     )
                 }

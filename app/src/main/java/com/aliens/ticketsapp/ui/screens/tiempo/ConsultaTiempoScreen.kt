@@ -109,7 +109,7 @@ fun ConsultaTiempoScreen(
 
             Column(
                 modifier = Modifier
-                    .absolutePadding(16.dp, 16.dp, 16.dp, 16.dp)
+                    .absolutePadding(5.dp, 5.dp, 5.dp, 16.dp)
                     .height(600.dp)
             ) {
                 val listaTiempos =
