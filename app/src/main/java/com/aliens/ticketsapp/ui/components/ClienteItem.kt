@@ -15,6 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
@@ -74,8 +75,8 @@ fun ClienteItem(
                     maxLines = 1
                 )
                 Spacer(modifier = Modifier.height(10.dp))
-                Row() {
-                    Icon(Icons.Default.Email, contentDescription = null, tint = Color.Blue )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(Icons.Default.Email, contentDescription = null )
                     Spacer(modifier = Modifier.padding(4.dp))
                     Text(
                         text = cliente.email,
@@ -85,8 +86,8 @@ fun ClienteItem(
                     )
                 }
                 Spacer(modifier = Modifier.height(10.dp))
-                Row() {
-                    Icon(Icons.Default.Phone, contentDescription = null, tint = Color.Blue)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(Icons.Default.Phone, contentDescription = null)
                     Spacer(modifier = Modifier.padding(4.dp))
                     Text(
                         text = cliente.telefonoCliente,

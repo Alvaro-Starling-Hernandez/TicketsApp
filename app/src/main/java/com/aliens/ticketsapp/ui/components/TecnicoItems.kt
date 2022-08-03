@@ -60,7 +60,7 @@ fun TecnicoItems(
                     .height(70.dp)
                     .width(70.dp),
                 shape = RoundedCornerShape(64.dp),
-                backgroundColor = Color.Blue
+                backgroundColor = Color(0xFFFFA500)
             ) {
                 Text(
                     text = InicalNombre(tecnico.nombreTecnico),
@@ -81,8 +81,8 @@ fun TecnicoItems(
                     maxLines = 1
                 )
                 Spacer(modifier = Modifier.height(10.dp))
-                Row() {
-                    Icon(Icons.Default.Email, contentDescription = null, tint = Color.Blue )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(Icons.Default.Email, contentDescription = null)
                     Spacer(modifier = Modifier.padding(4.dp))
                     Text(
                         text = tecnico.email,
@@ -92,8 +92,8 @@ fun TecnicoItems(
                     )
                 }
                 Spacer(modifier = Modifier.height(10.dp))
-                Row() {
-                    Icon(Icons.Default.Phone, contentDescription = null, tint = Color.Blue)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(Icons.Default.Phone, contentDescription = null)
                     Spacer(modifier = Modifier.padding(4.dp))
                     Text(
                         text = tecnico.telefonoTecnico,
