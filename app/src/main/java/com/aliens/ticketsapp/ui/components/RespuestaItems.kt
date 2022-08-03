@@ -50,49 +50,55 @@ fun RespuestaItem(
         shape = RoundedCornerShape(8.dp),
         elevation = 10.dp,
         modifier = Modifier
-            .padding(vertical = 10.dp)
+            .padding(vertical = 5.dp)
+            .padding(horizontal = 5.dp)
             .fillMaxWidth()
             .clickable { showDialog = true }
     ) {
-        Row(
-            //modifier = Modifier.fillMaxSize(),
-            //horizontalArrangement = Arrangement.SpaceBetween
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(),
         ) {
-            //Spacer(modifier = Modifier.height(16.dp))
-            Image(
-                painter = painterResource(id = R.drawable.icons8_reply_all_48),
-                contentDescription = "ResponseIcon",
-                modifier = Modifier.padding(16.dp).height(50.dp).width(50.dp)
-            )
-            //
-            Column(
-                modifier = Modifier
-                    .padding(4.dp)
-            ) {
-
-                Text(
-                    getNombreTecnico(respuesta.tecnicoId),
-                    style = MaterialTheme.typography.h6,
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 1,
-                    modifier = Modifier.padding(top = 20.dp)
+            Row() {
+                Image(
+                    painter = painterResource(id = R.drawable.icons8_reply_all_48),
+                    contentDescription = "ResponseIcon",
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .height(50.dp)
+                        .width(50.dp)
                 )
+                //
+                Column(
+                    modifier = Modifier
+                        .padding(8.dp)
+                ) {
+
+                    Text(
+                        getNombreTecnico(respuesta.tecnicoId),
+                        style = MaterialTheme.typography.h6,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 1
+                    )
+                    Text(
+                        respuesta.Mensaje,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 2
+                    )
+                }
+            }
+            Row(
+                horizontalArrangement = Arrangement.End,
+                modifier = Modifier.fillMaxWidth()
+            ){
                 Text(
-                    respuesta.Mensaje,
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 1
+                    respuesta.fecha,
+                    textAlign = TextAlign.Right,
+                    modifier = Modifier.padding(end = 15.dp)
                 )
             }
-            Spacer(modifier = Modifier.width(64.dp))
-            Text(
-                respuesta.fecha,
-                textAlign = TextAlign.Right,
-                modifier = Modifier.padding(top = 6.dp)
-            )
-
 
         }
-
 
     }
 }
