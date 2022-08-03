@@ -41,8 +41,8 @@ fun TicketItems(
 
     Card(
         modifier = Modifier
-            .padding(8.dp)
-            .padding(vertical = 10.dp)
+            .padding(horizontal = 5.dp)
+            .padding(vertical = 5.dp)
             .fillMaxWidth()
             .clickable { showDialog = true },
         elevation = 8.dp,
