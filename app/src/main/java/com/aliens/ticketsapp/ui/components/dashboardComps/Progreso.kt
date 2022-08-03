@@ -10,6 +10,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.aliens.ticketsapp.ui.screens.ticket.TicketViewModel
@@ -52,5 +54,10 @@ fun Progreso(
 
     ) {
         DeterminedCircularProgress(progress = animatedProgress)
+        Text(
+            text = "Progreso",
+            fontWeight = FontWeight.Bold,
+            fontStyle = FontStyle.Italic
+        )
     }
 }
