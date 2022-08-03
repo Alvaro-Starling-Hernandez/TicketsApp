@@ -25,6 +25,7 @@ import com.aliens.ticketsapp.R
 import com.aliens.ticketsapp.ui.components.TiempoItem
 import com.aliens.ticketsapp.ui.components.appBar.AppBarConBackIcon
 import com.aliens.ticketsapp.ui.components.appBar.SearchWidgetState
+import com.aliens.ticketsapp.ui.screens.tecnico.TecnicoViewModel
 import com.aliens.ticketsapp.utils.Screen
 
 @Composable
@@ -32,6 +33,7 @@ fun ConsultaTiempoScreen(
     navController: NavController,
     idTicket: Int,
     viewModel: TiempoViewModel = hiltViewModel(),
+    viewModel2: TecnicoViewModel = hiltViewModel()
 ) {
 
     val auxId = 0
@@ -114,15 +116,19 @@ fun ConsultaTiempoScreen(
             ) {
                 val listaTiempos =
                     viewModel.getTiempoByTicket(idTicket).collectAsState(initial = emptyList())
+                var name = ""
+                val tecnicos = viewModel2.tecnicos.collectAsState(initial = emptyList())
 
                 LazyColumn(modifier = Modifier.fillMaxWidth()) {
                     items(items = listaTiempos.value.filter { res ->
+                        tecnicos.value.forEach { element ->
+                            if (res.tecnicoId == element.tecnicoId) {
+                                name = element.nombreTecnico
+                            }
+                        }
                         res.tiempo.toString().contains(searchTextState, ignoreCase = true) ||
-                                res.trabajo.contains(searchTextState, ignoreCase = true)
-//                                getNombreTecnico(tecn = res.tecnicoId).contains(
-//                                    searchTextState,
-//                                    ignoreCase = true
-//                                )
+                                res.trabajo.contains(searchTextState, ignoreCase = true) ||
+                                name.contains(searchTextState, ignoreCase = true)
                     }, key = { it.tiempoId }) { item ->
                         TiempoItem(item, navController)
                     }
