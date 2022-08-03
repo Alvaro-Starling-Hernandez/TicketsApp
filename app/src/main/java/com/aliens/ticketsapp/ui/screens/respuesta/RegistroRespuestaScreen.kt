@@ -110,11 +110,13 @@ fun RegistroRespuestaScreen(
 
             var name: String = ""
             var correo: String = ""
+            var asunto: String = ""
             var idCliente:Int = 0
             val clientes = viewModel2.clientes.collectAsState(initial = emptyList())
             val listaTickets = viewModel3.buscar(viewModel.idTicket).collectAsState(initial = emptyList())
             listaTickets.value.forEach {
                 idCliente = it.clienteId
+                asunto = it.asunto
             }
             Button(
                 onClick = {
@@ -132,7 +134,7 @@ fun RegistroRespuestaScreen(
                                 correo = it.email
                             }
                         }
-                        share(receptor = correo, nombreCliente = name,cuerpo = viewModel.mensaje, context)
+                        share(receptor = correo, nombreCliente = name,cuerpo = viewModel.mensaje,asunto = asunto, context)
                         navController.navigateUp()
                     } else {
                         Toast.makeText(

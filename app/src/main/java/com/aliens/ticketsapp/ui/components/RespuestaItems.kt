@@ -224,11 +224,13 @@ fun Modal(
 
                             var name: String = ""
                             var correo: String = ""
+                            var asunto: String = ""
                             var idCliente:Int = 0
                             val clientes = viewModel2.clientes.collectAsState(initial = emptyList())
                             val listaTickets = viewModel3.buscar(respuesta.ticketId).collectAsState(initial = emptyList())
                             listaTickets.value.forEach {
                                 idCliente = it.clienteId
+                                asunto = it.asunto
                             }
                             Button(
                                 onClick = {
@@ -239,7 +241,7 @@ fun Modal(
                                             correo = it.email
                                         }
                                     }
-                                    share(receptor = correo, nombreCliente = name,cuerpo = respuesta.Mensaje, context)
+                                    share(receptor = correo, nombreCliente = name,cuerpo = respuesta.Mensaje, asunto = asunto, context)
                                     onDismiss()
                                 },
                                 modifier = Modifier.padding(start = 10.dp),
@@ -282,13 +284,14 @@ fun share(
     receptor: String,
     nombreCliente: String,
     cuerpo: String,
+    asunto: String,
     context: Context
 ) {
     val intent = Intent(Intent.ACTION_SENDTO).apply {
         data = Uri.parse(
             "mailto:$receptor" +
                     "?cc=" + "" +
-                    "&subject=" + Uri.encode("Saludos $nombreCliente, su ticket ha sido respondido") +
+                    "&subject=" + Uri.encode("Saludos $nombreCliente, su ticket con asunto: \"$asunto\".\nHa sido respondido!") +
                     "&body=" + Uri.encode(cuerpo)
         )
     }
