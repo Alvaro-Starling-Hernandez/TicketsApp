@@ -98,8 +98,11 @@ fun TicketItems(
                 )
             }
             Spacer(modifier = Modifier.height(10.dp))
-            Row() {
-                Spacer(modifier = Modifier.padding(4.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+
                 Text(
                     text = getEstado(ticket.estadoId),
                     style = MaterialTheme.typography.caption,
@@ -108,12 +111,11 @@ fun TicketItems(
                     fontStyle = FontStyle.Italic
 
                 )
-                Spacer(modifier = Modifier.padding(4.dp))
+
                 Text(
                     text = ticket.fecha,
                     style = MaterialTheme.typography.caption,
-                    textAlign = TextAlign.End,
-                    modifier = Modifier.padding(start = 165.dp)
+                    textAlign = TextAlign.End
                 )
             }
         }
