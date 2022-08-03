@@ -27,8 +27,8 @@ fun CardTicketsPendientes(Pendientes: Int, Urgentes: Int, Alta: Int) {
     ) {
 
         Image(
-            painter = painterResource(id = R.drawable.fondo_naranja),
-            contentDescription = "Fondo Naranja",
+            painter = painterResource(id = R.drawable.colorpendiente),
+            contentDescription = "Fondo pendiente",
             contentScale = ContentScale.Crop,
             modifier = Modifier.width(250.dp)
                 .height(100.dp)
