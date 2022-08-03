@@ -23,10 +23,10 @@ fun DashBoard(
     viewModelCliente: ClienteViewModel = hiltViewModel()
 ) {
     //Fondos para las cards
-    val fondoAzul = painterResource(id = R.drawable.fondo_azul)
-    val fondoRojo = painterResource(id = R.drawable.fondo_rojo)
-    val fondoVerdeLimon = painterResource(id = R.drawable.fondo_verde_limon)
-    val fondoMorado = painterResource(id = R.drawable.fondo_morado)
+    val fondoTotales = painterResource(id = R.drawable.colortotales)
+    val fondoFinalizados = painterResource(id = R.drawable.colorfinalizado)
+    val fondoProgreso = painterResource(id = R.drawable.colorprogreso)
+    val fondoTiempo = painterResource(id = R.drawable.colortiempo)
 
     //Variables contables
     var Pendientes = 0
@@ -81,7 +81,7 @@ fun DashBoard(
                     InfoTicket(
                         title = "Totales",
                         valor = TicketsTotales.toString(),
-                        painter = fondoVerdeLimon,
+                        painter = fondoTotales,
                         contentDescription = "Fondo verde limon",
                         height = 200,
                         width = 200
@@ -90,7 +90,7 @@ fun DashBoard(
                     InfoTicket(
                         title = "Finalizados",
                         valor = Finalizados.toString(),
-                        painter = fondoRojo,
+                        painter = fondoFinalizados,
                         contentDescription = "Fondo Rojo",
                         height = 200,
                         width = 200
@@ -98,7 +98,7 @@ fun DashBoard(
                     InfoTicket(
                         title = "En Proceso",
                         valor = EnProceso.toString(),
-                        painter = fondoAzul,
+                        painter = fondoProgreso,
                         contentDescription = "Fondo Azul",
                         height = 200,
                         width = 200
@@ -106,7 +106,7 @@ fun DashBoard(
                     InfoTicket(
                         title = "Tiempo Trabajado",
                         valor = "$sum Mins",
-                        painter = fondoMorado,
+                        painter = fondoTiempo,
                         contentDescription = "Fondo Morado",
                         height = 200,
                         width = 200
