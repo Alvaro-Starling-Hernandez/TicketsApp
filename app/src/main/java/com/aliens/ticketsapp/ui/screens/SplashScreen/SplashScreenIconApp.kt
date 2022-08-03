@@ -46,10 +46,10 @@ fun SplashIcon(){
         Spacer(modifier = Modifier.height(130.dp))
         
         Image(
-                painter = painterResource(id = R.drawable.dispensador),
+                painter = painterResource(id = R.drawable.publicaci_n_de_facebook_940x788_px),
                 contentDescription = "IconApp",
-                modifier =  Modifier.height(70.dp)
-                                    .width(70.dp)
+                modifier =  Modifier.height(150.dp)
+                                    .width(150.dp)
         )
 
         Text(text = "TicketsApp",
